@@ -9,33 +9,8 @@
     return file === "index.html" || file === "es.html";
   }
 
-  if (isHomePageEarly()) {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-
-    if (window.location.hash) {
-      console.log("[Homepage] clearing hash on load to prevent anchor jump", {
-        hash: window.location.hash
-      });
-      history.replaceState(null, document.title, window.location.pathname + window.location.search);
-    }
-
-    window.scrollTo(0, 0);
-    console.log("[Homepage] early scroll reset", { source: "script-start", scrollY: window.scrollY });
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (window.scrollY > 80) {
-          console.log("[Homepage] unexpected scroll detected", {
-            scrollY: window.scrollY,
-            hash: window.location.hash || "(none)"
-          });
-        }
-      },
-      { passive: true }
-    );
+  if (isHomePageEarly() && "scrollRestoration" in history) {
+    history.scrollRestoration = "auto";
   }
 
   const hamburger = document.querySelector(".nav-toggle");
@@ -45,7 +20,9 @@
   const communitySliders = Array.from(document.querySelectorAll("[data-community-slider]"));
   const languageSelects = Array.from(document.querySelectorAll(".language-select"));
   const languageSwitchers = Array.from(document.querySelectorAll(".language-switcher"));
-  const revealTargets = Array.from(document.querySelectorAll(".hero-copy-block, .profile-image-card, .section-heading, .trust-pill, .manager-card, .copy-panel, .hoa-badge, .service-card, .process-list li, .community-slider, .faq-card, .accordion-item, .consultation-panel, .form-intro, fieldset, .confirmation-panel"));
+  const revealTargets = Array.from(document.querySelectorAll(".hero-copy-block, .profile-image-card, .section-heading, .trust-pill, .manager-card, .copy-panel, .hoa-badge, .service-card, .process-list li, .community-slider, .faq-card, .accordion-item, .consultation-panel, .form-intro, fieldset, .confirmation-panel")).filter((element) => {
+    return element.matches(".community-slider") || !element.closest("[data-community-slider]");
+  });
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const urlLanguage = new URLSearchParams(window.location.search).get("lang");
   const savedLanguage = window.localStorage.getItem("site-language");
@@ -55,7 +32,7 @@
   const translations = {
     es: {
       "Private Property Manager": "Administrador Privado de Propiedades",
-      "Property Management Group home": "Inicio de Property Management Group",
+      "TenantFirst Management home": "Inicio de TenantFirst Management",
       "Open navigation": "Abrir navegación",
       "Main navigation": "Navegación principal",
       "Language": "Idioma",
@@ -70,11 +47,12 @@
       "Rental Process": "Proceso de alquiler",
       "Rental Process FAQ": "Preguntas del proceso de alquiler",
       "Contact": "Contacto",
+      "Get in touch": "Ponte en contacto",
       "Request Consultation": "Solicitar consulta",
       "Apply Now": "Aplicar Ahora",
       "Back": "Volver",
       "Back to Application": "Volver a la solicitud",
-      "Private property management": "Administración privada de propiedades",
+      "TenantFirst Management": "TenantFirst Management",
       "Professional and transparent rental coordination for applicants": "Coordinación de alquiler profesional y transparente para solicitantes",
       "Professional Photo Coming Soon": "Foto profesional próximamente",
       "Professional rental support designed to make the leasing process organized, transparent, and efficient.": "Apoyo profesional de alquiler diseñado para que el proceso de arrendamiento sea organizado, transparente y eficiente.",
@@ -92,14 +70,14 @@
       "Gallery navigation": "Navegación de galería",
       "Privately managed rentals": "Alquileres administrados de forma privada",
       "Quality rental homes with a simple and transparent application process.": "Viviendas de alquiler de calidad con un proceso de solicitud simple y transparente.",
-      "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "Property Management Group ofrece viviendas de alquiler administradas de forma privada, con enfoque en transparencia, comunicación receptiva y una experiencia de arrendamiento fluida.",
+      "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "TenantFirst Management ofrece viviendas de alquiler administradas de forma privada, con enfoque en transparencia, comunicación receptiva y una experiencia de arrendamiento fluida.",
       "Secure Application Processing": "Procesamiento seguro de solicitudes",
       "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.": "Las solicitudes se procesan de forma segura mediante Zillow Rental Manager en colaboración con el propietario.",
-      "Meet Property Management Group": "Conozca a Property Management Group",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
+      "Meet TenantFirst Management": "Conozca a TenantFirst Management",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
       "HOA Logo": "Logo HOA",
       "Community & HOA Guidelines Respected": "Se respetan las pautas de la comunidad y la HOA",
       "Rental process": "Proceso de alquiler",
@@ -125,12 +103,12 @@
       "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.": "Solicite orientación sobre disponibilidad, pasos de la solicitud, calendario de mudanza u otras consultas relacionadas con el alquiler antes de continuar.",
       "Property Manager": "Administrador de propiedades",
       "Direct Contact": "Contacto directo",
-      "For rental inquiries or application support, contact Property Management Group directly.": "Para consultas sobre alquiler o apoyo con su solicitud, comuníquese directamente con Property Management Group.",
-      "If you have questions regarding the application process, please contact Property Management Group directly.": "Si tiene preguntas sobre el proceso de solicitud, comuníquese directamente con Property Management Group.",
-      "Email Property Management Group": "Enviar correo electrónico a Property Management Group",
-      "Call Property Management Group": "Llamar a Property Management Group",
-      "© 2026 Property Management Group": "© 2026 Property Management Group",
-      "© 2026 Property Management Group.": "© 2026 Property Management Group",
+      "For rental inquiries or application support, contact TenantFirst Management directly.": "Para consultas sobre alquiler o apoyo con su solicitud, comuníquese directamente con TenantFirst Management.",
+      "If you have questions regarding the application process, please contact TenantFirst Management directly.": "Si tiene preguntas sobre el proceso de solicitud, comuníquese directamente con TenantFirst Management.",
+      "Email TenantFirst Management": "Enviar correo electrónico a TenantFirst Management",
+      "Call TenantFirst Management": "Llamar a TenantFirst Management",
+      "© 2026 TenantFirst Management": "© 2026 TenantFirst Management",
+      "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
       "Secure rental application": "Solicitud segura de alquiler",
       "Rental Application Form": "Formulario de Solicitud de Alquiler",
       "Rental Application": "Solicitud de alquiler",
@@ -203,13 +181,13 @@
       "I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.": "También entiendo que las instrucciones de pago para la tarifa de solicitud reembolsable se proporcionarán después del envío. Una vez confirmado el pago, mi solicitud pasará a la revisión, aprobación y siguientes pasos del proceso.",
       "Application received": "Solicitud recibida",
       "Thank you. Your application has been submitted.": "Gracias. Su solicitud ha sido enviada.",
-      "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.": "Su solicitud aparece como recibida. Revise su correo electrónico o teléfono para actualizaciones de Property Management Group sobre el estado de revisión, programación de visita o instrucciones de siguientes pasos.",
+      "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "Su solicitud aparece como recibida. Revise su correo electrónico o teléfono para actualizaciones de TenantFirst Management sobre el estado de revisión, programación de visita o instrucciones de siguientes pasos.",
       "Status: Received": "Estado: Recibida",
       "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.": "Las solicitudes son revisadas directamente por el propietario. Se le contactará si se necesita más información.",
       "Secure processing note": "Nota de procesamiento seguro",
       "Application details may be processed through Zillow Rental Manager in partnership with the property owner.": "Los detalles de la solicitud pueden procesarse mediante Zillow Rental Manager en colaboración con el propietario.",
       "Return Home": "Volver al inicio",
-      "Contact Property Management Group": "Contactar a Property Management Group",
+      "Contact TenantFirst Management": "Contactar a TenantFirst Management",
       "Example: 2 years": "Ejemplo: 2 años",
       "Names and relationship to applicant": "Nombres y relación con el solicitante",
       "Type, breed": "Tipo, raza",
@@ -258,10 +236,10 @@
       "Selected File": "Archivo seleccionado",
       "Submit Payment Confirmation": "Enviar confirmación de pago",
       "Prefer Email Confirmation?": "¿Prefiere confirmar por correo?",
-      "If you would prefer to email your payment confirmation instead, send it directly to Property Management Group for processing.": "Si prefiere enviar la confirmación de pago por correo, envíela directamente a Property Management Group para su procesamiento.",
+      "If you would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for processing.": "Si prefiere enviar la confirmación de pago por correo, envíela directamente a TenantFirst Management para su procesamiento.",
       "Send Email Confirmation": "Enviar confirmación por correo",
       "Payment Confirmation Submitted": "Confirmación de pago enviada",
-      "Your payment screenshot has been received and is pending private verification. Property Management Group will review your confirmation with your application details.": "Su captura de pantalla del pago fue recibida y está pendiente de verificación privada. Property Management Group revisará su confirmación junto con los detalles de su solicitud.",
+      "Your payment screenshot has been received and is pending private verification. TenantFirst Management will review your confirmation with your application details.": "Su captura de pantalla del pago fue recibida y está pendiente de verificación privada. TenantFirst Management revisará su confirmación junto con los detalles de su solicitud.",
       "How would you like to contact?": "¿Cómo desea contactar?",
       "Call": "Llamar",
       "Text": "Enviar mensaje",
@@ -280,11 +258,12 @@
       "Rental Process": "租赁流程",
       "Rental Process FAQ": "租赁流程常见问题",
       "Contact": "联系",
+      "Get in touch": "取得联系",
       "Request Consultation": "申请咨询",
       "Apply Now": "立即申请",
       "Back": "返回",
       "Back to Application": "返回申请",
-      "Private property management": "私人物业管理",
+      "TenantFirst Management": "TenantFirst Management",
       "Professional and transparent rental coordination for applicants": "面向申请人的专业透明租赁协调",
       "Professional Photo Coming Soon": "专业照片即将推出",
       "Professional rental support designed to make the leasing process organized, transparent, and efficient.": "专业租赁支持，旨在让租赁流程有序、透明且高效。",
@@ -302,13 +281,13 @@
       "Gallery navigation": "图库导航",
       "Privately managed rentals": "私人管理租赁",
       "Quality rental homes with a simple and transparent application process.": "优质出租住宅，申请流程简单透明。",
-      "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "Property Management Group 提供私人管理的出租住宅，注重透明沟通、及时回应和顺畅的租赁体验。",
+      "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "TenantFirst Management 提供私人管理的出租住宅，注重透明沟通、及时回应和顺畅的租赁体验。",
       "Secure Application Processing": "安全申请处理",
       "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.": "申请通过 Zillow Rental Manager 与业主合作进行安全处理。",
-      "Meet Property Management Group": "关于 Property Management Group",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group 是一位专注的私人物业经理，致力于为业主和潜在租户提供有条理、透明且专业的租赁支持。",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group 在整个租赁过程中与申请人密切合作，帮助他们了解申请要求、安排看房，并清晰自信地完成每一步。",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Property Management Group 高度重视沟通、可靠性和专业精神，致力于为所有相关人员营造顺畅、有序且相互尊重的租赁体验。",
+      "Meet TenantFirst Management": "关于 TenantFirst Management",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management 是一位专注的物业经理，致力于为业主和潜在租户提供有条理、透明且专业的租赁支持。",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management 在整个租赁过程中与申请人密切合作，帮助他们了解申请要求、安排看房，并清晰自信地完成每一步。",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "TenantFirst Management 高度重视沟通、可靠性和专业精神，致力于为所有相关人员营造顺畅、有序且相互尊重的租赁体验。",
       "HOA Logo": "HOA 标志",
       "Community & HOA Guidelines Respected": "尊重社区与 HOA 指南",
       "Rental process": "租赁流程",
@@ -334,12 +313,12 @@
       "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.": "在采取下一步行动前，您可就可租情况、申请步骤、入住时间及其他租赁相关问题寻求指导。",
       "Property Manager": "物业经理",
       "Direct Contact": "直接联系",
-      "For rental inquiries or application support, contact Property Management Group directly.": "如有关于租赁事宜或申请表协助的事项，请直接联系 Property Management Group。",
-      "If you have questions regarding the application process, please contact Property Management Group directly.": "如对申请流程有任何疑问，请直接联系 Property Management Group。",
-      "Email Property Management Group": "向 Property Management Group 发送电子邮件",
-      "Call Property Management Group": "致电 Property Management Group",
-      "© 2026 Property Management Group": "© 2026 Property Management Group",
-      "© 2026 Property Management Group.": "© 2026 Property Management Group",
+      "For rental inquiries or application support, contact TenantFirst Management directly.": "如有关于租赁事宜或申请表协助的事项，请直接联系 TenantFirst Management。",
+      "If you have questions regarding the application process, please contact TenantFirst Management directly.": "如对申请流程有任何疑问，请直接联系 TenantFirst Management。",
+      "Email TenantFirst Management": "向 TenantFirst Management 发送电子邮件",
+      "Call TenantFirst Management": "致电 TenantFirst Management",
+      "© 2026 TenantFirst Management": "© 2026 TenantFirst Management",
+      "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
       "Secure rental application": "安全租赁申请",
       "Rental Application Form": "租赁申请表",
       "Rental Application": "租赁申请",
@@ -392,13 +371,13 @@
       "I certify that the information provided is true and complete to the best of my knowledge.": "我确认所提供的信息据我所知真实且完整。",
       "Application received": "申请已收到",
       "Thank you. Your application has been submitted.": "谢谢。您的申请已提交。",
-      "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.": "您的申请已标记为收到。请留意电子邮件或电话，Property Management Group 将提供审核状态、看房安排或下一步说明。",
+      "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "您的申请已标记为收到。请留意电子邮件或电话，TenantFirst Management 将提供审核状态、看房安排或下一步说明。",
       "Status: Received": "状态：已收到",
       "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.": "申请由业主直接审核。如需更多信息，将与您联系。",
       "Secure processing note": "安全处理说明",
       "Application details may be processed through Zillow Rental Manager in partnership with the property owner.": "申请详情可能通过 Zillow Rental Manager 与业主合作处理。",
       "Return Home": "返回首页",
-      "Contact Property Management Group": "联系 Property Management Group",
+      "Contact TenantFirst Management": "联系 TenantFirst Management",
       "Example: 2 years": "例如：2 年",
       "Names and relationship to applicant": "姓名及与申请人的关系",
       "Type, breed": "类型、品种",
@@ -415,7 +394,7 @@
     },
     fr: {
       "Private Property Manager": "Gestionnaire privé de propriétés",
-      "Property Management Group home": "Accueil Property Management Group",
+      "TenantFirst Management home": "Accueil TenantFirst Management",
       "Open navigation": "Ouvrir la navigation",
       "Main navigation": "Navigation principale",
       "Language": "Langue",
@@ -430,11 +409,12 @@
       "Rental Process": "Processus de location",
       "Rental Process FAQ": "FAQ — processus de location",
       "Contact": "Contact",
+      "Get in touch": "Nous contacter",
       "Request Consultation": "Demander une consultation",
       "Apply Now": "Postuler Maintenant",
       "Back": "Retour",
       "Back to Application": "Retour à la demande",
-      "Private property management": "Gestion privée de propriétés",
+      "TenantFirst Management": "TenantFirst Management",
       "Professional and transparent rental coordination for applicants": "Coordination locative professionnelle et transparente pour les candidats",
       "Professional Photo Coming Soon": "Photo professionnelle à venir",
       "Professional rental support designed to make the leasing process organized, transparent, and efficient.": "Un accompagnement locatif professionnel conçu pour rendre le processus organisé, transparent et efficace.",
@@ -452,13 +432,13 @@
       "Gallery navigation": "Navigation de la galerie",
       "Privately managed rentals": "Locations gérées en privé",
       "Quality rental homes with a simple and transparent application process.": "Des logements locatifs de qualité avec un processus de demande simple et transparent.",
-      "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "Property Management Group propose des logements locatifs gérés en privé, avec transparence, communication réactive et expérience de location fluide.",
+      "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "TenantFirst Management propose des logements locatifs gérés en privé, avec transparence, communication réactive et expérience de location fluide.",
       "Secure Application Processing": "Traitement sécurisé des demandes",
       "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.": "Les demandes sont traitées de manière sécurisée via Zillow Rental Manager en partenariat avec la propriétaire.",
-      "Meet Property Management Group": "À propos de Property Management Group",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group est un gestionnaire privé de propriétés dévoué, axé sur un accompagnement locatif organisé, transparent et professionnel pour les propriétaires comme pour les futurs locataires.",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group travaille étroitement avec les candidats tout au long du processus de location, les aidant à comprendre les exigences de demande, à planifier les visites et à avancer à chaque étape avec clarté et confiance.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Avec une forte priorité donnée à la communication, à la fiabilité et au professionnalisme, Property Management Group s’engage à créer une expérience de location fluide, bien structurée et respectueuse pour toutes les personnes impliquées.",
+      "Meet TenantFirst Management": "À propos de TenantFirst Management",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management est un gestionnaire privé de propriétés dévoué, axé sur un accompagnement locatif organisé, transparent et professionnel pour les propriétaires comme pour les futurs locataires.",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management travaille étroitement avec les candidats tout au long du processus de location, les aidant à comprendre les exigences de demande, à planifier les visites et à avancer à chaque étape avec clarté et confiance.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Avec une forte priorité donnée à la communication, à la fiabilité et au professionnalisme, TenantFirst Management s’engage à créer une expérience de location fluide, bien structurée et respectueuse pour toutes les personnes impliquées.",
       "HOA Logo": "Logo HOA",
       "Community & HOA Guidelines Respected": "Directives de la communauté et de la HOA respectées",
       "Rental process": "Processus de location",
@@ -484,12 +464,12 @@
       "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.": "Demandez des précisions concernant les disponibilités, les étapes de candidature, le calendrier d’emménagement ou vos questions générales sur la location avant de poursuivre.",
       "Property Manager": "Gestionnaire de propriétés",
       "Direct Contact": "Contact direct",
-      "For rental inquiries or application support, contact Property Management Group directly.": "Pour toute demande liée à la location ou au dossier de candidature, vous pouvez contacter Property Management Group directement.",
-      "If you have questions regarding the application process, please contact Property Management Group directly.": "Pour toute question sur le déroulement de la candidature, veuillez contacter Property Management Group directement.",
-      "Email Property Management Group": "Envoyer un e-mail à Property Management Group",
-      "Call Property Management Group": "Appeler Property Management Group",
-      "© 2026 Property Management Group": "© 2026 Property Management Group",
-      "© 2026 Property Management Group.": "© 2026 Property Management Group",
+      "For rental inquiries or application support, contact TenantFirst Management directly.": "Pour toute demande liée à la location ou au dossier de candidature, vous pouvez contacter TenantFirst Management directement.",
+      "If you have questions regarding the application process, please contact TenantFirst Management directly.": "Pour toute question sur le déroulement de la candidature, veuillez contacter TenantFirst Management directement.",
+      "Email TenantFirst Management": "Envoyer un e-mail à TenantFirst Management",
+      "Call TenantFirst Management": "Appeler TenantFirst Management",
+      "© 2026 TenantFirst Management": "© 2026 TenantFirst Management",
+      "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
       "Secure rental application": "Demande de location sécurisée",
       "Rental Application Form": "Formulaire de demande de location",
       "Rental Application": "Demande de location",
@@ -544,13 +524,13 @@
       "I certify that the information provided is true and complete to the best of my knowledge.": "Je certifie que les informations fournies sont vraies et complètes à ma connaissance.",
       "Application received": "Demande reçue",
       "Thank you. Your application has been submitted.": "Merci. Votre demande a été envoyée.",
-      "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.": "Votre demande est marquée comme reçue. Surveillez votre e-mail ou téléphone pour les mises à jour de Property Management Group concernant l’examen, les visites ou les prochaines étapes.",
+      "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "Votre demande est marquée comme reçue. Surveillez votre e-mail ou téléphone pour les mises à jour de TenantFirst Management concernant l’examen, les visites ou les prochaines étapes.",
       "Status: Received": "Statut : reçue",
       "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.": "Les demandes sont examinées directement par la propriétaire. Vous serez contacté si des informations supplémentaires sont nécessaires.",
       "Secure processing note": "Note de traitement sécurisé",
       "Application details may be processed through Zillow Rental Manager in partnership with the property owner.": "Les détails de la demande peuvent être traités via Zillow Rental Manager en partenariat avec la propriétaire.",
       "Return Home": "Retour à l’accueil",
-      "Contact Property Management Group": "Contacter Property Management Group",
+      "Contact TenantFirst Management": "Contacter TenantFirst Management",
       "Example: 2 years": "Exemple : 2 ans",
       "Names and relationship to applicant": "Noms et relation avec le candidat",
       "Type, breed": "Type, race",
@@ -578,10 +558,11 @@
       "Rental Process": "Processo de aluguel",
       "Rental Process FAQ": "FAQ do processo de aluguel",
       "Contact": "Contato",
+      "Get in touch": "Entre em contato",
       "Request Consultation": "Solicitar consulta",
       "Apply Now": "Aplicar Agora",
       "Back": "Voltar",
-      "Private property management": "Administração privada de propriedades",
+      "TenantFirst Management": "TenantFirst Management",
       "Professional and transparent rental coordination for applicants": "Coordenação de aluguel profissional e transparente para candidatos",
       "Professional Photo Coming Soon": "Foto profissional em breve",
       "Professional rental support designed to make the leasing process organized, transparent, and efficient.": "Suporte profissional de aluguel projetado para tornar o processo de locação organizado, transparente e eficiente.",
@@ -599,13 +580,13 @@
       "Gallery navigation": "Navegação da galeria",
       "Privately managed rentals": "Aluguéis administrados de forma privada",
       "Quality rental homes with a simple and transparent application process.": "Imóveis de aluguel de qualidade com um processo de solicitação simples e transparente.",
-      "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "Property Management Group oferece imóveis de aluguel administrados de forma privada, com foco em transparência, comunicação rápida e uma experiência de locação tranquila.",
+      "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "TenantFirst Management oferece imóveis de aluguel administrados de forma privada, com foco em transparência, comunicação rápida e uma experiência de locação tranquila.",
       "Secure Application Processing": "Processamento seguro de solicitações",
       "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.": "As solicitações são processadas com segurança pelo Zillow Rental Manager em parceria com a proprietária.",
-      "Meet Property Management Group": "Sobre Property Management Group",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group é um administrador privado de propriedades dedicado a oferecer suporte de aluguel organizado, transparente e profissional para proprietários e possíveis inquilinos.",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group trabalha de perto com os candidatos durante todo o processo de locação, ajudando-os a entender os requisitos da solicitação, agendar visitas ao imóvel e avançar em cada etapa com clareza e confiança.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Com forte ênfase em comunicação, confiabilidade e profissionalismo, Property Management Group se compromete a criar uma experiência de aluguel tranquila, bem estruturada e respeitosa para todos os envolvidos.",
+      "Meet TenantFirst Management": "Sobre TenantFirst Management",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management é um administrador privado de propriedades dedicado a oferecer suporte de aluguel organizado, transparente e profissional para proprietários e possíveis inquilinos.",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management trabalha de perto com os candidatos durante todo o processo de locação, ajudando-os a entender os requisitos da solicitação, agendar visitas ao imóvel e avançar em cada etapa com clareza e confiança.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Com forte ênfase em comunicação, confiabilidade e profissionalismo, TenantFirst Management se compromete a criar uma experiência de aluguel tranquila, bem estruturada e respeitosa para todos os envolvidos.",
       "HOA Logo": "Logo HOA",
       "Community & HOA Guidelines Respected": "Diretrizes da comunidade e da HOA respeitadas",
       "Rental process": "Processo de aluguel",
@@ -631,12 +612,12 @@
       "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.": "Solicite orientação sobre disponibilidade, etapas da candidatura, datas de mudança ou perguntas gerais sobre o aluguel antes de prosseguir.",
       "Property Manager": "Gestora de propriedades",
       "Direct Contact": "Contato direto",
-      "For rental inquiries or application support, contact Property Management Group directly.": "Para dúvidas sobre aluguel ou apoio com sua candidatura, entre em contato diretamente com Property Management Group.",
-      "If you have questions regarding the application process, please contact Property Management Group directly.": "Em caso de dúvidas sobre o processo de solicitação, entre em contato diretamente com Property Management Group.",
-      "Email Property Management Group": "Enviar e-mail para Property Management Group",
-      "Call Property Management Group": "Ligar para Property Management Group",
-      "© 2026 Property Management Group": "© 2026 Property Management Group",
-      "© 2026 Property Management Group.": "© 2026 Property Management Group",
+      "For rental inquiries or application support, contact TenantFirst Management directly.": "Para dúvidas sobre aluguel ou apoio com sua candidatura, entre em contato diretamente com TenantFirst Management.",
+      "If you have questions regarding the application process, please contact TenantFirst Management directly.": "Em caso de dúvidas sobre o processo de solicitação, entre em contato diretamente com TenantFirst Management.",
+      "Email TenantFirst Management": "Enviar e-mail para TenantFirst Management",
+      "Call TenantFirst Management": "Ligar para TenantFirst Management",
+      "© 2026 TenantFirst Management": "© 2026 TenantFirst Management",
+      "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
       "Secure rental application": "Solicitação segura de aluguel",
       "Rental Application Form": "Formulário de Solicitação de Aluguel",
       "Rental Application": "Solicitação de aluguel",
@@ -689,13 +670,13 @@
       "I certify that the information provided is true and complete to the best of my knowledge.": "Certifico que as informações fornecidas são verdadeiras e completas conforme meu conhecimento.",
       "Application received": "Solicitação recebida",
       "Thank you. Your application has been submitted.": "Obrigado. Sua solicitação foi enviada.",
-      "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.": "Sua solicitação foi marcada como recebida. Verifique seu e-mail ou telefone para atualizações de Property Management Group sobre análise, visitas ou próximos passos.",
+      "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "Sua solicitação foi marcada como recebida. Verifique seu e-mail ou telefone para atualizações de TenantFirst Management sobre análise, visitas ou próximos passos.",
       "Status: Received": "Status: recebida",
       "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.": "As solicitações são analisadas diretamente pela proprietária. Você será contatado se forem necessárias mais informações.",
       "Secure processing note": "Nota de processamento seguro",
       "Application details may be processed through Zillow Rental Manager in partnership with the property owner.": "Os detalhes da solicitação podem ser processados pelo Zillow Rental Manager em parceria com a proprietária.",
       "Return Home": "Voltar ao início",
-      "Contact Property Management Group": "Contatar Property Management Group",
+      "Contact TenantFirst Management": "Contatar TenantFirst Management",
       "Example: 2 years": "Exemplo: 2 anos",
       "Names and relationship to applicant": "Nomes e relação com o candidato",
       "Type, breed": "Tipo, raça",
@@ -712,7 +693,7 @@
     },
     ar: {
       "Private Property Manager": "مدير عقارات خاص",
-      "Property Management Group home": "الصفحة الرئيسية لـ Property Management Group",
+      "TenantFirst Management home": "الصفحة الرئيسية لـ TenantFirst Management",
       "Open navigation": "فتح التنقل",
       "Main navigation": "التنقل الرئيسي",
       "Language": "اللغة",
@@ -727,11 +708,12 @@
       "Rental Process": "عملية الإيجار",
       "Rental Process FAQ": "الأسئلة الشائعة عن عملية الإيجار",
       "Contact": "اتصال",
+      "Get in touch": "تواصل معنا",
       "Request Consultation": "طلب استشارة",
       "Apply Now": "قدم الآن",
       "Back": "رجوع",
       "Back to Application": "العودة إلى الطلب",
-      "Private property management": "إدارة عقارات خاصة",
+      "TenantFirst Management": "TenantFirst Management",
       "Professional and transparent rental coordination for applicants": "تنسيق إيجار مهني وشفاف للمتقدمين",
       "Professional Photo Coming Soon": "الصورة المهنية قريباً",
       "Professional rental support designed to make the leasing process organized, transparent, and efficient.": "دعم إيجار مهني مصمم لجعل عملية التأجير منظمة وشفافة وفعالة.",
@@ -749,13 +731,13 @@
       "Gallery navigation": "تنقل المعرض",
       "Privately managed rentals": "إيجارات بإدارة خاصة",
       "Quality rental homes with a simple and transparent application process.": "منازل إيجار عالية الجودة مع عملية تقديم بسيطة وشفافة.",
-      "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "تقدم Property Management Group منازل إيجار بإدارة خاصة تركز على الشفافية والتواصل السريع وتجربة تأجير سلسة.",
+      "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.": "تقدم TenantFirst Management منازل إيجار بإدارة خاصة تركز على الشفافية والتواصل السريع وتجربة تأجير سلسة.",
       "Secure Application Processing": "معالجة آمنة للطلبات",
       "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.": "تتم معالجة الطلبات بأمان عبر Zillow Rental Manager بالشراكة مع مالكة العقار.",
-      "Meet Property Management Group": "نبذة عن Property Management Group",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group مدير عقارات خاص متفانٍ يركز على تقديم دعم إيجاري منظم وشفاف ومهني لكل من مالكي العقارات والمستأجرين المحتملين.",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group يعمل عن قرب مع المتقدمين طوال عملية التأجير، ويساعدهم على فهم متطلبات الطلب وجدولة جولات العقار والتنقل في كل خطوة بوضوح وثقة.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "مع تركيز قوي على التواصل والموثوقية والمهنية، تلتزم Property Management Group بخلق تجربة إيجار سلسة ومنظمة ومحترمة لجميع الأطراف.",
+      "Meet TenantFirst Management": "نبذة عن TenantFirst Management",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management مدير عقارات خاص متفانٍ يركز على تقديم دعم إيجاري منظم وشفاف ومهني لكل من مالكي العقارات والمستأجرين المحتملين.",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management يعمل عن قرب مع المتقدمين طوال عملية التأجير، ويساعدهم على فهم متطلبات الطلب وجدولة جولات العقار والتنقل في كل خطوة بوضوح وثقة.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "مع تركيز قوي على التواصل والموثوقية والمهنية، تلتزم TenantFirst Management بخلق تجربة إيجار سلسة ومنظمة ومحترمة لجميع الأطراف.",
       "HOA Logo": "شعار HOA",
       "Community & HOA Guidelines Respected": "احترام إرشادات المجتمع و HOA",
       "Rental process": "عملية الإيجار",
@@ -781,12 +763,12 @@
       "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.": "اطلب الإرشاد بشأن التوفّر أو خطوات الطلب أو مواعيد الانتقال أو أي استفسارات عامة حول الإيجار قبل المتابعة.",
       "Property Manager": "مدير عقاري",
       "Direct Contact": "تواصل مباشر",
-      "For rental inquiries or application support, contact Property Management Group directly.": "للاستفسارات عن الإيجار أو الدعم بخصوص الطلب، يمكنكم التواصل مع Property Management Group مباشرةً.",
-      "If you have questions regarding the application process, please contact Property Management Group directly.": "إذا كان لديكم أي أسئلة بشأن عملية التقديم، يُرجى التواصل مباشرةً مع Property Management Group.",
-      "Email Property Management Group": "مراسلة Property Management Group عبر البريد الإلكتروني",
-      "Call Property Management Group": "الاتصال بـ Property Management Group",
-      "© 2026 Property Management Group": "© 2026 Property Management Group",
-      "© 2026 Property Management Group.": "© 2026 Property Management Group",
+      "For rental inquiries or application support, contact TenantFirst Management directly.": "للاستفسارات عن الإيجار أو الدعم بخصوص الطلب، يمكنكم التواصل مع TenantFirst Management مباشرةً.",
+      "If you have questions regarding the application process, please contact TenantFirst Management directly.": "إذا كان لديكم أي أسئلة بشأن عملية التقديم، يُرجى التواصل مباشرةً مع TenantFirst Management.",
+      "Email TenantFirst Management": "مراسلة TenantFirst Management عبر البريد الإلكتروني",
+      "Call TenantFirst Management": "الاتصال بـ TenantFirst Management",
+      "© 2026 TenantFirst Management": "© 2026 TenantFirst Management",
+      "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
       "Secure rental application": "طلب إيجار آمن",
       "Rental Application Form": "نموذج طلب الإيجار",
       "Rental Application": "طلب الإيجار",
@@ -841,13 +823,13 @@
       "I certify that the information provided is true and complete to the best of my knowledge.": "أقر بأن المعلومات المقدمة صحيحة وكاملة حسب علمي.",
       "Application received": "تم استلام الطلب",
       "Thank you. Your application has been submitted.": "شكراً لك. تم إرسال طلبك.",
-      "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.": "تم وضع علامة على طلبك كطلب مستلم. يرجى متابعة بريدك الإلكتروني أو هاتفك للحصول على تحديثات من Property Management Group حول حالة المراجعة أو جدولة الجولة أو تعليمات الخطوة التالية.",
+      "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "تم وضع علامة على طلبك كطلب مستلم. يرجى متابعة بريدك الإلكتروني أو هاتفك للحصول على تحديثات من TenantFirst Management حول حالة المراجعة أو جدولة الجولة أو تعليمات الخطوة التالية.",
       "Status: Received": "الحالة: تم الاستلام",
       "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.": "تتم مراجعة الطلبات مباشرة من مالكة العقار. سيتم التواصل معك إذا كانت هناك حاجة إلى مزيد من المعلومات.",
       "Secure processing note": "ملاحظة المعالجة الآمنة",
       "Application details may be processed through Zillow Rental Manager in partnership with the property owner.": "قد تتم معالجة تفاصيل الطلب عبر Zillow Rental Manager بالشراكة مع مالكة العقار.",
       "Return Home": "العودة للرئيسية",
-      "Contact Property Management Group": "التواصل مع Property Management Group",
+      "Contact TenantFirst Management": "التواصل مع TenantFirst Management",
       "Example: 2 years": "مثال: سنتان",
       "Names and relationship to applicant": "الأسماء والعلاقة بالمتقدم",
       "Type, breed": "النوع والسلالة",
@@ -868,7 +850,7 @@
     "Administrador Privado de Propiedades": "Private Property Manager",
     "Abrir navegación": "Open navigation",
     "Navegación principal": "Main navigation",
-    "Inicio de Property Management Group": "Property Management Group home",
+    "Inicio de TenantFirst Management": "TenantFirst Management home",
     "Idioma": "Language",
     "Selector de idioma": "Language selector",
     "Seleccionar idioma": "Select language",
@@ -885,7 +867,7 @@
     "Aplicar Ahora": "Apply Now",
     "Volver": "Back",
     "Volver a la solicitud": "Back to Application",
-    "Administración privada de propiedades": "Private property management",
+    "TenantFirst Management": "TenantFirst Management",
     "Coordinación de alquiler profesional y transparente para solicitantes": "Professional and transparent rental coordination for applicants",
     "Foto profesional próximamente": "Professional Photo Coming Soon",
     "Apoyo profesional de alquiler diseñado para que el proceso de arrendamiento sea organizado, transparente y eficiente.": "Professional rental support designed to make the leasing process organized, transparent, and efficient.",
@@ -903,14 +885,14 @@
     "Navegación de galería": "Gallery navigation",
     "Alquileres administrados de forma privada": "Privately managed rentals",
     "Viviendas de alquiler de calidad con un proceso de solicitud simple y transparente.": "Quality rental homes with a simple and transparent application process.",
-    "Property Management Group ofrece viviendas de alquiler administradas de forma privada, con enfoque en transparencia, comunicación receptiva y una experiencia de arrendamiento fluida.": "Property Management Group offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.",
+    "TenantFirst Management ofrece viviendas de alquiler administradas de forma privada, con enfoque en transparencia, comunicación receptiva y una experiencia de arrendamiento fluida.": "TenantFirst Management offers privately managed rental homes focused on transparency, responsive communication, and a smooth leasing experience.",
     "Procesamiento seguro de solicitudes": "Secure Application Processing",
     "Las solicitudes se procesan de forma segura mediante Zillow Rental Manager en colaboración con el propietario.": "Applications are securely processed through Zillow Rental Manager in partnership with the property owner.",
-    "Conozca a Property Management Group": "Meet Property Management Group",
-    "Property Management Group es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.": "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.",
-    "Property Management Group trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.": "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.",
-    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
-    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
+    "Conozca a TenantFirst Management": "Meet TenantFirst Management",
+    "TenantFirst Management es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.": "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.",
+    "TenantFirst Management trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.": "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.",
+    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
+    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
     "Logo HOA": "HOA Logo",
     "Se respetan las pautas de la comunidad y la HOA": "Community & HOA Guidelines Respected",
     "Siguientes pasos simples": "Simple next steps",
@@ -935,12 +917,12 @@
     "Solicite orientación sobre disponibilidad, pasos de la solicitud, calendario de mudanza u otras consultas relacionadas con el alquiler antes de continuar.": "Request guidance regarding availability, application steps, move-in timing, or general rental questions before proceeding.",
     "Administrador de propiedades": "Property Manager",
     "Contacto directo": "Direct Contact",
-    "Para consultas sobre alquiler o apoyo con su solicitud, comuníquese directamente con Property Management Group.": "For rental inquiries or application support, contact Property Management Group directly.",
-    "Si tiene preguntas sobre el proceso de solicitud, comuníquese directamente con Property Management Group.": "If you have questions regarding the application process, please contact Property Management Group directly.",
-    "Enviar correo electrónico a Property Management Group": "Email Property Management Group",
-    "Llamar a Property Management Group": "Call Property Management Group",
-    "© 2026 Property Management Group. Alquileres administrados de forma privada.": "© 2026 Property Management Group",
-    "© 2026 Property Management Group.": "© 2026 Property Management Group",
+    "Para consultas sobre alquiler o apoyo con su solicitud, comuníquese directamente con TenantFirst Management.": "For rental inquiries or application support, contact TenantFirst Management directly.",
+    "Si tiene preguntas sobre el proceso de solicitud, comuníquese directamente con TenantFirst Management.": "If you have questions regarding the application process, please contact TenantFirst Management directly.",
+    "Enviar correo electrónico a TenantFirst Management": "Email TenantFirst Management",
+    "Llamar a TenantFirst Management": "Call TenantFirst Management",
+    "© 2026 TenantFirst Management. Alquileres administrados de forma privada.": "© 2026 TenantFirst Management",
+    "© 2026 TenantFirst Management.": "© 2026 TenantFirst Management",
     "Solicitud segura de alquiler": "Secure rental application",
     "Formulario de Solicitud de Alquiler": "Rental Application Form",
     "Solicitud de alquiler": "Rental Application",
@@ -998,14 +980,14 @@
     "Certifico que la información proporcionada es verdadera y completa a mi leal saber y entender.": "I certify that the information provided is true and complete to the best of my knowledge.",
     "Solicitud recibida": "Application received",
     "Gracias. Su solicitud ha sido enviada.": "Thank you. Your application has been submitted.",
-    "Su solicitud aparece como recibida. Revise su correo electrónico o teléfono para actualizaciones de Property Management Group sobre el estado de revisión, programación de visita o instrucciones de siguientes pasos.": "Your application is marked as received. Please watch your email or phone for updates from Property Management Group about review status, tour scheduling, or next-step instructions.",
+    "Su solicitud aparece como recibida. Revise su correo electrónico o teléfono para actualizaciones de TenantFirst Management sobre el estado de revisión, programación de visita o instrucciones de siguientes pasos.": "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.",
     "Estado: Recibida": "Status: Received",
     "Estado de la solicitud": "Application status",
     "Las solicitudes son revisadas directamente por el propietario. Se le contactará si se necesita más información.": "Applications are reviewed directly by the property owner. You will be contacted if more information is needed.",
     "Nota de procesamiento seguro": "Secure processing note",
     "Los detalles de la solicitud pueden procesarse mediante Zillow Rental Manager en colaboración con el propietario.": "Application details may be processed through Zillow Rental Manager in partnership with the property owner.",
     "Volver al inicio": "Return Home",
-    "Contactar a Property Management Group": "Contact Property Management Group",
+    "Contactar a TenantFirst Management": "Contact TenantFirst Management",
     "Ejemplo: 2 años": "Example: 2 years",
     "Nombres y relación con el solicitante": "Names and relationship to applicant",
     "Tipo, raza": "Type, breed",
@@ -1014,9 +996,9 @@
 
   Object.assign(aliases, {
     "Administración de alquileres y apoyo de arrendamiento": "Rental Management & Leasing Support",
-    "Property Management Group es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.": "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.",
-    "Property Management Group trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.": "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.",
-    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
+    "TenantFirst Management es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.": "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.",
+    "TenantFirst Management trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.": "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.",
+    "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.": "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.",
     "Cómo funciona el proceso de alquiler": "How the Rental Process Works",
     "Comuníquese con nosotros sobre el alquiler que le interesa y confirme la disponibilidad antes de aplicar.": "Contact us about the rental you're interested in and confirm availability before applying.",
     "Revise cuidadosamente la información disponible de la propiedad antes de comenzar el proceso de solicitud.": "Review the available property information carefully before beginning the application process.",
@@ -1067,11 +1049,11 @@
       "Zillow-assisted processing": "Procesamiento asistido por Zillow",
       "Clear": "Claro",
       "Direct next-step updates": "Actualizaciones directas de siguientes pasos",
-      "Private Property Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "Private Property Management ofrece apoyo profesional de alquiler para viviendas administradas de forma privada y posibles inquilinos, con enfoque en consistencia, transparencia y responsabilidad en cada etapa del proceso de arrendamiento.",
+      "TenantFirst Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "TenantFirst Management ofrece apoyo profesional de alquiler para viviendas administradas de forma privada y posibles inquilinos, con enfoque en consistencia, transparencia y responsabilidad en cada etapa del proceso de arrendamiento.",
       "From initial inquiries and scheduling to application guidance and communication, our approach is structured and service-oriented. We prioritize clear expectations, timely follow-through, and dependable coordination so both property owners and applicants experience a smooth, efficient, and respectful process.": "Desde consultas iniciales y programación hasta orientación en la solicitud y comunicación, nuestro enfoque es estructurado y orientado al servicio. Priorizamos expectativas claras, seguimiento oportuno y coordinación confiable para que propietarios y solicitantes tengan un proceso fluido, eficiente y respetuoso.",
-      "Why work with Private property management": "Por qué trabajar con administración privada de propiedades",
-      "Why work with Private property management points": "Puntos sobre por qué trabajar con administración privada de propiedades",
-      "Private property management team group photo": "Foto grupal del equipo de administración privada de propiedades",
+      "Why work with TenantFirst Management": "Por qué trabajar con TenantFirst Management",
+      "Why work with TenantFirst Management points": "Puntos sobre por qué trabajar con TenantFirst Management",
+      "TenantFirst Management team group photo": "Foto grupal del equipo de TenantFirst Management",
       "Office team gathering and celebration moment": "Momento de reunión y celebración del equipo en la oficina",
       "Team members posing in office with flag display": "Miembros del equipo posando en la oficina con bandera",
       "Staff group photo in conference room": "Foto grupal del personal en sala de conferencias",
@@ -1102,11 +1084,11 @@
       "Zillow-assisted processing": "Zillow 协助处理",
       "Clear": "清晰",
       "Direct next-step updates": "直接的后续更新",
-      "Private Property Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "Private Property Management 为私人管理的房源和潜在租户提供专业租赁支持，在租赁流程的每个阶段都注重一致性、透明度和责任。",
+      "TenantFirst Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "TenantFirst Management 为私人管理的房源和潜在租户提供专业租赁支持，在租赁流程的每个阶段都注重一致性、透明度和责任。",
       "From initial inquiries and scheduling to application guidance and communication, our approach is structured and service-oriented. We prioritize clear expectations, timely follow-through, and dependable coordination so both property owners and applicants experience a smooth, efficient, and respectful process.": "从初步咨询和预约到申请指导和沟通，我们的方式结构化且以服务为导向。我们优先确保期望清晰、及时跟进和可靠协调，让业主和申请人都能获得顺畅、高效且受尊重的体验。",
-      "Why work with Private property management": "为何选择私人物业管理",
-      "Why work with Private property management points": "选择私人物业管理的要点",
-      "Private property management team group photo": "私人物业管理团队合影",
+      "Why work with TenantFirst Management": "为何选择 TenantFirst Management",
+      "Why work with TenantFirst Management points": "选择 TenantFirst Management 的要点",
+      "TenantFirst Management team group photo": "TenantFirst Management 团队合影",
       "Office team gathering and celebration moment": "办公室团队聚会庆祝瞬间",
       "Team members posing in office with flag display": "团队成员在办公室与旗帜合影",
       "Staff group photo in conference room": "员工在会议室的合影",
@@ -1137,11 +1119,11 @@
       "Zillow-assisted processing": "Traitement assisté par Zillow",
       "Clear": "Clair",
       "Direct next-step updates": "Mises à jour directes",
-      "Private Property Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "Private Property Management offre un accompagnement locatif professionnel pour les logements gérés en privé et les candidats locataires, avec un accent sur la cohérence, la transparence et la responsabilité à chaque étape du processus de location.",
+      "TenantFirst Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "TenantFirst Management offre un accompagnement locatif professionnel pour les logements gérés en privé et les candidats locataires, avec un accent sur la cohérence, la transparence et la responsabilité à chaque étape du processus de location.",
       "From initial inquiries and scheduling to application guidance and communication, our approach is structured and service-oriented. We prioritize clear expectations, timely follow-through, and dependable coordination so both property owners and applicants experience a smooth, efficient, and respectful process.": "Des premières demandes et la planification à l’accompagnement de la candidature et à la communication, notre approche est structurée et orientée service. Nous privilégions des attentes claires, un suivi rapide et une coordination fiable pour que propriétaires et candidats vivent un processus fluide, efficace et respectueux.",
-      "Why work with Private property management": "Pourquoi travailler avec la gestion privée de propriétés",
-      "Why work with Private property management points": "Points sur la gestion privée de propriétés",
-      "Private property management team group photo": "Photo de groupe de l’équipe de gestion privée",
+      "Why work with TenantFirst Management": "Pourquoi travailler avec TenantFirst Management",
+      "Why work with TenantFirst Management points": "Points sur TenantFirst Management",
+      "TenantFirst Management team group photo": "Photo de groupe de l’équipe TenantFirst Management",
       "Office team gathering and celebration moment": "Moment de réunion et de célébration de l’équipe au bureau",
       "Team members posing in office with flag display": "Membres de l’équipe posant au bureau avec un drapeau",
       "Staff group photo in conference room": "Photo de groupe du personnel en salle de conférence",
@@ -1192,11 +1174,11 @@
       "Zillow-assisted processing": "معالجة بمساعدة Zillow",
       "Clear": "واضح",
       "Direct next-step updates": "تحديثات مباشرة للخطوات التالية",
-      "Private Property Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "توفر Private Property Management دعمًا إيجاريًا احترافيًا للمساكن المُدارة بشكل خاص وللمتقدمين المحتملين، مع التركيز على الاتساق والشفافية والمساءلة في كل مرحلة من مراحل عملية التأجير.",
+      "TenantFirst Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.": "توفر TenantFirst Management دعمًا إيجاريًا احترافيًا للمساكن المُدارة بشكل خاص وللمتقدمين المحتملين، مع التركيز على الاتساق والشفافية والمساءلة في كل مرحلة من مراحل عملية التأجير.",
       "From initial inquiries and scheduling to application guidance and communication, our approach is structured and service-oriented. We prioritize clear expectations, timely follow-through, and dependable coordination so both property owners and applicants experience a smooth, efficient, and respectful process.": "من الاستفسارات الأولية والجدولة إلى إرشاد الطلب والتواصل، نتبع نهجًا منظمًا وموجهًا للخدمة. نعطي الأولوية لتوقعات واضحة ومتابعة في الوقت المناسب وتنسيق موثوق حتى يحصل المالكون والمتقدمون على تجربة سلسة وفعالة ومحترمة.",
-      "Why work with Private property management": "لماذا التعامل مع إدارة العقارات الخاصة",
-      "Why work with Private property management points": "نقاط حول العمل مع إدارة العقارات الخاصة",
-      "Private property management team group photo": "صورة جماعية لفريق إدارة العقارات الخاصة",
+      "Why work with TenantFirst Management": "لماذا التعامل مع TenantFirst Management",
+      "Why work with TenantFirst Management points": "نقاط حول العمل مع TenantFirst Management",
+      "TenantFirst Management team group photo": "صورة جماعية لفريق TenantFirst Management",
       "Office team gathering and celebration moment": "لحظة تجمع واحتفال الفريق في المكتب",
       "Team members posing in office with flag display": "أعضاء الفريق في المكتب مع عرض للعلم",
       "Staff group photo in conference room": "صورة جماعية للموظفين في غرفة الاجتماعات",
@@ -1217,9 +1199,9 @@
   const polishTranslations = {
     es: {
       "Rental Management & Leasing Support": "Administración de alquileres y apoyo de arrendamiento",
-      "Property Management Group is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "Property Management Group es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.",
-      "Property Management Group works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "Property Management Group trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.",
-      "With a strong emphasis on communication, reliability, and professionalism, Property Management Group is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, Property Management Group está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
+      "TenantFirst Management is a dedicated property manager focused on providing organized, transparent, and professional rental support for property owners and prospective tenants.": "TenantFirst Management es un administrador de propiedades dedicado a brindar apoyo de alquiler organizado, transparente y profesional para propietarios y posibles inquilinos.",
+      "TenantFirst Management works closely with applicants throughout the rental process, helping them understand requirements, schedule property tours, and move through each step with clarity and confidence.": "TenantFirst Management trabaja de cerca con los solicitantes durante todo el proceso de alquiler, ayudándoles a comprender los requisitos, programar visitas a la propiedad y avanzar en cada paso con claridad y confianza.",
+      "With a strong emphasis on communication, reliability, and professionalism, TenantFirst Management is committed to making the leasing experience smooth, well structured, and respectful for everyone involved.": "Con un fuerte énfasis en la comunicación, la confiabilidad y el profesionalismo, TenantFirst Management está comprometido a hacer que la experiencia de arrendamiento sea fluida, bien estructurada y respetuosa para todos los involucrados.",
       "Contact us about the rental you're interested in and confirm availability before applying.": "Comuníquese con nosotros sobre el alquiler que le interesa y confirme la disponibilidad antes de aplicar.",
       "Your submission is reviewed before any application-specific payment instructions are assigned.": "Su solicitud se revisa antes de asignar cualquier instrucción de pago específica.",
       "A closer look at the community setting and residential experience.": "Una mirada más cercana al entorno comunitario y la experiencia residencial."
@@ -1340,7 +1322,7 @@
       "Keep your payment confirmation for your records.": "Verifique su identidad si la aplicación se lo solicita.",
       "Upload confirmation only after completing the assigned payment.": "Cuando su cuenta esté lista, regrese a esta página y use los datos de pago proporcionados.",
       "Need Help or Want to Verify?": "¿Necesita ayuda o desea verificar?",
-      "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.": "Para preguntas, aclaraciones o verificación sobre el proceso de solicitud, puede contactar directamente a Property Management Group usando la información siguiente.",
+      "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.": "Para preguntas, aclaraciones o verificación sobre el proceso de solicitud, puede contactar directamente a TenantFirst Management usando la información siguiente.",
       "Email:": "Correo electrónico:",
       "Phone:": "Teléfono:",
       "You can also review the main property management website for additional information.": "También puede revisar el sitio principal de administración de propiedades para obtener información adicional.",
@@ -1357,10 +1339,10 @@
       "Selected File": "Archivo seleccionado",
       "Submit Payment Verification": "Enviar verificación de pago",
       "Prefer Email Verification?": "¿Prefiere verificación por correo?",
-      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to Property Management Group for private verification.": "Si ya recibió instrucciones de pago asignadas y prefiere enviar su confirmación de pago por correo, envíela directamente a Property Management Group para verificación privada.",
+      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for private verification.": "Si ya recibió instrucciones de pago asignadas y prefiere enviar su confirmación de pago por correo, envíela directamente a TenantFirst Management para verificación privada.",
       "Send Email Verification": "Enviar verificación por correo",
       "Payment Verification Submitted": "Verificación de pago enviada",
-      "Your payment confirmation screenshot has been received for private verification. Property Management Group will review it with your Application ID and assigned payment processing instructions.": "Su captura de pantalla de confirmación de pago fue recibida para verificación privada. Property Management Group la revisará con su ID de solicitud y las instrucciones de procesamiento de pago asignadas.",
+      "Your payment confirmation screenshot has been received for private verification. TenantFirst Management will review it with your Application ID and assigned payment processing instructions.": "Su captura de pantalla de confirmación de pago fue recibida para verificación privada. TenantFirst Management la revisará con su ID de solicitud y las instrucciones de procesamiento de pago asignadas.",
       "Please select a payment screenshot before submitting.": "Seleccione una captura de pantalla del pago antes de enviar.",
       "Please upload a JPG, JPEG, or PNG file.": "Suba un archivo JPG, JPEG o PNG.",
       "File size must be less than 10MB.": "El archivo debe pesar menos de 10 MB.",
@@ -1418,7 +1400,7 @@
       "Keep your payment confirmation for your records.": "Vérifiez votre identité si l’application vous le demande.",
       "Upload confirmation only after completing the assigned payment.": "Une fois votre compte prêt, revenez sur cette page et utilisez les informations de paiement fournies.",
       "Need Help or Want to Verify?": "Besoin d’aide ou de vérifier ?",
-      "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.": "Pour toute question, précision ou vérification concernant le processus de demande, vous pouvez contacter Property Management Group directement avec les coordonnées ci-dessous.",
+      "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.": "Pour toute question, précision ou vérification concernant le processus de demande, vous pouvez contacter TenantFirst Management directement avec les coordonnées ci-dessous.",
       "Email:": "E-mail :",
       "Phone:": "Téléphone :",
       "You can also review the main property management website for additional information.": "Vous pouvez également consulter le site principal de gestion immobilière pour plus d’informations.",
@@ -1435,10 +1417,10 @@
       "Selected File": "Fichier sélectionné",
       "Submit Payment Confirmation": "Envoyer la confirmation de paiement",
       "Prefer Email Confirmation?": "Vous préférez confirmer par e-mail ?",
-      "If you would prefer to email your payment confirmation instead, send it directly to Property Management Group for processing.": "Si vous préférez envoyer votre confirmation de paiement par e-mail, adressez-la directement à Property Management Group pour traitement.",
+      "If you would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for processing.": "Si vous préférez envoyer votre confirmation de paiement par e-mail, adressez-la directement à TenantFirst Management pour traitement.",
       "Send Email Confirmation": "Envoyer la confirmation par e-mail",
       "Payment Confirmation Submitted": "Confirmation de paiement envoyée",
-      "Your payment screenshot has been received and is pending private verification. Property Management Group will review your confirmation with your application details.": "Votre capture d’écran de paiement a été reçue et est en attente de vérification privée. Property Management Group l’examinera avec les détails de votre demande.",
+      "Your payment screenshot has been received and is pending private verification. TenantFirst Management will review your confirmation with your application details.": "Votre capture d’écran de paiement a été reçue et est en attente de vérification privée. TenantFirst Management l’examinera avec les détails de votre demande.",
       "Please select a payment screenshot before submitting.": "Veuillez sélectionner une capture d’écran du paiement avant d’envoyer.",
       "Please upload a JPG, JPEG, or PNG file.": "Veuillez téléverser un fichier JPG, JPEG ou PNG.",
       "File size must be less than 10MB.": "Le fichier doit faire moins de 10 Mo.",
@@ -1477,7 +1459,7 @@
       "Keep your payment confirmation for your records.": "Verifique sua identidade se o aplicativo solicitar.",
       "Upload confirmation only after completing the assigned payment.": "Quando sua conta estiver pronta, volte a esta página e use os dados de pagamento fornecidos.",
       "Need Help or Want to Verify?": "Precisa de ajuda ou deseja verificar?",
-      "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.": "Para dúvidas, esclarecimentos ou verificação sobre o processo de solicitação, entre em contato diretamente com Property Management Group usando as informações abaixo.",
+      "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.": "Para dúvidas, esclarecimentos ou verificação sobre o processo de solicitação, entre em contato diretamente com TenantFirst Management usando as informações abaixo.",
       "Email:": "E-mail:",
       "Phone:": "Telefone:",
       "You can also review the main property management website for additional information.": "Você também pode consultar o site principal de administração de propriedades para obter mais informações.",
@@ -1494,10 +1476,10 @@
       "Selected File": "Arquivo selecionado",
       "Submit Payment Confirmation": "Enviar confirmação de pagamento",
       "Prefer Email Confirmation?": "Prefere confirmar por e-mail?",
-      "If you would prefer to email your payment confirmation instead, send it directly to Property Management Group for processing.": "Se preferir enviar a confirmação de pagamento por e-mail, envie diretamente para Property Management Group para processamento.",
+      "If you would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for processing.": "Se preferir enviar a confirmação de pagamento por e-mail, envie diretamente para TenantFirst Management para processamento.",
       "Send Email Confirmation": "Enviar confirmação por e-mail",
       "Payment Confirmation Submitted": "Confirmação de pagamento enviada",
-      "Your payment screenshot has been received and is pending private verification. Property Management Group will review your confirmation with your application details.": "Sua captura de tela do pagamento foi recebida e está pendente de verificação privada. Property Management Group analisará sua confirmação junto com os detalhes da solicitação.",
+      "Your payment screenshot has been received and is pending private verification. TenantFirst Management will review your confirmation with your application details.": "Sua captura de tela do pagamento foi recebida e está pendente de verificação privada. TenantFirst Management analisará sua confirmação junto com os detalhes da solicitação.",
       "Please select a payment screenshot before submitting.": "Selecione uma captura de tela do pagamento antes de enviar.",
       "Please upload a JPG, JPEG, or PNG file.": "Envie um arquivo JPG, JPEG ou PNG.",
       "File size must be less than 10MB.": "O arquivo deve ter menos de 10 MB.",
@@ -1553,7 +1535,7 @@
       "Keep your payment confirmation for your records.": "如果应用提示，请验证您的身份。",
       "Upload confirmation only after completing the assigned payment.": "账户准备好后，请返回此页面并使用提供的付款信息。",
       "Need Help or Want to Verify?": "需要帮助或想要核实？",
-      "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.": "如需咨询、说明或核实申请流程，您可以使用以下信息直接联系 Property Management Group。",
+      "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.": "如需咨询、说明或核实申请流程，您可以使用以下信息直接联系 TenantFirst Management。",
       "Email:": "电子邮件：",
       "Phone:": "电话：",
       "You can also review the main property management website for additional information.": "您也可以查看主物业管理网站以获取更多信息。",
@@ -1570,10 +1552,10 @@
       "Selected File": "已选择文件",
       "Submit Payment Confirmation": "提交付款确认",
       "Prefer Email Confirmation?": "更愿意通过电子邮件确认？",
-      "If you would prefer to email your payment confirmation instead, send it directly to Property Management Group for processing.": "如果您更愿意通过电子邮件发送付款确认，请直接发送给 Property Management Group 处理。",
+      "If you would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for processing.": "如果您更愿意通过电子邮件发送付款确认，请直接发送给 TenantFirst Management 处理。",
       "Send Email Confirmation": "发送电子邮件确认",
       "Payment Confirmation Submitted": "付款确认已提交",
-      "Your payment screenshot has been received and is pending private verification. Property Management Group will review your confirmation with your application details.": "您的付款截图已收到，目前等待私下核验。Property Management Group 将结合您的申请详情审核该确认。",
+      "Your payment screenshot has been received and is pending private verification. TenantFirst Management will review your confirmation with your application details.": "您的付款截图已收到，目前等待私下核验。TenantFirst Management 将结合您的申请详情审核该确认。",
       "Please select a payment screenshot before submitting.": "提交前请选择付款截图。",
       "Please upload a JPG, JPEG, or PNG file.": "请上传 JPG、JPEG 或 PNG 文件。",
       "File size must be less than 10MB.": "文件大小必须小于 10 MB。",
@@ -1631,7 +1613,7 @@
       "Keep your payment confirmation for your records.": "تحقق من هويتك إذا طلب التطبيق ذلك.",
       "Upload confirmation only after completing the assigned payment.": "بعد أن يصبح حسابك جاهزًا، عُد إلى هذه الصفحة واستخدم بيانات الدفع المقدمة.",
       "Need Help or Want to Verify?": "هل تحتاج إلى مساعدة أو ترغب في التحقق؟",
-      "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.": "لأي أسئلة أو توضيحات أو للتحقق من عملية الطلب، يمكنك التواصل مباشرة مع Property Management Group باستخدام المعلومات أدناه.",
+      "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.": "لأي أسئلة أو توضيحات أو للتحقق من عملية الطلب، يمكنك التواصل مباشرة مع TenantFirst Management باستخدام المعلومات أدناه.",
       "Email:": "البريد الإلكتروني:",
       "Phone:": "الهاتف:",
       "You can also review the main property management website for additional information.": "يمكنك أيضًا مراجعة الموقع الرئيسي لإدارة العقارات للحصول على معلومات إضافية.",
@@ -1648,10 +1630,10 @@
       "Selected File": "الملف المحدد",
       "Submit Payment Confirmation": "إرسال تأكيد الدفع",
       "Prefer Email Confirmation?": "تفضل التأكيد عبر البريد الإلكتروني؟",
-      "If you would prefer to email your payment confirmation instead, send it directly to Property Management Group for processing.": "إذا كنت تفضل إرسال تأكيد الدفع عبر البريد الإلكتروني، فأرسله مباشرة إلى Property Management Group لمعالجته.",
+      "If you would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for processing.": "إذا كنت تفضل إرسال تأكيد الدفع عبر البريد الإلكتروني، فأرسله مباشرة إلى TenantFirst Management لمعالجته.",
       "Send Email Confirmation": "إرسال التأكيد عبر البريد الإلكتروني",
       "Payment Confirmation Submitted": "تم إرسال تأكيد الدفع",
-      "Your payment screenshot has been received and is pending private verification. Property Management Group will review your confirmation with your application details.": "تم استلام لقطة شاشة الدفع وهي بانتظار التحقق الخاص. ستراجع Property Management Group التأكيد مع تفاصيل طلبك.",
+      "Your payment screenshot has been received and is pending private verification. TenantFirst Management will review your confirmation with your application details.": "تم استلام لقطة شاشة الدفع وهي بانتظار التحقق الخاص. ستراجع TenantFirst Management التأكيد مع تفاصيل طلبك.",
       "Please select a payment screenshot before submitting.": "يرجى اختيار لقطة شاشة للدفع قبل الإرسال.",
       "Please upload a JPG, JPEG, or PNG file.": "يرجى رفع ملف بصيغة JPG أو JPEG أو PNG.",
       "File size must be less than 10MB.": "يجب أن يكون حجم الملف أقل من 10 ميغابايت.",
@@ -1707,10 +1689,10 @@
       "or drag and drop your payment confirmation screenshot here.": "或将付款确认截图拖放到此处。",
       "Submit Payment Verification": "提交付款验证",
       "Prefer Email Verification?": "更愿意通过电子邮件验证？",
-      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to Property Management Group for private verification.": "如果您已收到分配的付款说明，并希望通过电子邮件发送付款确认，请直接发送给 Property Management Group 进行私下验证。",
+      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for private verification.": "如果您已收到分配的付款说明，并希望通过电子邮件发送付款确认，请直接发送给 TenantFirst Management 进行私下验证。",
       "Send Email Verification": "发送电子邮件验证",
       "Payment Verification Submitted": "付款验证已提交",
-      "Your payment confirmation screenshot has been received for private verification. Property Management Group will review it with your Application ID and assigned payment processing instructions.": "您的付款确认截图已收到，将用于私下验证。Property Management Group 会结合您的申请编号和分配的付款处理说明进行审核。",
+      "Your payment confirmation screenshot has been received for private verification. TenantFirst Management will review it with your Application ID and assigned payment processing instructions.": "您的付款确认截图已收到，将用于私下验证。TenantFirst Management 会结合您的申请编号和分配的付款处理说明进行审核。",
       "Application Review": "申请审核",
       "Your submission is reviewed by the property management team before any application-specific payment instructions are assigned.": "物业管理团队会先审核您的提交内容，然后才会分配任何申请专属付款说明。",
       "Yes, a refundable application fee may apply after review. Payment processing instructions are assigned privately and provided only when your application is ready for processing.": "是的，审核后可能会收取可退还申请费。付款处理说明会私下分配，并且仅在您的申请准备进入处理阶段时提供。",
@@ -1753,10 +1735,10 @@
       "or drag and drop your payment confirmation screenshot here.": "ou glissez-déposez votre capture d’écran de confirmation de paiement ici.",
       "Submit Payment Verification": "Envoyer la vérification du paiement",
       "Prefer Email Verification?": "Vous préférez la vérification par e-mail ?",
-      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to Property Management Group for private verification.": "Si vous avez déjà reçu des instructions de paiement attribuées et préférez envoyer votre confirmation par e-mail, adressez-la directement à Property Management Group pour une vérification privée.",
+      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for private verification.": "Si vous avez déjà reçu des instructions de paiement attribuées et préférez envoyer votre confirmation par e-mail, adressez-la directement à TenantFirst Management pour une vérification privée.",
       "Send Email Verification": "Envoyer la vérification par e-mail",
       "Payment Verification Submitted": "Vérification du paiement envoyée",
-      "Your payment confirmation screenshot has been received for private verification. Property Management Group will review it with your Application ID and assigned payment processing instructions.": "Votre capture d’écran de confirmation de paiement a été reçue pour vérification privée. Property Management Group l’examinera avec votre ID de demande et les instructions de traitement du paiement attribuées.",
+      "Your payment confirmation screenshot has been received for private verification. TenantFirst Management will review it with your Application ID and assigned payment processing instructions.": "Votre capture d’écran de confirmation de paiement a été reçue pour vérification privée. TenantFirst Management l’examinera avec votre ID de demande et les instructions de traitement du paiement attribuées.",
       "Application Review": "Examen de la demande",
       "Your submission is reviewed by the property management team before any application-specific payment instructions are assigned.": "Votre dossier est examiné par l’équipe de gestion immobilière avant l’attribution de toute instruction de paiement propre à la demande.",
       "Yes, a refundable application fee may apply after review. Payment processing instructions are assigned privately and provided only when your application is ready for processing.": "Oui, des frais de demande remboursables peuvent s’appliquer après examen. Les instructions de traitement du paiement sont attribuées en privé et fournies uniquement lorsque votre demande est prête à être traitée.",
@@ -1799,10 +1781,10 @@
       "or drag and drop your payment confirmation screenshot here.": "أو اسحب لقطة شاشة تأكيد الدفع وأفلتها هنا.",
       "Submit Payment Verification": "إرسال التحقق من الدفع",
       "Prefer Email Verification?": "تفضل التحقق عبر البريد الإلكتروني؟",
-      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to Property Management Group for private verification.": "إذا كنت قد تلقيت بالفعل تعليمات دفع مخصصة وتفضل إرسال تأكيد الدفع عبر البريد الإلكتروني، فأرسله مباشرة إلى Property Management Group للتحقق الخاص.",
+      "If you have already received assigned payment instructions and would prefer to email your payment confirmation instead, send it directly to TenantFirst Management for private verification.": "إذا كنت قد تلقيت بالفعل تعليمات دفع مخصصة وتفضل إرسال تأكيد الدفع عبر البريد الإلكتروني، فأرسله مباشرة إلى TenantFirst Management للتحقق الخاص.",
       "Send Email Verification": "إرسال التحقق عبر البريد الإلكتروني",
       "Payment Verification Submitted": "تم إرسال التحقق من الدفع",
-      "Your payment confirmation screenshot has been received for private verification. Property Management Group will review it with your Application ID and assigned payment processing instructions.": "تم استلام لقطة شاشة تأكيد الدفع للتحقق الخاص. ستراجعها Property Management Group مع رقم طلبك وتعليمات معالجة الدفع المخصصة.",
+      "Your payment confirmation screenshot has been received for private verification. TenantFirst Management will review it with your Application ID and assigned payment processing instructions.": "تم استلام لقطة شاشة تأكيد الدفع للتحقق الخاص. ستراجعها TenantFirst Management مع رقم طلبك وتعليمات معالجة الدفع المخصصة.",
       "Application Review": "مراجعة الطلب",
       "Your submission is reviewed by the property management team before any application-specific payment instructions are assigned.": "تتم مراجعة طلبك من قبل فريق إدارة العقار قبل تخصيص أي تعليمات دفع خاصة بالطلب.",
       "Yes, a refundable application fee may apply after review. Payment processing instructions are assigned privately and provided only when your application is ready for processing.": "نعم، قد تُطبق رسوم طلب قابلة للاسترداد بعد المراجعة. يتم تخصيص تعليمات معالجة الدفع بشكل خاص ولا تُقدم إلا عندما يصبح طلبك جاهزًا للمعالجة.",
@@ -1835,19 +1817,19 @@
       "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.",
-      "Your submission is being reviewed for completeness and next-step fit. Property Management Group will contact you directly if more information, tour scheduling, or a refundable fee step is needed.": "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. Property Management Group se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.",
+      "Your submission is being reviewed for completeness and next-step fit. TenantFirst Management will contact you directly if more information, tour scheduling, or a refundable fee step is needed.": "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. TenantFirst Management se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.",
       "Only if requested after review": "Solo si se solicita después de la revisión",
       "Possible Payment Options": "Posibles opciones de pago",
       "Some application steps may require a refundable fee after review. If that applies, instructions are provided directly and should match your Application ID.": "Algunos pasos de la solicitud pueden requerir una tarifa reembolsable después de la revisión. Si corresponde, las instrucciones se proporcionan directamente y deben coincidir con su ID de solicitud.",
-      "Do not send payment unless Property Management Group has provided instructions for your application.": "No envíe ningún pago a menos que Property Management Group le haya proporcionado instrucciones para su solicitud.",
+      "Do not send payment unless TenantFirst Management has provided instructions for your application.": "No envíe ningún pago a menos que TenantFirst Management le haya proporcionado instrucciones para su solicitud.",
       "Most application reviews are completed within 24 to 48 hours. If more information is needed, you will be contacted using the email address or phone number provided in your application.": "La mayoría de las revisiones de solicitud se completan dentro de 24 a 48 horas. Si se necesita más información, se le contactará usando el correo electrónico o número de teléfono proporcionado en su solicitud.",
       "Private Review Process": "Proceso de revisión privado",
       "The application process is handled directly by the property management team. Submitted details are reviewed carefully, and any next-step instructions are tied to your application.": "El proceso de solicitud es gestionado directamente por el equipo de administración de la propiedad. Los datos enviados se revisan con cuidado, y cualquier instrucción de próximo paso se vincula a su solicitud.",
       "If a refundable application fee is requested after review, it is returned if the application is not approved or if you decide not to continue after the tour. If approved and you move forward, it is applied toward your first month's rent.": "Si se solicita una tarifa de solicitud reembolsable después de la revisión, se devuelve si la solicitud no es aprobada o si usted decide no continuar después de la visita. Si se aprueba y sigue adelante, se aplica al primer mes de renta.",
       "Questions or Verification": "Preguntas o verificación",
-      "If you want to confirm a message, ask about timing, or clarify the application process, contact Property Management Group directly using the information below.": "Si desea confirmar un mensaje, preguntar sobre tiempos o aclarar el proceso de solicitud, contacte directamente a Property Management Group usando la información siguiente.",
+      "If you want to confirm a message, ask about timing, or clarify the application process, contact TenantFirst Management directly using the information below.": "Si desea confirmar un mensaje, preguntar sobre tiempos o aclarar el proceso de solicitud, contacte directamente a TenantFirst Management usando la información siguiente.",
       "Payment Verification": "Verificación de pago",
-      "Use this page only if Property Management Group has already provided payment instructions for your application. Upload a confirmation screenshot after completing that assigned step.": "Use esta página solo si Property Management Group ya le proporcionó instrucciones de pago para su solicitud. Suba una captura de confirmación después de completar ese paso asignado.",
+      "Use this page only if TenantFirst Management has already provided payment instructions for your application. Upload a confirmation screenshot after completing that assigned step.": "Use esta página solo si TenantFirst Management ya le proporcionó instrucciones de pago para su solicitud. Suba una captura de confirmación después de completar ese paso asignado.",
       "For assigned application steps only": "Solo para pasos asignados de la solicitud",
       "Accepted Payment Options": "Opciones de pago aceptadas",
       "Payment instructions are provided individually only when they apply to your reviewed application.": "Las instrucciones de pago se proporcionan individualmente solo cuando corresponden a su solicitud revisada.",
@@ -1856,7 +1838,7 @@
       "or drag and drop your payment confirmation here.": "o arrastre y suelte su confirmación de pago aquí.",
       "Send Verification": "Enviar verificación",
       "Prefer to Email It?": "¿Prefiere enviarla por correo?",
-      "If you have already received instructions and prefer email, you can send the confirmation directly to Property Management Group for review.": "Si ya recibió instrucciones y prefiere usar correo electrónico, puede enviar la confirmación directamente a Property Management Group para revisión.",
+      "If you have already received instructions and prefer email, you can send the confirmation directly to TenantFirst Management for review.": "Si ya recibió instrucciones y prefiere usar correo electrónico, puede enviar la confirmación directamente a TenantFirst Management para revisión.",
       "Email Confirmation": "Enviar confirmación por correo",
       "Verification Received": "Verificación recibida",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "Su confirmación fue recibida y actualmente está en revisión. Se asociará con su ID de solicitud y se le contactará si se necesita información adicional.",
@@ -1870,7 +1852,7 @@
     zh: {
       "Start Application": "开始申请",
       "Request consultation": "申请咨询",
-      "Contact Property Management Group": "联系 Property Management Group",
+      "Contact TenantFirst Management": "联系 TenantFirst Management",
       "Verification Received": "验证已收到",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "您的确认已收到，目前正在审核中。它将与您申请编号匹配，如需补充信息会与您联系。",
       "Application Submitted Successfully": "申请已成功提交",
@@ -1880,7 +1862,7 @@
     fr: {
       "Start Application": "Commencer la demande",
       "Request consultation": "Demander une consultation",
-      "Contact Property Management Group": "Contacter Property Management Group",
+      "Contact TenantFirst Management": "Contacter TenantFirst Management",
       "Verification Received": "Vérification reçue",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "Votre confirmation a été reçue et est actuellement en cours d’examen. Elle sera associée à votre ID de demande et vous serez contacté si des informations supplémentaires sont nécessaires.",
       "Application Submitted Successfully": "Demande envoyée avec succès",
@@ -1890,7 +1872,7 @@
     ar: {
       "Start Application": "بدء الطلب",
       "Request consultation": "طلب استشارة",
-      "Contact Property Management Group": "التواصل مع Property Management Group",
+      "Contact TenantFirst Management": "التواصل مع TenantFirst Management",
       "Verification Received": "تم استلام التحقق",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "تم استلام تأكيدك وهو قيد المراجعة حاليًا. سيتم ربطه برقم طلبك، وسيتم التواصل معك إذا لزم أي معلومات إضافية.",
       "Application Submitted Successfully": "تم إرسال الطلب بنجاح",
@@ -1918,19 +1900,19 @@
     "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.": "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.",
     "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.": "Please note that a refundable $75 application fee is required before the approval process can begin.",
     "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.": "Once the payment has been confirmed, your application review and approval process will officially commence.",
-    "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. Property Management Group se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.": "Your submission is being reviewed for completeness and next-step fit. Property Management Group will contact you directly if more information, tour scheduling, or a refundable fee step is needed.",
+    "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. TenantFirst Management se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.": "Your submission is being reviewed for completeness and next-step fit. TenantFirst Management will contact you directly if more information, tour scheduling, or a refundable fee step is needed.",
     "Solo si se solicita después de la revisión": "Only if requested after review",
     "Posibles opciones de pago": "Possible Payment Options",
     "Algunos pasos de la solicitud pueden requerir una tarifa reembolsable después de la revisión. Si corresponde, las instrucciones se proporcionan directamente y deben coincidir con su ID de solicitud.": "Some application steps may require a refundable fee after review. If that applies, instructions are provided directly and should match your Application ID.",
-    "No envíe ningún pago a menos que Property Management Group le haya proporcionado instrucciones para su solicitud.": "Do not send payment unless Property Management Group has provided instructions for your application.",
+    "No envíe ningún pago a menos que TenantFirst Management le haya proporcionado instrucciones para su solicitud.": "Do not send payment unless TenantFirst Management has provided instructions for your application.",
     "La mayoría de las revisiones de solicitud se completan dentro de 24 a 48 horas. Si se necesita más información, se le contactará usando el correo electrónico o número de teléfono proporcionado en su solicitud.": "Most application reviews are completed within 24 to 48 hours. If more information is needed, you will be contacted using the email address or phone number provided in your application.",
     "Proceso de revisión privado": "Private Review Process",
     "El proceso de solicitud es gestionado directamente por el equipo de administración de la propiedad. Los datos enviados se revisan con cuidado, y cualquier instrucción de próximo paso se vincula a su solicitud.": "The application process is handled directly by the property management team. Submitted details are reviewed carefully, and any next-step instructions are tied to your application.",
     "Si se solicita una tarifa de solicitud reembolsable después de la revisión, se devuelve si la solicitud no es aprobada o si usted decide no continuar después de la visita. Si se aprueba y sigue adelante, se aplica al primer mes de renta.": "If a refundable application fee is requested after review, it is returned if the application is not approved or if you decide not to continue after the tour. If approved and you move forward, it is applied toward your first month's rent.",
     "Preguntas o verificación": "Questions or Verification",
-    "Si desea confirmar un mensaje, preguntar sobre tiempos o aclarar el proceso de solicitud, contacte directamente a Property Management Group usando la información siguiente.": "If you want to confirm a message, ask about timing, or clarify the application process, contact Property Management Group directly using the information below.",
+    "Si desea confirmar un mensaje, preguntar sobre tiempos o aclarar el proceso de solicitud, contacte directamente a TenantFirst Management usando la información siguiente.": "If you want to confirm a message, ask about timing, or clarify the application process, contact TenantFirst Management directly using the information below.",
     "Verificación de pago": "Payment Verification",
-    "Use esta página solo si Property Management Group ya le proporcionó instrucciones de pago para su solicitud. Suba una captura de confirmación después de completar ese paso asignado.": "Use this page only if Property Management Group has already provided payment instructions for your application. Upload a confirmation screenshot after completing that assigned step.",
+    "Use esta página solo si TenantFirst Management ya le proporcionó instrucciones de pago para su solicitud. Suba una captura de confirmación después de completar ese paso asignado.": "Use this page only if TenantFirst Management has already provided payment instructions for your application. Upload a confirmation screenshot after completing that assigned step.",
     "Solo para pasos asignados de la solicitud": "For assigned application steps only",
     "Opciones de pago aceptadas": "Accepted Payment Options",
     "Las instrucciones de pago se proporcionan individualmente solo cuando corresponden a su solicitud revisada.": "Payment instructions are provided individually only when they apply to your reviewed application.",
@@ -1939,7 +1921,7 @@
     "o arrastre y suelte su confirmación de pago aquí.": "or drag and drop your payment confirmation here.",
     "Enviar verificación": "Send Verification",
     "¿Prefiere enviarla por correo?": "Prefer to Email It?",
-    "Si ya recibió instrucciones y prefiere usar correo electrónico, puede enviar la confirmación directamente a Property Management Group para revisión.": "If you have already received instructions and prefer email, you can send the confirmation directly to Property Management Group for review.",
+    "Si ya recibió instrucciones y prefiere usar correo electrónico, puede enviar la confirmación directamente a TenantFirst Management para revisión.": "If you have already received instructions and prefer email, you can send the confirmation directly to TenantFirst Management for review.",
     "Verificación recibida": "Verification Received",
     "Su confirmación fue recibida y actualmente está en revisión. Se asociará con su ID de solicitud y se le contactará si se necesita información adicional.": "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed",
     "Revisión de solicitud": "Application Review",
@@ -1960,7 +1942,7 @@
     "Proceso seguro y verificado": "Secure & Verified Process",
     "Este proceso de solicitud es gestionado directamente por el equipo de administración de la propiedad. Todas las solicitudes enviadas se revisan cuidadosamente, y los detalles de pago específicos de cada solicitud se asignan de forma privada como parte del proceso de verificación.": "This application process is handled directly by the property management team. All submitted applications are reviewed carefully, and application-specific payment details are assigned privately as part of the verification process.",
     "¿Necesita ayuda o desea verificar?": "Need Help or Want to Verify?",
-    "Para preguntas, aclaraciones o verificación sobre el proceso de solicitud, puede contactar directamente a Property Management Group usando la información siguiente.": "For any questions, clarification, or verification regarding the application process, you can contact Property Management Group directly using the information below.",
+    "Para preguntas, aclaraciones o verificación sobre el proceso de solicitud, puede contactar directamente a TenantFirst Management usando la información siguiente.": "For any questions, clarification, or verification regarding the application process, you can contact TenantFirst Management directly using the information below.",
     "Correo electrónico:": "Email:",
     "Teléfono:": "Phone:",
     "Asignación privada de pago": "Private payment assignment",
@@ -2277,7 +2259,8 @@
       url.searchParams.delete("applicationId");
     }
 
-    return `${url.pathname}${url.search}${url.hash || ""}`;
+    const fileName = String(path).split("/").pop() || path;
+    return `${fileName}${url.search}${url.hash || ""}`;
   }
 
   function buildHomePageHref(language) {
@@ -2381,39 +2364,33 @@
     }
 
     if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
+      history.scrollRestoration = "auto";
     }
 
-    const scrollHomeToTop = (source) => {
-      const scrollBefore = window.scrollY;
-
-      if (scrollBefore > 0) {
-        console.log("[Homepage] unwanted scroll detected before reset", {
-          source,
-          scrollY: scrollBefore,
-          hash: window.location.hash || "(none)"
-        });
+    const scrollToHashTarget = () => {
+      const raw = window.location.hash;
+      if (!raw || raw.length < 2) {
+        return;
       }
 
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      console.log("[Homepage] scroll reset", { source, scrollY: window.scrollY });
+      let id = raw.slice(1);
+      try {
+        id = decodeURIComponent(id);
+      } catch (error) {
+        /* keep raw id */
+      }
+
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView();
+      }
     };
 
-    scrollHomeToTop("init");
-    window.addEventListener(
-      "pageshow",
-      (event) => {
-        scrollHomeToTop(event.persisted ? "pageshow-bfcache" : "pageshow");
-      },
-      { passive: true }
-    );
-    window.addEventListener("load", () => scrollHomeToTop("load"), { once: true });
-    window.requestAnimationFrame(() => {
-      scrollHomeToTop("raf-1");
-      window.requestAnimationFrame(() => scrollHomeToTop("raf-2"));
-    });
+    window.addEventListener("hashchange", scrollToHashTarget);
+    window.addEventListener("load", scrollToHashTarget, { once: true });
+    if (document.readyState === "complete") {
+      scrollToHashTarget();
+    }
   }
 
   function logI18n(event, details) {
@@ -2450,6 +2427,9 @@
     });
     const targetUrl = new URL(target, window.location.href);
     const currentUrl = new URL(window.location.href);
+    if (currentUrl.hash) {
+      targetUrl.hash = currentUrl.hash;
+    }
 
     if (
       normalizedPageName(currentUrl) !== normalizedPageName(targetUrl) ||
@@ -2496,8 +2476,198 @@
 
   function syncFloatingApplyHref(language) {
     const lang = normalizeLanguage(language);
+    const href = buildApplicationFlowHref("apply.html", { language: lang });
     document.querySelectorAll("a.floating-apply").forEach((link) => {
-      link.href = buildApplicationFlowHref("apply.html", { language: lang });
+      link.setAttribute("href", href);
+    });
+  }
+
+  function bindFloatingApplyLinks() {
+    document.querySelectorAll("a.floating-apply").forEach((link) => {
+      if (link.dataset.applyBound === "true") {
+        return;
+      }
+      link.dataset.applyBound = "true";
+      link.addEventListener("click", function (event) {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+          return;
+        }
+        event.preventDefault();
+        const dest = link.getAttribute("href") || "apply.html";
+        window.location.assign(new URL(dest, window.location.href).href);
+      });
+    });
+  }
+
+  function initDraggableFloatingApply() {
+    const storageKey = "ppm-floating-apply-pos";
+
+    document.querySelectorAll("a.floating-apply").forEach((link) => {
+      if (link.dataset.dragBound === "true") {
+        return;
+      }
+      link.dataset.dragBound = "true";
+
+      let dragging = false;
+      let suppressClick = false;
+      let startX = 0;
+      let startY = 0;
+      let originLeft = 0;
+      let originTop = 0;
+
+      function edgePad() {
+        return 12;
+      }
+
+      function clampPosition(left, top) {
+        const width = link.offsetWidth;
+        const height = link.offsetHeight;
+        const pad = edgePad();
+        const maxLeft = Math.max(pad, window.innerWidth - width - pad);
+        const maxTop = Math.max(pad, window.innerHeight - height - pad);
+        return {
+          left: Math.min(Math.max(pad, left), maxLeft),
+          top: Math.min(Math.max(pad, top), maxTop)
+        };
+      }
+
+      function snapToEdge(left, top) {
+        const width = link.offsetWidth;
+        const height = link.offsetHeight;
+        const pad = edgePad();
+        const maxLeft = Math.max(pad, window.innerWidth - width - pad);
+        const maxTop = Math.max(pad, window.innerHeight - height - pad);
+        const clamped = clampPosition(left, top);
+        const centerX = clamped.left + width / 2;
+        const centerY = clamped.top + height / 2;
+        const distLeft = centerX;
+        const distRight = window.innerWidth - centerX;
+        const distTop = centerY;
+        const distBottom = window.innerHeight - centerY;
+        const nearest = Math.min(distLeft, distRight, distTop, distBottom);
+
+        if (nearest === distLeft) {
+          return { left: pad, top: clamped.top };
+        }
+        if (nearest === distRight) {
+          return { left: maxLeft, top: clamped.top };
+        }
+        if (nearest === distTop) {
+          return { left: clamped.left, top: pad };
+        }
+        return { left: clamped.left, top: maxTop };
+      }
+
+      function place(left, top) {
+        const next = clampPosition(left, top);
+        link.style.setProperty("--fab-left", `${next.left}px`);
+        link.style.setProperty("--fab-top", `${next.top}px`);
+        link.classList.add("is-moved");
+      }
+
+      function persist() {
+        try {
+          localStorage.setItem(
+            storageKey,
+            JSON.stringify({
+              left: parseFloat(link.style.getPropertyValue("--fab-left")) || 0,
+              top: parseFloat(link.style.getPropertyValue("--fab-top")) || 0
+            })
+          );
+        } catch (error) {
+          /* ignore quota / private mode */
+        }
+      }
+
+      function restore() {
+        try {
+          const raw = localStorage.getItem(storageKey);
+          if (!raw) {
+            return;
+          }
+          const saved = JSON.parse(raw);
+          if (typeof saved.left !== "number" || typeof saved.top !== "number") {
+            return;
+          }
+          const snapped = snapToEdge(saved.left, saved.top);
+          place(snapped.left, snapped.top);
+        } catch (error) {
+          /* ignore */
+        }
+      }
+
+      link.addEventListener("click", function (event) {
+        if (!suppressClick) {
+          return;
+        }
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        suppressClick = false;
+      }, true);
+
+      link.addEventListener("pointerdown", function (event) {
+        if (event.button !== 0) {
+          return;
+        }
+        const rect = link.getBoundingClientRect();
+        dragging = true;
+        suppressClick = false;
+        startX = event.clientX;
+        startY = event.clientY;
+        originLeft = rect.left;
+        originTop = rect.top;
+        link.classList.add("is-dragging");
+        try {
+          link.setPointerCapture(event.pointerId);
+        } catch (error) {
+          /* capture is optional; drag still works from pointermove */
+        }
+      });
+
+      link.addEventListener("pointermove", function (event) {
+        if (!dragging) {
+          return;
+        }
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+          suppressClick = true;
+          event.preventDefault();
+          place(originLeft + dx, originTop + dy);
+        }
+      });
+
+      function endDrag() {
+        if (!dragging) {
+          return;
+        }
+        dragging = false;
+        link.classList.remove("is-dragging");
+        if (!link.classList.contains("is-moved")) {
+          return;
+        }
+        const left = parseFloat(link.style.getPropertyValue("--fab-left")) || 0;
+        const top = parseFloat(link.style.getPropertyValue("--fab-top")) || 0;
+        const snapped = snapToEdge(left, top);
+        place(snapped.left, snapped.top);
+        persist();
+      }
+
+      link.addEventListener("pointerup", endDrag);
+      link.addEventListener("pointercancel", endDrag);
+
+      window.addEventListener("resize", function () {
+        if (!link.classList.contains("is-moved")) {
+          return;
+        }
+        const left = parseFloat(link.style.getPropertyValue("--fab-left")) || 0;
+        const top = parseFloat(link.style.getPropertyValue("--fab-top")) || 0;
+        const snapped = snapToEdge(left, top);
+        place(snapped.left, snapped.top);
+        persist();
+      });
+
+      restore();
     });
   }
 
@@ -2508,7 +2678,7 @@
 
   function syncPrivacyNoticeLink(language) {
     const href = privacyNoticeHref(language);
-    document.querySelectorAll("#privacy-notice-link, a.agreement-panel__privacy-link[href*='privacy-notice.html']").forEach((link) => {
+    document.querySelectorAll("#privacy-notice-link, a.agreement-panel__privacy-link[href*='privacy-notice.html'], a.footer-privacy-link").forEach((link) => {
       link.setAttribute("href", href);
     });
   }
@@ -2842,14 +3012,18 @@
       nav.classList.remove("is-open");
       hamburger.classList.remove("is-open");
       hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Open navigation");
       document.body.classList.remove("nav-lock");
+      overlay.setAttribute("aria-hidden", "true");
     }
 
     function openNav() {
       nav.classList.add("is-open");
       hamburger.classList.add("is-open");
       hamburger.setAttribute("aria-expanded", "true");
+      hamburger.setAttribute("aria-label", "Close navigation");
       document.body.classList.add("nav-lock");
+      overlay.setAttribute("aria-hidden", "false");
     }
 
     hamburger.addEventListener("click", function () {
@@ -2891,10 +3065,12 @@
 
   function initCommunitySlider(slider) {
     const slides = Array.from(slider.querySelectorAll(".community-slide"));
-    const dots = Array.from(slider.querySelectorAll(".community-dot"));
     const prev = slider.querySelector(".community-control-prev");
     const next = slider.querySelector(".community-control-next");
     const dotsTrack = slider.querySelector(".community-dots");
+    const indexEl = slider.querySelector("[data-slide-index]");
+    const track = slider.querySelector(".community-track");
+    const viewport = slider.querySelector(".community-viewport") || slider;
     const images = Array.from(slider.querySelectorAll(".community-slide img"));
     let currentIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
     let timer = null;
@@ -2905,7 +3081,7 @@
     let inView = typeof IntersectionObserver === "undefined";
     let allowDotTrackScroll = false;
     const count = slides.length;
-    const dotCount = Math.min(dots.length, count);
+    const usesPeekTrack = Boolean(track && document.body.classList.contains("home-page"));
 
     if (!count) {
       return;
@@ -2915,8 +3091,27 @@
       currentIndex = 0;
     }
 
+    if (dotsTrack && !dotsTrack.children.length && count <= 8) {
+      for (let i = 0; i < count; i += 1) {
+        const button = document.createElement("button");
+        button.className = "community-dot";
+        button.type = "button";
+        button.setAttribute("aria-label", `Go to image ${i + 1}`);
+        if (i === currentIndex) {
+          button.classList.add("is-active");
+        }
+        dotsTrack.appendChild(button);
+      }
+    }
+
+    const dots = Array.from(slider.querySelectorAll(".community-dot"));
+    const dotCount = Math.min(dots.length, count);
+
     images.forEach((image) => {
       image.loading = "eager";
+      if (!image.complete) {
+        image.addEventListener("load", syncPeekTrack, { once: true });
+      }
     });
 
     function scrollDotIntoView(dotIndex) {
@@ -2942,6 +3137,17 @@
       });
     }
 
+    function syncPeekTrack() {
+      if (!usesPeekTrack || !slides[0]) {
+        return;
+      }
+
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      const offset = currentIndex * (slideWidth + gap);
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    }
+
     function showSlide(index) {
       currentIndex = (index + count) % count;
 
@@ -2958,6 +3164,12 @@
         dot.setAttribute("aria-current", isActive ? "true" : "false");
       }
 
+      syncPeekTrack();
+
+      if (indexEl) {
+        indexEl.textContent = `${currentIndex + 1} / ${count}`;
+      }
+
       if (allowDotTrackScroll) {
         scrollDotIntoView(currentIndex);
       }
@@ -2972,19 +3184,10 @@
 
     function maybeStartAutoplay() {
       stopAutoplay();
-      if (!docVisible || !inView || prefersReducedMotion || touchActive || document.hidden) {
-        return;
-      }
-
-      timer = window.setInterval(() => {
-        showSlide(currentIndex + 1);
-      }, 2850);
     }
 
     function goTo(index) {
-      stopAutoplay();
       showSlide(index);
-      maybeStartAutoplay();
     }
 
     document.addEventListener("visibilitychange", () => {
@@ -3033,7 +3236,7 @@
       maybeStartAutoplay();
     });
 
-    slider.addEventListener(
+    viewport.addEventListener(
       "touchstart",
       (event) => {
         const touch = event.touches[0];
@@ -3045,7 +3248,7 @@
       { passive: true }
     );
 
-    slider.addEventListener(
+    viewport.addEventListener(
       "touchend",
       (event) => {
         const touch = event.changedTouches[0];
@@ -3063,6 +3266,13 @@
       { passive: true }
     );
 
+    if (usesPeekTrack) {
+      window.addEventListener("resize", syncPeekTrack);
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(syncPeekTrack).observe(viewport);
+      }
+    }
+
     showSlide(currentIndex);
     allowDotTrackScroll = true;
     maybeStartAutoplay();
@@ -3070,13 +3280,8 @@
 
   initHomepageScrollPosition();
   communitySliders.forEach(initCommunitySlider);
-
-  if (isHomePage()) {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    console.log("[Homepage] scroll reset", { source: "post-slider-init", scrollY: window.scrollY });
-  }
+  bindFloatingApplyLinks();
+  initDraggableFloatingApply();
 
   backButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
@@ -3623,7 +3828,7 @@
     renderListingBridgeCopy();
   }
 
-  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/xrpgelok";
+  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/mnjeolkq";
   const APPLICATION_NOTIFICATION_EMAIL = "support@privatepropmanagement.com";
   const EMAILJS_PUBLIC_KEY = "9zdPYi59Y52CoJ96H";
   const EMAILJS_CONFIRMATION_SERVICE = "service_6f9hfc4";
@@ -3871,7 +4076,7 @@
       reply_to: String(params.email || "").trim(),
       subject: applicantName
         ? `New Rental Application - ${applicantName}`
-        : "New Rental Application - Property Management Group",
+        : "New Rental Application - TenantFirst Management",
       message: formatApplicationAdminMessage(params),
       application_id: params.application_id || applicationId,
       current_language: params["selected-language"] || currentLanguage(),
@@ -4241,6 +4446,7 @@
     if (statusMessage) {
       statusMessage.textContent = translateText("Sending application for review...", currentLanguage());
       statusMessage.classList.remove("is-error", "is-success");
+      statusMessage.classList.add("is-info");
     }
 
     const formspreeResult = await withServiceTimeout(
@@ -4294,8 +4500,8 @@
 
     if (statusMessage) {
       statusMessage.textContent = translateText("Application received. Opening confirmation...", currentLanguage());
+      statusMessage.classList.remove("is-error", "is-info");
       statusMessage.classList.add("is-success");
-      statusMessage.classList.remove("is-error");
     }
 
     if (submitButton) {
@@ -4633,6 +4839,7 @@
       if (!name || !comment) {
         if (status) {
           status.textContent = translateText("Please enter your name and comment.", currentLanguage());
+          status.classList.remove("is-success", "is-info");
           status.classList.add("is-error");
         }
         return;
@@ -4647,7 +4854,7 @@
           "Thank you — your comment has been submitted.",
           currentLanguage()
         );
-        status.classList.remove("is-error");
+        status.classList.remove("is-error", "is-info");
         status.classList.add("is-success");
       }
     });
@@ -4729,6 +4936,7 @@
       if (statusMessage) {
         statusMessage.textContent = translateText("Sending application for review...", currentLanguage());
         statusMessage.classList.remove("is-error", "is-success");
+        statusMessage.classList.add("is-info");
       }
 
       try {
@@ -4746,8 +4954,8 @@
 
         if (statusMessage) {
           statusMessage.textContent = formatApplicationSubmitError(error);
+          statusMessage.classList.remove("is-success", "is-info");
           statusMessage.classList.add("is-error");
-          statusMessage.classList.remove("is-success");
         }
       }
     });

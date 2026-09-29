@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta http-equiv="refresh" content="0; url=apply.html">
-  <title>Redirecting | Property Management Group</title>
+  <title>Redirecting | TenantFirst Management</title>
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="image/logo.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="image/apple-touch-icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Private Property Management">
+  <meta property="og:site_name" content="TenantFirst Management">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Private Property Management">
+  <meta property="og:title" content="TenantFirst Management">
   <meta property="og:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
   <meta property="og:url" content="https://privatepropmanagement.com/">
   <meta property="og:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
@@ -19,11 +18,22 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Private Property Management">
+  <meta property="og:image:alt" content="TenantFirst Management">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Private Property Management">
+  <meta name="twitter:title" content="TenantFirst Management">
   <meta name="twitter:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
   <meta name="twitter:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
+  <script>
+    (function () {
+      var url = new URL("apply.html", location.href);
+      new URLSearchParams(location.search).forEach(function (value, key) {
+        url.searchParams.set(key, value);
+      });
+      url.hash = location.hash || "";
+      location.replace(url.href);
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=apply.html">
 </head>
 <body>
   <p>Redirecting to <a href="apply.html">the rental application</a>.</p>

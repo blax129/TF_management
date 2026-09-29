@@ -2,11 +2,11 @@
   "use strict";
 
   const entries = {
-    "Privacy notice for rental applicants using the Private Property Management website.": {
-      es: "Aviso de privacidad para solicitantes que utilizan el sitio web de Private Property Management.",
-      zh: "Private Property Management 网站租赁申请人隐私声明。",
-      fr: "Avis de confidentialité pour les candidats utilisant le site Private Property Management.",
-      ar: "إشعار خصوصية للمتقدمين الذين يستخدمون موقع Private Property Management."
+    "Privacy notice for rental applicants using the TenantFirst Management website.": {
+      es: "Aviso de privacidad para solicitantes que utilizan el sitio web de TenantFirst Management.",
+      zh: "TenantFirst Management 网站租赁申请人隐私声明。",
+      fr: "Avis de confidentialité pour les candidats utilisant le site TenantFirst Management.",
+      ar: "إشعار خصوصية للمتقدمين الذين يستخدمون موقع TenantFirst Management."
     },
     "How we handle applicant information submitted through this website.": {
       es: "Cómo manejamos la información de solicitantes enviada a través de este sitio web.",
@@ -20,11 +20,11 @@
       fr: "Introduction",
       ar: "مقدمة"
     },
-    "Private Property Management respects your privacy and is committed to protecting the information you provide throughout the rental application process.": {
-      es: "Private Property Management respeta su privacidad y se compromete a proteger la información que proporcione durante todo el proceso de solicitud de alquiler.",
-      zh: "Private Property Management 尊重您的隐私，并致力于保护您在租赁申请全程中提供的信息。",
-      fr: "Private Property Management respecte votre vie privée et s’engage à protéger les informations que vous fournissez tout au long du processus de demande de location.",
-      ar: "تحترم Private Property Management خصوصيتك وتلتزم بحماية المعلومات التي تقدمها طوال عملية طلب الإيجار."
+    "TenantFirst Management respects your privacy and is committed to protecting the information you provide throughout the rental application process.": {
+      es: "TenantFirst Management respeta su privacidad y se compromete a proteger la información que proporcione durante todo el proceso de solicitud de alquiler.",
+      zh: "TenantFirst Management 尊重您的隐私，并致力于保护您在租赁申请全程中提供的信息。",
+      fr: "TenantFirst Management respecte votre vie privée et s’engage à protéger les informations que vous fournissez tout au long du processus de demande de location.",
+      ar: "تحترم TenantFirst Management خصوصيتك وتلتزم بحماية المعلومات التي تقدمها طوال عملية طلب الإيجار."
     },
     "This Privacy Notice explains how information submitted through this website may be collected, used, stored, and protected.": {
       es: "Este Aviso de Privacidad explica cómo puede recopilarse, utilizarse, almacenarse y protegerse la información enviada a través de este sitio web.",

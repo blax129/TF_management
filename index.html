@@ -1,60 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home-root">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("ppm-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <style>
+    html.home-root { background-color: #08090B; }
+    html.home-root[data-theme="light"] { background-color: #FAFAFB; }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="title" content="Private Property Management">
-  <meta name="description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
-  <title>Private Property Management</title>
+  <meta name="title" content="TenantFirst Management">
+  <meta name="description" content="TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This site is for rental applicants.">
+  <title>TenantFirst Management</title>
   <link rel="canonical" href="https://privatepropmanagement.com/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Private Property Management">
+  <meta property="og:site_name" content="TenantFirst Management">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Private Property Management">
-  <meta property="og:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
+  <meta property="og:title" content="TenantFirst Management">
+  <meta property="og:description" content="TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This site is for rental applicants.">
   <meta property="og:url" content="https://privatepropmanagement.com/">
   <meta property="og:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
   <meta property="og:image:secure_url" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Private Property Management">
+  <meta property="og:image:alt" content="TenantFirst Management">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Private Property Management">
-  <meta name="twitter:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
+  <meta name="twitter:title" content="TenantFirst Management">
+  <meta name="twitter:description" content="TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This site is for rental applicants.">
   <meta name="twitter:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="image/logo.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="image/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>
-    (function () {
-      var file = location.pathname.split("/").pop() || "index.html";
-      if (file !== "index.html" && file !== "es.html") return;
-      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      if (location.hash) {
-        history.replaceState(null, document.title, location.pathname + location.search);
-      }
-      scrollTo(0, 0);
-    })();
-  </script>
-  <link rel="preload" href="image/ppm-group-logo.svg" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="page-loader.css">
+  <link rel="stylesheet" href="home-design.css">
+  <link rel="preload" href="image/home-mark-on-dark.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="image/home-mark-on-light.svg" as="image" type="image/svg+xml">
 </head>
 <body class="home-page">
-  <div class="ppm-page-loader" id="ppmPageLoader" role="status" aria-live="polite" aria-label="Page loading" hidden>
+  <div class="ppm-page-loader" id="ppmPageLoader" role="status" aria-live="polite" aria-label="Loading" hidden>
     <div class="ppm-page-loader__content">
-      <img class="ppm-page-loader__mark" src="image/ppm-group-logo.svg" alt="Private Property Management" width="76" height="76">
-      <p class="ppm-page-loader__status"><span class="ppm-page-loader__spinner" aria-hidden="true"></span><span id="ppmPageLoaderMessage">Loading…</span></p>
+      <img class="ppm-page-loader__mark home-mark home-mark--on-dark" src="image/home-mark-on-dark.svg" alt="TenantFirst Management" width="76" height="76">
+      <img class="ppm-page-loader__mark home-mark home-mark--on-light" src="image/home-mark-on-light.svg" alt="" width="76" height="76">
+      <span class="ppm-page-loader__spinner" aria-hidden="true"></span>
     </div>
   </div>
   <script>document.getElementById("ppmPageLoader").hidden = false;</script>
+  <script src="page-loader.js"></script>
+  <script src="theme.js"></script>
 
   <header class="site-header" id="home">
     <div class="container header-inner">
       <div class="header-brand-group">
-        <a href="#home" class="brand" aria-label="Home">
-          <img src="image/ppm-group-logo.svg" alt="Property Management Group" class="brand-mark" width="72" height="72" decoding="async">
+        <a href="#home" class="brand" aria-label="TenantFirst Management">
+          <span class="home-mark-stack">
+            <img src="image/home-mark-on-dark.svg" alt="" class="brand-mark home-mark home-mark--on-dark" width="48" height="48" decoding="async">
+            <img src="image/home-mark-on-light.svg" alt="" class="brand-mark home-mark home-mark--on-light" width="48" height="48" decoding="async">
+          </span>
         </a>
 
         <div class="property-context-banner property-context-banner--home" data-property-context-banner hidden>
@@ -72,9 +90,23 @@
         </div>
       </div>
 
+      <div class="theme-toggle-wrap">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode">
+          <span class="theme-toggle__icons" aria-hidden="true">
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 3v1.6M12 19.4V21M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3 12h1.6M19.4 12H21M4.9 19.1 6 18M18 6l1.1-1.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none">
+              <path d="M16.2 13.2A6.2 6.2 0 0 1 10.8 6.2 6.4 6.4 0 1 0 16.2 13.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="theme-toggle__thumb"></span>
+        </button>
+      </div>
+
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
         <span class="sr-only">Open navigation</span>
-        <span></span>
         <span></span>
         <span></span>
       </button>
@@ -82,7 +114,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a href="#home"><span class="nav-icon" aria-hidden="true"></span>Home</a>
         <a href="#about"><span class="nav-icon" aria-hidden="true"></span>About</a>
-        <a href="#services-section"><span class="nav-icon" aria-hidden="true"></span>Services</a>
+        <a href="#process"><span class="nav-icon" aria-hidden="true"></span>Rental Process</a>
         <a href="#faq"><span class="nav-icon" aria-hidden="true"></span>Rental Process FAQ</a>
         <a href="#contact"><span class="nav-icon" aria-hidden="true"></span>Contact</a>
         <div class="language-switcher nav-language" aria-label="Language selector">
@@ -101,154 +133,355 @@
 
   <main>
     <section class="hero profile-hero" id="about" aria-labelledby="hero-title">
-      <div class="container hero-grid">
+      <div class="container">
         <div class="hero-copy-block">
-          <h1 class="eyebrow" id="hero-title">Private property management</h1>
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-title__name">TenantFirst</span>
+            <span class="hero-title__role">Management</span>
+          </h1>
+          <span class="hero-title-mark home-mark-stack">
+            <img src="image/home-mark-on-dark.svg" alt="" class="home-mark home-mark--on-dark" width="72" height="72" decoding="async">
+            <img src="image/home-mark-on-light.svg" alt="" class="home-mark home-mark--on-light" width="72" height="72" decoding="async">
+          </span>
           <div class="copy-panel">
-            <p>Private Property Management delivers professional rental support for privately managed homes and prospective tenants, with a focus on consistency, transparency, and accountability at every stage of the leasing process.</p>
-            <p>From initial inquiries and scheduling to application guidance and communication, our approach is structured and service-oriented. We prioritize clear expectations, timely follow-through, and dependable coordination so both property owners and applicants experience a smooth, efficient, and respectful process.</p>
+            <p>TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This website is for rental applicants.</p>
+            <p>We help applicants with inquiries, applications, and communication for privately managed homes. Properties are available for rent in the states listed here. We keep the process consistent, with clear expectations and timely follow-through.</p>
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <section class="section why-work-section" id="why-work" aria-labelledby="why-work-title">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="why-work-title">Why work with Private property management</h2>
-        </div>
-
-        <div class="community-slider" data-community-slider aria-roledescription="carousel" aria-label="Why work with Private property management">
-          <div class="community-track">
-            <figure class="community-slide is-active">
-              <img src="images/why-work/why-work-1.png" alt="Private property management team group photo" loading="lazy" decoding="async">
-            </figure>
-            <figure class="community-slide">
-              <img src="images/why-work/why-work-2.png" alt="Office team gathering and celebration moment" loading="lazy" decoding="async">
-            </figure>
-            <figure class="community-slide">
-              <img src="images/why-work/why-work-3.png" alt="Team members posing in office with flag display" loading="lazy" decoding="async">
-            </figure>
-            <figure class="community-slide">
-              <img src="images/why-work/why-work-4.png" alt="Staff group photo in conference room" loading="lazy" decoding="async">
-            </figure>
+        <div class="community-slider intro-photo-slider" data-community-slider aria-roledescription="carousel" aria-label="TenantFirst Management">
+          <div class="community-viewport">
+            <div class="community-track">
+              <figure class="community-slide is-active">
+                <img src="images/why-work/why-work-1.jpg" alt="Team members outdoors at a community property event" loading="lazy" decoding="async">
+              </figure>
+              <figure class="community-slide">
+                <img src="images/why-work/why-work-2.jpg" alt="Team group photo at an office gathering" loading="lazy" decoding="async">
+              </figure>
+              <figure class="community-slide">
+                <img src="images/why-work/why-work-3.jpg" alt="Staff and guests at a training presentation" loading="lazy" decoding="async">
+              </figure>
+            </div>
           </div>
 
-          <button class="community-control community-control-prev" type="button" aria-label="Previous image">
-            <span aria-hidden="true">&lsaquo;</span>
-          </button>
-          <button class="community-control community-control-next" type="button" aria-label="Next image">
-            <span aria-hidden="true">&rsaquo;</span>
-          </button>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Gallery navigation">
+              <button class="community-dot is-active" type="button" aria-label="Go to image 1"></button>
+              <button class="community-dot" type="button" aria-label="Go to image 2"></button>
+              <button class="community-dot" type="button" aria-label="Go to image 3"></button>
+            </div>
 
-          <div class="community-dots" aria-label="Gallery navigation">
-            <button class="community-dot is-active" type="button" aria-label="Go to image 1"></button>
-            <button class="community-dot" type="button" aria-label="Go to image 2"></button>
-            <button class="community-dot" type="button" aria-label="Go to image 3"></button>
-            <button class="community-dot" type="button" aria-label="Go to image 4"></button>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        <ul class="why-work-points" aria-label="Why work with Private property management points">
-          <li>Professional and organized rental management process</li>
-          <li>Clear and transparent communication</li>
-          <li>Responsive support for applicants and inquiries</li>
-          <li>Reliable coordination between tenants and property owners</li>
-          <li>A focus on professionalism and smooth leasing experiences</li>
-        </ul>
+        <details class="contact-service-area intro-markets">
+          <summary class="contact-service-label">
+            <span>Current rental markets</span>
+          </summary>
+          <ul class="contact-service-states">
+            <li>Alabama</li>
+            <li>Alaska</li>
+            <li>Arizona</li>
+            <li>Arkansas</li>
+            <li>California</li>
+            <li>Colorado</li>
+            <li>Connecticut</li>
+            <li>Delaware</li>
+            <li>Florida</li>
+            <li>Georgia</li>
+            <li>Idaho</li>
+            <li>Illinois</li>
+            <li>Indiana</li>
+            <li>Iowa</li>
+            <li>Kansas</li>
+            <li>Kentucky</li>
+            <li>Louisiana</li>
+            <li>Maryland</li>
+            <li>Massachusetts</li>
+            <li>Michigan</li>
+            <li>Minnesota</li>
+            <li>Mississippi</li>
+            <li>Missouri</li>
+            <li>Nebraska</li>
+            <li>New Jersey</li>
+            <li>New Mexico</li>
+            <li>New York</li>
+            <li>North Carolina</li>
+            <li>Ohio</li>
+            <li>Oklahoma</li>
+            <li>Oregon</li>
+            <li>Pennsylvania</li>
+            <li>South Carolina</li>
+            <li>Tennessee</li>
+            <li>Texas</li>
+            <li>Virginia</li>
+            <li>Washington</li>
+            <li>West Virginia</li>
+            <li>Wisconsin</li>
+            <li>Wyoming</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <section class="section services-section" id="services-section" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="services-title">Services</h2>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">01</span>
-            <h3>Tenant Screening &amp; Application Review</h3>
-          </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">02</span>
-            <h3>Rental Listing &amp; Marketing Support</h3>
-          </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">03</span>
-            <h3>Lease Coordination</h3>
-          </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">04</span>
-            <h3>Scheduling Property Tours</h3>
-          </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">05</span>
-            <h3>Managing Rental Inquiries &amp; Tenant Communication</h3>
-          </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">06</span>
-            <h3>Guiding Applicants Through The Approval Process</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section process-section" id="process" aria-labelledby="process-title">
+    <section class="section process-section section--primary" id="process" aria-labelledby="process-title">
       <div class="container">
         <div class="section-heading">
           <h2 id="process-title">How the Rental Process Works</h2>
         </div>
-
-        <ol class="process-list">
-          <li>
-            <span>01</span>
-            <h3>Inquire About a Listing</h3>
-            <p>Contact us about the rental you're interested in and confirm availability before applying.</p>
-          </li>
-          <li>
-            <span>02</span>
-            <h3>Submit Application</h3>
-            <p>Complete the rental application form with accurate information.</p>
-          </li>
-          <li>
-            <span>03</span>
-            <h3>Refundable Application Fee Payment</h3>
-            <p>A refundable application fee is a payment that will be returned to you if your application is not approved or if you decide not to move forward after the tour. Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
-          </li>
-          <li>
-            <span>04</span>
-            <h3>Next Steps</h3>
-            <p>Qualified applicants will be contacted with updates, tour details, or further instructions.</p>
-          </li>
-        </ol>
+        <div class="community-slider card-slider process-slider" data-community-slider aria-roledescription="carousel" aria-label="How the Rental Process Works">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="process-card community-slide is-active">
+                <span class="slide-num" aria-hidden="true">01</span>
+                <h3>Inquire About a Listing</h3>
+                <p>Contact us about the rental you're interested in and confirm availability before applying.</p>
+              </article>
+              <article class="process-card community-slide">
+                <span class="slide-num" aria-hidden="true">02</span>
+                <h3>Submit Application</h3>
+                <p>Complete the rental application form with accurate information.</p>
+              </article>
+              <article class="process-card community-slide">
+                <span class="slide-num" aria-hidden="true">03</span>
+                <h3>Refundable Application Fee Payment</h3>
+                <p>A refundable application fee is a payment that will be returned to you if your application is not approved or if you decide not to move forward after the tour. Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
+              </article>
+              <article class="process-card community-slide">
+                <span class="slide-num" aria-hidden="true">04</span>
+                <h3>Next Steps</h3>
+                <p>Qualified applicants will be contacted with updates, tour details, or further instructions.</p>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="How the Rental Process Works"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section fee-explainer-section" id="application-fee" aria-labelledby="fee-explainer-title">
-      <div class="container narrow">
+      <div class="container">
         <div class="section-heading">
           <h2 id="fee-explainer-title">Why the application fee?</h2>
           <p class="section-lead">A clear, refundable step that keeps the review process organized for every applicant.</p>
         </div>
-        <div class="fee-explainer-grid">
-          <article class="fee-explainer-card">
-            <h3>What it covers</h3>
-            <p>The application fee supports screening, verification, and direct review of your rental application by our property management team.</p>
-          </article>
-          <article class="fee-explainer-card">
-            <h3>When it is refundable</h3>
-            <p>The fee is returned if your application is not approved or if you choose not to move forward after your property tour.</p>
-          </article>
-          <article class="fee-explainer-card">
-            <h3>If you are approved</h3>
-            <p>When approved and you decide to lease the home, the application fee is applied toward your first month’s rent.</p>
-          </article>
-          <article class="fee-explainer-card fee-explainer-card--refund">
-            <p class="fee-refund-eyebrow">Refund policy</p>
-            <p class="fee-refund-text">Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
-          </article>
+        <div class="community-slider card-slider fee-slider" data-community-slider aria-roledescription="carousel" aria-label="Why the application fee?">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="fee-explainer-card community-slide is-active">
+                <span class="slide-num" aria-hidden="true">01</span>
+                <h3>What it covers</h3>
+                <p>The application fee supports screening, verification, and direct review of your rental application by our property management team.</p>
+              </article>
+              <article class="fee-explainer-card community-slide">
+                <span class="slide-num" aria-hidden="true">02</span>
+                <h3>When it is refundable</h3>
+                <p>The fee is returned if your application is not approved or if you choose not to move forward after your property tour.</p>
+              </article>
+              <article class="fee-explainer-card community-slide">
+                <span class="slide-num" aria-hidden="true">03</span>
+                <h3>If you are approved</h3>
+                <p>When approved and you decide to lease the home, the application fee is applied toward your first month’s rent.</p>
+              </article>
+              <article class="fee-explainer-card fee-explainer-card--refund community-slide">
+                <span class="slide-num" aria-hidden="true">04</span>
+                <p class="fee-refund-eyebrow">Refund policy</p>
+                <p class="fee-refund-text">Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Why the application fee?"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading faq-heading-wrap">
+          <h2 class="faq-heading" id="faq-title">Rental Process FAQ</h2>
+        </div>
+        <div class="community-slider card-slider faq-slider" data-community-slider aria-roledescription="carousel" aria-label="Rental Process FAQ">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="faq-card community-slide is-active">
+                <h3>How do I apply for a rental?</h3>
+                <p>You can apply by completing the rental application form on this website.</p>
+              </article>
+              <article class="faq-card community-slide">
+                <h3>Is there an application fee?</h3>
+                <p>Yes, there is a refundable application fee of $75, which is paid through Chime after your application is submitted. The fee supports application screening and review. It is refundable if your application is not approved or if you choose not to move forward after your tour.</p>
+              </article>
+              <article class="faq-card community-slide">
+                <h3>How quickly are application fee refunds processed?</h3>
+                <p>Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
+              </article>
+              <article class="faq-card community-slide">
+                <h3>Are listings always available?</h3>
+                <p>Not always. Rental availability may change at any time.</p>
+              </article>
+              <article class="faq-card community-slide">
+                <h3>How will I be contacted after applying?</h3>
+                <p>Applicants are typically contacted using the email address or phone number provided in the application form.</p>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Rental Process FAQ"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-work-section section--secondary" id="why-work" aria-labelledby="why-work-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="why-work-title">Why work with TenantFirst Management</h2>
+        </div>
+        <div class="community-slider card-slider why-work-slider" data-community-slider aria-roledescription="carousel" aria-label="Why work with TenantFirst Management points">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="why-work-point community-slide is-active">
+                <span class="slide-num" aria-hidden="true">01</span>
+                <p>Professional and organized rental management process</p>
+              </article>
+              <article class="why-work-point community-slide">
+                <span class="slide-num" aria-hidden="true">02</span>
+                <p>Clear and transparent communication</p>
+              </article>
+              <article class="why-work-point community-slide">
+                <span class="slide-num" aria-hidden="true">03</span>
+                <p>Responsive support for applicants and inquiries</p>
+              </article>
+              <article class="why-work-point community-slide">
+                <span class="slide-num" aria-hidden="true">04</span>
+                <p>Reliable coordination between tenants and property owners</p>
+              </article>
+              <article class="why-work-point community-slide">
+                <span class="slide-num" aria-hidden="true">05</span>
+                <p>A focus on professionalism and smooth leasing experiences</p>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Why work with TenantFirst Management points"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section section--secondary" id="services-section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="services-title">Services</h2>
+        </div>
+        <div class="community-slider services-slider card-slider" data-community-slider aria-roledescription="carousel" aria-label="Services">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="service-card community-slide is-active">
+                <span class="slide-num service-icon" aria-hidden="true">01</span>
+                <h3>Tenant Screening &amp; Application Review</h3>
+              </article>
+              <article class="service-card community-slide">
+                <span class="slide-num service-icon" aria-hidden="true">02</span>
+                <h3>Rental Listing &amp; Marketing Support</h3>
+              </article>
+              <article class="service-card community-slide">
+                <span class="slide-num service-icon" aria-hidden="true">03</span>
+                <h3>Lease Coordination</h3>
+              </article>
+              <article class="service-card community-slide">
+                <span class="slide-num service-icon" aria-hidden="true">04</span>
+                <h3>Scheduling Property Tours</h3>
+              </article>
+              <article class="service-card community-slide">
+                <span class="slide-num service-icon" aria-hidden="true">05</span>
+                <h3>Managing Rental Inquiries &amp; Tenant Communication</h3>
+              </article>
+              <article class="service-card community-slide">
+                <span class="slide-num service-icon" aria-hidden="true">06</span>
+                <h3>Guiding Applicants Through The Approval Process</h3>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Services"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -259,59 +492,62 @@
           <h2 id="team-title">Leadership &amp; team</h2>
           <p class="section-lead">Experienced professionals supporting applicants and property owners through every stage of the leasing process.</p>
         </div>
-        <div class="team-grid">
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--donna" src="images/team/donna-cordell.png" alt="Johanna Geary" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Johanna Geary</h3>
-            <p class="team-card__role">Property Manager</p>
-            <p class="team-card__bio">Oversees leasing operations, applicant communication, and property owner coordination.</p>
-          </article>
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--katherine" src="images/team/katherine-riordan.png" alt="Katherine Riordan" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Katherine Riordan</h3>
-            <p class="team-card__role">Operations Manager</p>
-            <p class="team-card__bio">Keeps the application workflow organized from submission through review and next steps.</p>
-          </article>
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--john" src="images/team/john-burnett.png" alt="Phillip Marks" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Phillip Marks</h3>
-            <p class="team-card__role">Tenant Relations Lead</p>
-            <p class="team-card__bio">Supports applicant questions, follow-up, and communication throughout the process.</p>
-          </article>
-        </div>
-
-        <div class="team-grid team-grid--more" id="team-more" aria-label="More team members" hidden>
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--valerie" src="images/team/valerie-funaro.png" alt="Valerie Funaro" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Valerie Funaro</h3>
-            <p class="team-card__role">Leasing Specialist</p>
-            <p class="team-card__bio">Guides applicants through listing details, tours, and lease readiness.</p>
-          </article>
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--christina" src="images/team/christina-hunt.png" alt="Christina Hunt" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Christina Hunt</h3>
-            <p class="team-card__role">Screening Coordinator</p>
-            <p class="team-card__bio">Handles application verification, documentation checks, and screening follow-up.</p>
-          </article>
-          <article class="team-card">
-            <img class="team-card__photo team-card__photo--paul" src="images/team/paul-goodling.png" alt="Paul Goodling" width="120" height="120" loading="lazy" decoding="async">
-            <h3 class="team-card__name">Paul Goodling</h3>
-            <p class="team-card__role">Owner Relations Coordinator</p>
-            <p class="team-card__bio">Coordinates with property owners on approvals, updates, and placement decisions.</p>
-          </article>
-        </div>
-
-        <div class="section-see-more-actions">
-          <button
-            class="section-see-more"
-            type="button"
-            id="teamSeeMore"
-            aria-expanded="false"
-            aria-controls="team-more"
-          >
-            <span class="section-see-more__label">See more</span>
-            <span class="section-see-more__chevron" aria-hidden="true"></span>
-          </button>
+        <div class="community-slider card-slider team-slider" data-community-slider aria-roledescription="carousel" aria-label="Leadership and team">
+          <div class="community-viewport">
+            <div class="community-track">
+              <article class="team-card community-slide is-active">
+                <img class="team-card__photo team-card__photo--marty" src="images/team/marty-kiar.png" alt="Marty Kiar" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Marty Kiar</h3>
+                <p class="team-card__role">Property Manager</p>
+                <p class="team-card__bio">Oversees leasing operations, applicant communication, and property owner coordination.</p>
+              </article>
+              <article class="team-card community-slide">
+                <img class="team-card__photo team-card__photo--katherine" src="images/team/katherine-riordan.png" alt="Katherine Riordan" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Katherine Riordan</h3>
+                <p class="team-card__role">Operations Manager</p>
+                <p class="team-card__bio">Keeps the application workflow organized from submission through review and next steps.</p>
+              </article>
+              <article class="team-card community-slide">
+                <img class="team-card__photo team-card__photo--john" src="images/team/john-burnett.png" alt="Phillip Marks" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Phillip Marks</h3>
+                <p class="team-card__role">Tenant Relations Lead</p>
+                <p class="team-card__bio">Supports applicant questions, follow-up, and communication throughout the process.</p>
+              </article>
+              <article class="team-card community-slide">
+                <img class="team-card__photo team-card__photo--valerie" src="images/team/valerie-funaro.png" alt="Valerie Funaro" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Valerie Funaro</h3>
+                <p class="team-card__role">Leasing Specialist</p>
+                <p class="team-card__bio">Guides applicants through listing details, tours, and lease readiness.</p>
+              </article>
+              <article class="team-card community-slide">
+                <img class="team-card__photo team-card__photo--christina" src="images/team/christina-hunt.png" alt="Christina Hunt" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Christina Hunt</h3>
+                <p class="team-card__role">Screening Coordinator</p>
+                <p class="team-card__bio">Handles application verification, documentation checks, and screening follow-up.</p>
+              </article>
+              <article class="team-card community-slide">
+                <img class="team-card__photo team-card__photo--paul" src="images/team/paul-goodling.png" alt="Paul Goodling" width="88" height="88" loading="lazy" decoding="async">
+                <h3 class="team-card__name">Paul Goodling</h3>
+                <p class="team-card__role">Owner Relations Coordinator</p>
+                <p class="team-card__bio">Coordinates with property owners on approvals, updates, and placement decisions.</p>
+              </article>
+            </div>
+          </div>
+          <div class="community-chrome">
+            <div class="community-dots" aria-label="Leadership and team"></div>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -323,268 +559,230 @@
           <p class="section-lead">Feedback from people who completed the application process.</p>
         </div>
 
-        <div class="testimonials-featured" aria-label="Featured applicant testimonials">
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Omar F.</cite>
-                  <time datetime="2025-07-21">July 21, 2025</time>
+        <div class="community-slider card-slider testimonials-slider" data-community-slider aria-roledescription="carousel" aria-label="What applicants say">
+          <div class="community-viewport">
+            <div class="community-track">
+              <blockquote class="testimonial-card community-slide is-active">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Maya T.</cite>
+                      <time datetime="2026-07-07">July 7, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>Filling out the application was actually pretty easy, and when I had a question someone got back to me fast.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Caleb N.</cite>
-                  <time datetime="2026-02-04">February 4, 2026</time>
+                <p>They answered my questions right away, which made me feel a lot more confident applying.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Amanda L.</cite>
+                      <time datetime="2026-01-08">January 8, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They replied quickly, and the whole thing felt clean from the first email to the last.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Sofia G.</cite>
-                  <time datetime="2025-04-28">April 28, 2025</time>
+                <p>Super professional from start to finish. Honestly felt like dealing with a real leasing office.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Isla M.</cite>
+                      <time datetime="2026-06-30">June 30, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They explained each step in plain English. I never had to guess what was coming next.</p>
-          </blockquote>
-        </div>
-
-        <div
-          class="testimonials-featured testimonials-featured--more"
-          id="testimonials-more"
-          aria-label="More applicant testimonials"
-          hidden
-        >
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Isla M.</cite>
-                  <time datetime="2026-06-30">June 30, 2026</time>
+                <p>I liked that they walked me through everything before I paid a dime.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Marcus W.</cite>
+                      <time datetime="2026-02-19">February 19, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>I liked that they walked me through everything before I paid a dime.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Lauren C.</cite>
-                  <time datetime="2026-04-09">April 9, 2026</time>
+                <p>I got answers the same day I applied. Honestly, everything felt really organized.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Rachel K.</cite>
+                      <time datetime="2025-08-22">August 22, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>It felt private and professional the entire time — not pushy at all.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Daniel R.</cite>
-                  <time datetime="2026-06-11">June 11, 2026</time>
+                <p>They explained the fee and refund policy up front, so there weren't any surprises later.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Sofia G.</cite>
+                      <time datetime="2025-04-28">April 28, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>The application went smoothly, and they followed up right after I sent the payment.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Jordan A.</cite>
-                  <time datetime="2026-01-22">January 22, 2026</time>
+                <p>They explained each step in plain English. I never had to guess what was coming next.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Lauren C.</cite>
+                      <time datetime="2026-04-09">April 9, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>The steps were simple, and they kept me updated once I submitted.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Maya T.</cite>
-                  <time datetime="2026-07-07">July 7, 2026</time>
+                <p>It felt private and professional the entire time — not pushy at all.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Tyler M.</cite>
+                      <time datetime="2025-03-16">March 16, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They answered my questions right away, which made me feel a lot more confident applying.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Marcus W.</cite>
-                  <time datetime="2026-02-19">February 19, 2026</time>
+                <p>I applied on a Sunday and heard back Monday morning. The process was pretty straightforward.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Hannah V.</cite>
+                      <time datetime="2026-05-28">May 28, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>I got answers the same day I applied. Honestly, everything felt really organized.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Kevin P.</cite>
-                  <time datetime="2025-12-03">December 3, 2025</time>
+                <p>I really liked how organized the timeline felt — nothing felt rushed or messy.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Omar F.</cite>
+                      <time datetime="2025-07-21">July 21, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>I got a confirmation pretty fast after applying, and the team was easy to get ahold of.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Hannah V.</cite>
-                  <time datetime="2026-05-28">May 28, 2026</time>
+                <p>Filling out the application was actually pretty easy, and when I had a question someone got back to me fast.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Priya N.</cite>
+                      <time datetime="2025-09-30">September 30, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>I really liked how organized the timeline felt — nothing felt rushed or messy.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Ethan J.</cite>
-                  <time datetime="2025-10-15">October 15, 2025</time>
+                <p>They were clear about the property and what would happen next. That helped a lot.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Daniel R.</cite>
+                      <time datetime="2026-06-11">June 11, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They shared the move-in details early, so there was no last-minute scramble.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Brandon S.</cite>
-                  <time datetime="2025-11-09">November 9, 2025</time>
+                <p>The application went smoothly, and they followed up right after I sent the payment.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Natalie B.</cite>
+                      <time datetime="2026-03-17">March 17, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They responded quickly and made the next steps really clear after I submitted.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Jennifer H.</cite>
-                  <time datetime="2025-06-14">June 14, 2025</time>
+                <p>They were honest about the timing and what I'd need. That alone made everything simpler.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Brandon S.</cite>
+                      <time datetime="2025-11-09">November 9, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>I appreciated how direct they were. No runaround, just straight answers.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Rachel K.</cite>
-                  <time datetime="2025-08-22">August 22, 2025</time>
+                <p>They responded quickly and made the next steps really clear after I submitted.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Caleb N.</cite>
+                      <time datetime="2026-02-04">February 4, 2026</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>They explained the fee and refund policy up front, so there weren't any surprises later.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Amanda L.</cite>
-                  <time datetime="2026-01-08">January 8, 2026</time>
+                <p>They replied quickly, and the whole thing felt clean from the first email to the last.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Jennifer H.</cite>
+                      <time datetime="2025-06-14">June 14, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <p>Super professional from start to finish. Honestly felt like dealing with a real leasing office.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Tyler M.</cite>
-                  <time datetime="2025-03-16">March 16, 2025</time>
+                <p>I appreciated how direct they were. No runaround, just straight answers.</p>
+              </blockquote>
+              <blockquote class="testimonial-card community-slide">
+                <div class="testimonial-card__meta">
+                  <div class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true"></span>
+                    <div class="testimonial-author__text">
+                      <cite>Ethan J.</cite>
+                      <time datetime="2025-10-15">October 15, 2025</time>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <p>They shared the move-in details early, so there was no last-minute scramble.</p>
+              </blockquote>
             </div>
-            <p>I applied on a Sunday and heard back Monday morning. The process was pretty straightforward.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Natalie B.</cite>
-                  <time datetime="2026-03-17">March 17, 2026</time>
-                </div>
-              </div>
+          </div>
+          <div class="community-chrome">
+            <p class="community-index" data-slide-index>1 / 17</p>
+            <div class="community-controls">
+              <button class="community-control community-control-prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M10.25 3.75 5.75 8l4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+              <button class="community-control community-control-next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M5.75 3.75 10.25 8l-4.5 4.25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
             </div>
-            <p>They were honest about the timing and what I'd need. That alone made everything simpler.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Chris D.</cite>
-                  <time datetime="2026-05-02">May 2, 2026</time>
-                </div>
-              </div>
-            </div>
-            <p>The payment instructions were clear, and the review didn't take long at all.</p>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__meta">
-              <div class="testimonial-author">
-                <span class="testimonial-avatar" aria-hidden="true"></span>
-                <div class="testimonial-author__text">
-                  <cite>Priya N.</cite>
-                  <time datetime="2025-09-30">September 30, 2025</time>
-                </div>
-              </div>
-            </div>
-            <p>They were clear about the property and what would happen next. That helped a lot.</p>
-          </blockquote>
-        </div>
-
-        <div class="section-see-more-actions">
-          <button
-            class="section-see-more"
-            type="button"
-            id="testimonialsSeeMore"
-            aria-expanded="false"
-            aria-controls="testimonials-more"
-          >
-            <span class="section-see-more__label">See more</span>
-            <span class="section-see-more__chevron" aria-hidden="true"></span>
-          </button>
+          </div>
         </div>
 
         <aside class="testimonials-submit" aria-labelledby="testimonials-submit-title">
@@ -615,79 +813,67 @@
       </div>
     </section>
 
-    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <div class="section-heading faq-heading-wrap">
-          <h2 class="faq-heading" id="faq-title">Rental Process FAQ</h2>
-        </div>
-
-        <div class="faq-accordion">
-          <details class="faq-card accordion-item">
-            <summary>How do I apply for a rental?</summary>
-            <div class="accordion-content">
-              <p>You can apply by completing the rental application form on this website.</p>
-            </div>
-          </details>
-          <details class="faq-card accordion-item">
-            <summary>Is there an application fee?</summary>
-            <div class="accordion-content">
-              <p>Yes, there is a refundable application fee of $75, which is paid through Chime after your application is submitted. The fee supports application screening and review. It is refundable if your application is not approved or if you choose not to move forward after your tour.</p>
-            </div>
-          </details>
-          <details class="faq-card accordion-item">
-            <summary>How quickly are application fee refunds processed?</summary>
-            <div class="accordion-content">
-              <p>Refund requests are processed within an hour of receiving your request, provided the application has not been approved.</p>
-            </div>
-          </details>
-          <details class="faq-card accordion-item">
-            <summary>Are listings always available?</summary>
-            <div class="accordion-content">
-              <p>Not always. Rental availability may change at any time.</p>
-            </div>
-          </details>
-          <details class="faq-card accordion-item">
-            <summary>How will I be contacted after applying?</summary>
-            <div class="accordion-content">
-              <p>Applicants are typically contacted using the email address or phone number provided in the application form.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="container consultation-panel" id="consultation">
-        <h2 class="sr-only" id="contact-title">Contact</h2>
-        <div class="consultation-copy">
-          <div class="contact-section-logo">
-            <img src="image/ppm-group-logo.svg" alt="Property Management Group" class="contact-brand-mark" width="72" height="72" loading="lazy" decoding="async">
-          </div>
-          <div class="direct-contact-mini">
-            <div class="contact-channels" role="list">
-              <a class="contact-channel" role="listitem" href="mailto:support@privatepropmanagement.com" aria-label="Email Property Management Group"><span class="contact-channel-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4V6zm0 0 8 6 8-6"/></svg></span><span class="contact-channel-text contact-email-ltr">support@privatepropmanagement.com</span></a>
-              <a class="contact-channel" role="listitem" href="tel:+13152723641" aria-label="Call Property Management Group"><span class="contact-channel-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></span><span class="contact-channel-text contact-phone-ltr">+1 (315) 272-3641</span></a>
+      <div class="container contact-close" id="consultation">
+        <div class="contact-close__actions">
+          <div class="contact-info-area">
+            <h2 class="contact-info-heading" id="contact-title">Get in touch</h2>
+            <div class="contact-info-links">
+              <a class="contact-info-link contact-email-ltr" href="mailto:support@privatepropmanagement.com">
+                <span class="contact-info-label">Email</span>
+                <span class="contact-info-value">support@privatepropmanagement.com</span>
+              </a>
+              <a class="contact-info-link contact-phone-ltr" href="tel:+13152723641">
+                <span class="contact-info-label">Phone</span>
+                <span class="contact-info-value contact-channel-text">+1 (315) 272-3641</span>
+              </a>
             </div>
+          </div>
+        </div>
+
+        <div class="contact-close__brand">
+          <div class="contact-close__identity">
+            <p class="contact-brand-name">
+              <span class="hero-title__name">TenantFirst</span>
+              <span class="hero-title__role">Management</span>
+            </p>
+            <span class="home-mark-stack contact-brand-mark">
+              <img src="image/home-mark-on-dark.svg" alt="" class="home-mark home-mark--on-dark" width="40" height="40" loading="lazy" decoding="async">
+              <img src="image/home-mark-on-light.svg" alt="" class="home-mark home-mark--on-light" width="40" height="40" loading="lazy" decoding="async">
+            </span>
+          </div>
+          <div class="contact-affiliations">
+            <a class="contact-affiliation-link" href="https://www.nar.realtor/homeowners-associations-hoas" target="_blank" rel="noopener noreferrer">
+              <img src="image/hoa-home-owners-association.png" alt="HOA Home Owners Association" width="112" height="112" loading="lazy" decoding="async">
+            </a>
+            <a class="contact-affiliation-link" href="https://offcampushousing.princeton.edu/equal-opportunity-in-housing-statement" target="_blank" rel="noopener noreferrer">
+              <img src="image/equal-housing-opportunity.png" alt="Equal Housing Opportunity" width="112" height="112" loading="lazy" decoding="async">
+            </a>
+            <a class="contact-affiliation-link" href="https://nationalfairhousing.org" target="_blank" rel="noopener noreferrer">
+              <img src="image/fair-housing-center.png" alt="The Fair Housing Center" width="112" height="112" loading="lazy" decoding="async">
+            </a>
+            <a class="contact-affiliation-link" href="https://www.caionline.org" target="_blank" rel="noopener noreferrer">
+              <img class="contact-affiliation-mark--wide" src="image/community-associations-institute.png" alt="Community Associations Institute" width="180" height="120" loading="lazy" decoding="async">
+            </a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="floating-apply" href="apply.html" aria-label="Start Application">Start Application</a>
+  <a class="floating-apply" href="apply.html" aria-label="Start Application" draggable="false">Start Application</a>
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <div class="footer-identity">
-        <strong>Property Management Group</strong>
-      </div>
-      <p class="footer-legal">&copy; 2026 Property Management Group</p>
+      <p class="footer-legal">
+        <span class="footer-legal__copy">&copy; 2026 TenantFirst Management</span>
+        <span class="footer-legal__links"><a class="footer-privacy-link" href="privacy-notice.html">Privacy Notice</a></span>
+      </p>
     </div>
   </footer>
 
   <script src="i18n-extensions.js"></script>
   <script src="i18n-apply-form.js"></script>
   <script src="script.js"></script>
-  <script src="page-loader.js"></script>
 </body>
 </html>

@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home-root">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("ppm-theme");
+        var theme = stored === "light" || stored === "dark"
+          ? stored
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <style>
+    html.home-root { background-color: #08090B; }
+    html.home-root[data-theme="light"] { background-color: #FAFAFB; }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Complete a private rental application for review by Property Management Group.">
-  <title>Rental Application | Property Management Group</title>
+  <meta name="description" content="Complete a private rental application for review by TenantFirst Management.">
+  <title>Rental Application | TenantFirst Management</title>
   <link rel="icon" href="image/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="image/logo.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="image/apple-touch-icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Private Property Management">
+  <meta property="og:site_name" content="TenantFirst Management">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Private Property Management">
+  <meta property="og:title" content="TenantFirst Management">
   <meta property="og:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
   <meta property="og:url" content="https://privatepropmanagement.com/">
   <meta property="og:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
@@ -19,23 +37,31 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Private Property Management">
+  <meta property="og:image:alt" content="TenantFirst Management">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Private Property Management">
+  <meta name="twitter:title" content="TenantFirst Management">
   <meta name="twitter:description" content="Professional private property management services for rental listings, tenant support, applications, and property assistance.">
   <meta name="twitter:image" content="https://privatepropmanagement.com/og-private-property-management-v3.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="preload" href="image/ppm-group-logo.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="image/home-mark-on-dark.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="image/home-mark-on-light.svg" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="page-loader.css">
+  <link rel="stylesheet" href="home-design.css">
 </head>
 <body class="apply-page">
-  <div class="ppm-page-loader" id="ppmPageLoader" role="status" aria-live="polite" aria-label="Page loading" hidden>
+  <div class="ppm-page-loader" id="ppmPageLoader" role="status" aria-live="polite" aria-label="Loading" hidden>
     <div class="ppm-page-loader__content">
-      <img class="ppm-page-loader__mark" src="image/ppm-group-logo.svg" alt="Private Property Management" width="76" height="76">
-      <p class="ppm-page-loader__status"><span class="ppm-page-loader__spinner" aria-hidden="true"></span><span id="ppmPageLoaderMessage">Loading…</span></p>
+      <img class="ppm-page-loader__mark home-mark home-mark--on-dark" src="image/home-mark-on-dark.svg" alt="TenantFirst Management" width="76" height="76">
+      <img class="ppm-page-loader__mark home-mark home-mark--on-light" src="image/home-mark-on-light.svg" alt="" width="76" height="76">
+      <span class="ppm-page-loader__spinner" aria-hidden="true"></span>
     </div>
   </div>
   <script>document.getElementById("ppmPageLoader").hidden = false;</script>
+  <script src="page-loader.js"></script>
+  <script src="theme.js"></script>
 
   <header class="site-header back-nav">
     <div class="container header-inner">
@@ -43,6 +69,20 @@
         <span class="back-button-icon" aria-hidden="true">←</span>
         <span>Back</span>
       </button>
+      <div class="theme-toggle-wrap">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode">
+          <span class="theme-toggle__icons" aria-hidden="true">
+            <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M12 3v1.6M12 19.4V21M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3 12h1.6M19.4 12H21M4.9 19.1 6 18M18 6l1.1-1.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none">
+              <path d="M16.2 13.2A6.2 6.2 0 0 1 10.8 6.2 6.4 6.4 0 1 0 16.2 13.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="theme-toggle__thumb"></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -116,7 +156,7 @@
           class="application-form"
           id="application-form"
           data-confirmation="application-received.html"
-          data-formspree-endpoint="https://formspree.io/f/xrpgelok"
+          data-formspree-endpoint="https://formspree.io/f/mnjeolkq"
           data-emailjs-service="service_6f9hfc4"
           data-emailjs-template="template_vqnekgj"
           data-emailjs-public-key="9zdPYi59Y52CoJ96H"
@@ -129,7 +169,7 @@
           <input type="hidden" name="application_id" value="">
           <input type="hidden" name="selected-language" value="">
           <input type="hidden" name="support_email" value="support@privatepropmanagement.com">
-          <input type="hidden" name="_subject" value="New Rental Application - Property Management Group">
+          <input type="hidden" name="_subject" value="New Rental Application - TenantFirst Management">
           <fieldset>
             <legend>Property Information</legend>
             <label for="property">Property applying for</label>
@@ -367,6 +407,5 @@
   <script src="i18n-extensions.js"></script>
   <script src="i18n-apply-form.js"></script>
   <script src="script.js"></script>
-  <script src="page-loader.js"></script>
 </body>
 </html>

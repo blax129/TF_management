@@ -4,6 +4,167 @@
  */
 (function (global) {
   const paymentStrings = {
+    "Credentials": {
+      es: "Credenciales",
+      zh: "资质",
+      fr: "Identifiants",
+      ar: "البيانات"
+    },
+    "Company credentials": {
+      es: "Credenciales de la empresa",
+      zh: "公司资质",
+      fr: "Identifiants de l’entreprise",
+      ar: "بيانات الشركة"
+    },
+    "Published company name, contact details, and website team for TenantFirst Management. This page is a public information record, not a state-issued license.": {
+      es: "Nombre de la empresa, datos de contacto y equipo publicados de TenantFirst Management. Esta página es un registro informativo público, no una licencia emitida por el estado.",
+      zh: "TenantFirst Management 已公布的公司名称、联系方式和网站团队。本页为公开信息记录，不是州签发的执照。",
+      fr: "Nom de l’entreprise, coordonnées et équipe publiés pour TenantFirst Management. Cette page est un registre d’information public, pas une licence délivrée par l’État.",
+      ar: "اسم الشركة وبيانات الاتصال والفريق المنشوران لـ TenantFirst Management. هذه الصفحة سجل معلومات عام وليست رخصة صادرة عن الولاية."
+    },
+    "License & registration numbers": {
+      es: "Números de licencia y registro",
+      zh: "执照与登记编号",
+      fr: "Numéros de licence et d’enregistrement",
+      ar: "أرقام الترخيص والتسجيل"
+    },
+    "Team listed on this website": {
+      es: "Equipo publicado en este sitio",
+      zh: "本网站列出的团队",
+      fr: "Équipe indiquée sur ce site",
+      ar: "الفريق المدرج في هذا الموقع"
+    },
+    "Email": {
+      es: "Correo",
+      zh: "电子邮件",
+      fr: "E-mail",
+      ar: "البريد الإلكتروني"
+    },
+    "Phone": {
+      es: "Teléfono",
+      zh: "电话",
+      fr: "Téléphone",
+      ar: "الهاتف"
+    },
+      es: "Claro",
+      zh: "浅色",
+      fr: "Clair",
+      ar: "فاتح"
+    },
+    "Dark": {
+      es: "Oscuro",
+      zh: "深色",
+      fr: "Sombre",
+      ar: "داكن"
+    },
+    "Privacy Notice": {
+      es: "Aviso de privacidad",
+      zh: "隐私声明",
+      fr: "Avis de confidentialité",
+      ar: "إشعار الخصوصية"
+    },
+    "Public name": {
+      es: "Nombre público",
+      zh: "公开名称",
+      fr: "Nom public",
+      ar: "الاسم العام"
+    },
+    "Legal name": {
+      es: "Nombre legal",
+      zh: "法定名称",
+      fr: "Nom légal",
+      ar: "الاسم القانوني"
+    },
+    "Based in": {
+      es: "Sede",
+      zh: "所在地",
+      fr: "Établie à",
+      ar: "المقر"
+    },
+    "Broward County, Florida": {
+      es: "Condado de Broward, Florida",
+      zh: "佛罗里达州布劳沃德县",
+      fr: "Comté de Broward, Floride",
+      ar: "مقاطعة بروارد، فلوريدا"
+    },
+    "Based in Broward County, Florida": {
+      es: "Con sede en el condado de Broward, Florida",
+      zh: "总部位于佛罗里达州布劳沃德县",
+      fr: "Établie dans le comté de Broward, en Floride",
+      ar: "المقر في مقاطعة بروارد بولاية فلوريدا"
+    },
+    "Public name of Broward PAO": {
+      es: "Nombre público de Broward PAO",
+      zh: "Broward PAO 的公开名称",
+      fr: "Nom public de Broward PAO",
+      ar: "الاسم العام لـ Broward PAO"
+    },
+    "TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This site is for rental applicants.": {
+      es: "TenantFirst Management es el nombre público de Broward PAO, un administrador privado de alquileres con sede en el condado de Broward, Florida. Este sitio es para solicitantes de alquiler.",
+      zh: "TenantFirst Management 是 Broward PAO 的公开名称，是一家总部位于佛罗里达州布劳沃德县的私人租赁管理机构。本网站面向租赁申请人。",
+      fr: "TenantFirst Management est le nom public de Broward PAO, un gestionnaire locatif privé établi dans le comté de Broward, en Floride. Ce site s’adresse aux candidats locataires.",
+      ar: "TenantFirst Management هو الاسم العام لـ Broward PAO، وهو مدير إيجار خاص مقره مقاطعة بروارد بولاية فلوريدا. هذا الموقع مخصص لمتقدمي طلبات الإيجار."
+    },
+    "TenantFirst Management is the public name of Broward PAO, a private rental manager based in Broward County, Florida. This website is for rental applicants.": {
+      es: "TenantFirst Management es el nombre público de Broward PAO, un administrador privado de alquileres con sede en el condado de Broward, Florida. Este sitio web es para solicitantes de alquiler.",
+      zh: "TenantFirst Management 是 Broward PAO 的公开名称，是一家总部位于佛罗里达州布劳沃德县的私人租赁管理机构。本网站面向租赁申请人。",
+      fr: "TenantFirst Management est le nom public de Broward PAO, un gestionnaire locatif privé établi dans le comté de Broward, en Floride. Ce site s’adresse aux candidats locataires.",
+      ar: "TenantFirst Management هو الاسم العام لـ Broward PAO، وهو مدير إيجار خاص مقره مقاطعة بروارد بولاية فلوريدا. هذا الموقع مخصص لمتقدمي طلبات الإيجار."
+    },
+    "We help applicants with inquiries, applications, and communication for privately managed homes. Properties are available for rent in the states listed here. We keep the process consistent, with clear expectations and timely follow-through.": {
+      es: "Ayudamos a los solicitantes con consultas, solicitudes y comunicación para viviendas administradas de forma privada. Hay propiedades disponibles para alquilar en los estados indicados aquí. Mantenemos un proceso consistente, con expectativas claras y seguimiento oportuno.",
+      zh: "我们协助申请人处理私人管理房源的咨询、申请与沟通。可出租房源所在州列于此处。我们保持流程一致，期望明确，并及时跟进。",
+      fr: "Nous accompagnons les candidats pour les demandes, les dossiers et la communication concernant des logements gérés en privé. Des biens sont disponibles à la location dans les États indiqués ici. Nous gardons un processus cohérent, avec des attentes claires et un suivi rapide.",
+      ar: "نساعد المتقدمين في الاستفسارات والطلبات والتواصل بخصوص منازل تُدار بشكل خاص. تتوفر عقارات للإيجار في الولايات المذكورة هنا. نحافظ على عملية متسقة مع توقعات واضحة ومتابعة في الوقت المناسب."
+    },
+    "Private rental manager for applicants. Based in Broward County, Florida.": {
+      es: "Administrador privado de alquileres para solicitantes. Sede en el condado de Broward, Florida.",
+      zh: "面向申请人的私人租赁管理机构。总部位于佛罗里达州布劳沃德县。",
+      fr: "Gestionnaire locatif privé pour les candidats. Établie dans le comté de Broward, en Floride.",
+      ar: "مدير إيجار خاص للمتقدمين. المقر في مقاطعة بروارد بولاية فلوريدا."
+    },
+    "Current rental markets": {
+      es: "Mercados de alquiler actuales",
+      zh: "当前租赁市场",
+      fr: "Marchés locatifs actuels",
+      ar: "أسواق الإيجار الحالية"
+    },
+    "Get in touch": {
+      es: "Ponte en contacto",
+      zh: "取得联系",
+      fr: "Nous contacter",
+      ar: "تواصل معنا"
+    },
+    "Email": {
+      es: "Correo",
+      zh: "电子邮件",
+      fr: "E-mail",
+      ar: "البريد الإلكتروني"
+    },
+    "Phone": {
+      es: "Teléfono",
+      zh: "电话",
+      fr: "Téléphone",
+      ar: "الهاتف"
+    },
+    "Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Jersey, New Mexico, New York, North Carolina, Ohio, Oklahoma, Oregon, Pennsylvania, South Carolina, Tennessee, Texas, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.": {
+      es: "Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Jersey, New Mexico, New York, North Carolina, Ohio, Oklahoma, Oregon, Pennsylvania, South Carolina, Tennessee, Texas, Virginia, Washington, West Virginia, Wisconsin y Wyoming.",
+      zh: "亚拉巴马、阿拉斯加、亚利桑那、阿肯色、加利福尼亚、科罗拉多、康涅狄格、特拉华、佛罗里达、佐治亚、爱达荷、伊利诺伊、印第安纳、艾奥瓦、堪萨斯、肯塔基、路易斯安那、马里兰、马萨诸塞、密歇根、明尼苏达、密西西比、密苏里、内布拉斯加、新泽西、新墨西哥、纽约、北卡罗来纳、俄亥俄、俄克拉何马、俄勒冈、宾夕法尼亚、南卡罗来纳、田纳西、得克萨斯、弗吉尼亚、华盛顿、西弗吉尼亚、威斯康星和怀俄明。",
+      fr: "Alabama, Alaska, Arizona, Arkansas, Californie, Colorado, Connecticut, Delaware, Floride, Géorgie, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiane, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Jersey, Nouveau-Mexique, New York, Caroline du Nord, Ohio, Oklahoma, Oregon, Pennsylvanie, Caroline du Sud, Tennessee, Texas, Virginie, Washington, Virginie-Occidentale, Wisconsin et Wyoming.",
+      ar: "ألاباما، ألاسكا، أريزونا، أركنساس، كاليفورنيا، كولورادو، كونيتيكت، ديلاوير، فلوريدا، جورجيا، أيداهو، إلينوي، إنديانا، آيوا، كانساس، كنتاكي، لويزيانا، ماريلاند، ماساتشوستس، ميشيغان، مينيسوتا، ميسيسيبي، ميزوري، نبراسكا، نيوجيرسي، نيو مكسيكو، نيويورك، كارولاينا الشمالية، أوهايو، أوكلاهوما، أوريغون، بنسلفانيا، كارولاينا الجنوبية، تينيسي، تكساس، فرجينيا، واشنطن، فرجينيا الغربية، ويسكونسن، ووايومنغ."
+    },
+    "Switch to dark mode": {
+      es: "Cambiar a modo oscuro",
+      zh: "切换到深色模式",
+      fr: "Passer en mode sombre",
+      ar: "التبديل إلى الوضع الداكن"
+    },
+    "Switch to light mode": {
+      es: "Cambiar a modo claro",
+      zh: "切换到浅色模式",
+      fr: "Passer en mode clair",
+      ar: "التبديل إلى الوضع الفاتح"
+    },
     "Back to Application Received": {
       es: "Volver a solicitud recibida",
       zh: "返回申请已收到页面",
@@ -808,29 +969,29 @@
       fr: "Confirmation",
       ar: "التأكيد"
     },
-    "Complete Payment | Property Management Group": {
-      es: "Completar pago | Property Management Group",
-      zh: "完成付款 | Property Management Group",
-      fr: "Finaliser le paiement | Property Management Group",
-      ar: "إكمال الدفع | Property Management Group"
+    "Complete Payment | TenantFirst Management": {
+      es: "Completar pago | TenantFirst Management",
+      zh: "完成付款 | TenantFirst Management",
+      fr: "Finaliser le paiement | TenantFirst Management",
+      ar: "إكمال الدفع | TenantFirst Management"
     },
-    "Application Received | Property Management Group": {
-      es: "Solicitud recibida | Property Management Group",
-      zh: "申请已收到 | Property Management Group",
-      fr: "Demande reçue | Property Management Group",
-      ar: "تم استلام الطلب | Property Management Group"
+    "Application Received | TenantFirst Management": {
+      es: "Solicitud recibida | TenantFirst Management",
+      zh: "申请已收到 | TenantFirst Management",
+      fr: "Demande reçue | TenantFirst Management",
+      ar: "تم استلام الطلب | TenantFirst Management"
     },
-    "Rental Application | Property Management Group": {
-      es: "Solicitud de alquiler | Property Management Group",
-      zh: "租赁申请 | Property Management Group",
-      fr: "Demande de location | Property Management Group",
-      ar: "طلب إيجار | Property Management Group"
+    "Rental Application | TenantFirst Management": {
+      es: "Solicitud de alquiler | TenantFirst Management",
+      zh: "租赁申请 | TenantFirst Management",
+      fr: "Demande de location | TenantFirst Management",
+      ar: "طلب إيجار | TenantFirst Management"
     },
-    "Verification Received | Property Management Group": {
-      es: "Verificación recibida | Property Management Group",
-      zh: "验证已收到 | Property Management Group",
-      fr: "Vérification reçue | Property Management Group",
-      ar: "تم استلام التحقق | Property Management Group"
+    "Verification Received | TenantFirst Management": {
+      es: "Verificación recibida | TenantFirst Management",
+      zh: "验证已收到 | TenantFirst Management",
+      fr: "Vérification reçue | TenantFirst Management",
+      ar: "تم استلام التحقق | TenantFirst Management"
     },
     "Could not read the selected image.": {
       es: "No se pudo leer la imagen seleccionada.",
@@ -856,35 +1017,35 @@
       fr: "La compression d’image n’est pas prise en charge par ce navigateur.",
       ar: "ضغط الصور غير مدعوم في هذا المتصفح."
     },
-    "Payment verification received for your Property Management Group rental application review.": {
-      es: "Verificación de pago recibida para la revisión de su solicitud de alquiler con Property Management Group.",
-      zh: "已收到您 Property Management Group 租赁申请的付款验证。",
-      fr: "Vérification de paiement reçue pour l’examen de votre demande de location avec Property Management Group.",
-      ar: "تم استلام التحقق من الدفع لمراجعة طلب الإيجار الخاص بكم مع Property Management Group."
+    "Payment verification received for your TenantFirst Management rental application review.": {
+      es: "Verificación de pago recibida para la revisión de su solicitud de alquiler con TenantFirst Management.",
+      zh: "已收到您 TenantFirst Management 租赁申请的付款验证。",
+      fr: "Vérification de paiement reçue pour l’examen de votre demande de location avec TenantFirst Management.",
+      ar: "تم استلام التحقق من الدفع لمراجعة طلب الإيجار الخاص بكم مع TenantFirst Management."
     },
-    "© 2026 Property Management Group": {
-      es: "© 2026 Property Management Group",
-      zh: "© 2026 Property Management Group",
-      fr: "© 2026 Property Management Group",
-      ar: "© 2026 Property Management Group"
+    "© 2026 TenantFirst Management": {
+      es: "© 2026 TenantFirst Management",
+      zh: "© 2026 TenantFirst Management",
+      fr: "© 2026 TenantFirst Management",
+      ar: "© 2026 TenantFirst Management"
     },
-    "Privately managed rental homes by Property Management Group with a simple, secure application process.": {
-      es: "Viviendas de alquiler administradas de forma privada por Property Management Group con un proceso de solicitud simple y seguro.",
-      zh: "由 Property Management Group 私人管理的出租房源，提供简单安全的申请流程。",
-      fr: "Logements locatifs gérés en privé par Property Management Group avec un processus de candidature simple et sécurisé.",
-      ar: "مساكن إيجار بإدارة خاصة من Property Management Group مع عملية تقديم بسيطة وآمنة."
+    "Privately managed rental homes by TenantFirst Management with a simple, secure application process.": {
+      es: "Viviendas de alquiler administradas de forma privada por TenantFirst Management con un proceso de solicitud simple y seguro.",
+      zh: "由 TenantFirst Management 私人管理的出租房源，提供简单安全的申请流程。",
+      fr: "Logements locatifs gérés en privé par TenantFirst Management avec un processus de candidature simple et sécurisé.",
+      ar: "مساكن إيجار بإدارة خاصة من TenantFirst Management مع عملية تقديم بسيطة وآمنة."
     },
-    "Complete a private rental application for review by Property Management Group.": {
-      es: "Complete una solicitud de alquiler privada para revisión por Property Management Group.",
-      zh: "填写私人租赁申请，由 Property Management Group 审核。",
-      fr: "Remplissez une demande de location privée pour examen par Property Management Group.",
-      ar: "أكمل طلب إيجار خاص للمراجعة من Property Management Group."
+    "Complete a private rental application for review by TenantFirst Management.": {
+      es: "Complete una solicitud de alquiler privada para revisión por TenantFirst Management.",
+      zh: "填写私人租赁申请，由 TenantFirst Management 审核。",
+      fr: "Remplissez une demande de location privée pour examen par TenantFirst Management.",
+      ar: "أكمل طلب إيجار خاص للمراجعة من TenantFirst Management."
     },
-    "Secure application fee payment for your rental application with Property Management Group.": {
-      es: "Pago seguro de la tarifa de solicitud para su solicitud de alquiler con Property Management Group.",
-      zh: "通过 Property Management Group 安全支付租赁申请费用。",
-      fr: "Paiement sécurisé des frais de dossier pour votre demande de location avec Property Management Group.",
-      ar: "دفع آمن لرسوم الطلب لطلب الإيجار الخاص بكم مع Property Management Group."
+    "Secure application fee payment for your rental application with TenantFirst Management.": {
+      es: "Pago seguro de la tarifa de solicitud para su solicitud de alquiler con TenantFirst Management.",
+      zh: "通过 TenantFirst Management 安全支付租赁申请费用。",
+      fr: "Paiement sécurisé des frais de dossier pour votre demande de location avec TenantFirst Management.",
+      ar: "دفع آمن لرسوم الطلب لطلب الإيجار الخاص بكم مع TenantFirst Management."
     },
     "Rental application received confirmation and private review status.": {
       es: "Confirmación de solicitud de alquiler recibida y estado de revisión privada.",
@@ -1263,46 +1424,53 @@
 
   global.__PPM_PAGE_TITLES__ = {
     "index.html": {
-      en: "Property Management Group | Private Property Manager",
-      es: "Property Management Group | Administrador Privado de Propiedades",
-      zh: "Property Management Group | 私人物业经理",
-      fr: "Property Management Group | Gestionnaire privé de propriétés",
-      ar: "Property Management Group | مدير عقارات خاص"
+      en: "TenantFirst Management",
+      es: "TenantFirst Management",
+      zh: "TenantFirst Management",
+      fr: "TenantFirst Management",
+      ar: "TenantFirst Management"
     },
     "apply.html": {
-      en: "Rental Application | Property Management Group",
-      es: "Solicitud de alquiler | Property Management Group",
-      zh: "租赁申请 | Property Management Group",
-      fr: "Demande de location | Property Management Group",
-      ar: "طلب إيجار | Property Management Group"
+      en: "Rental Application | TenantFirst Management",
+      es: "Solicitud de alquiler | TenantFirst Management",
+      zh: "租赁申请 | TenantFirst Management",
+      fr: "Demande de location | TenantFirst Management",
+      ar: "طلب إيجار | TenantFirst Management"
     },
     "application-received.html": {
-      en: "Application Received | Property Management Group",
-      es: "Solicitud recibida | Property Management Group",
-      zh: "申请已收到 | Property Management Group",
-      fr: "Demande reçue | Property Management Group",
-      ar: "تم استلام الطلب | Property Management Group"
+      en: "Application Received | TenantFirst Management",
+      es: "Solicitud recibida | TenantFirst Management",
+      zh: "申请已收到 | TenantFirst Management",
+      fr: "Demande reçue | TenantFirst Management",
+      ar: "تم استلام الطلب | TenantFirst Management"
     },
     "payment.html": {
-      en: "Complete Payment | Property Management Group",
-      es: "Completar pago | Property Management Group",
-      zh: "完成付款 | Property Management Group",
-      fr: "Finaliser le paiement | Property Management Group",
-      ar: "إكمال الدفع | Property Management Group"
+      en: "Complete Payment | TenantFirst Management",
+      es: "Completar pago | TenantFirst Management",
+      zh: "完成付款 | TenantFirst Management",
+      fr: "Finaliser le paiement | TenantFirst Management",
+      ar: "إكمال الدفع | TenantFirst Management"
     },
     "thankyou.html": {
-      en: "Verification Received | Property Management Group",
-      es: "Verificación recibida | Property Management Group",
-      zh: "验证已收到 | Property Management Group",
-      fr: "Vérification reçue | Property Management Group",
-      ar: "تم استلام التحقق | Property Management Group"
+      en: "Verification Received | TenantFirst Management",
+      es: "Verificación recibida | TenantFirst Management",
+      zh: "验证已收到 | TenantFirst Management",
+      fr: "Vérification reçue | TenantFirst Management",
+      ar: "تم استلام التحقق | TenantFirst Management"
     },
     "privacy-notice.html": {
-      en: "Privacy Notice | Property Management Group",
-      es: "Aviso de privacidad | Property Management Group",
-      zh: "隐私声明 | Property Management Group",
-      fr: "Avis de confidentialité | Property Management Group",
-      ar: "إشعار الخصوصية | Property Management Group"
+      en: "Privacy Notice | TenantFirst Management",
+      es: "Aviso de privacidad | TenantFirst Management",
+      zh: "隐私声明 | TenantFirst Management",
+      fr: "Avis de confidentialité | TenantFirst Management",
+      ar: "إشعار الخصوصية | TenantFirst Management"
+    },
+    "credentials.html": {
+      en: "Company Credentials | TenantFirst Management",
+      es: "Credenciales de la empresa | TenantFirst Management",
+      zh: "公司资质 | TenantFirst Management",
+      fr: "Identifiants de l’entreprise | TenantFirst Management",
+      ar: "بيانات الشركة | TenantFirst Management"
     }
   };
 })(

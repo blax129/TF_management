@@ -2,31 +2,35 @@
   "use strict";
 
   const loader = document.getElementById("ppmPageLoader");
-  const message = document.getElementById("ppmPageLoaderMessage");
 
   if (!loader) {
     return;
   }
 
   let hideTimer = 0;
+  let failsafeTimer = 0;
 
-  function show(label) {
+  function show() {
     window.clearTimeout(hideTimer);
+    window.clearTimeout(failsafeTimer);
     loader.hidden = false;
     loader.classList.remove("is-hidden");
     loader.setAttribute("aria-hidden", "false");
+    loader.setAttribute("aria-label", "Loading");
     document.documentElement.setAttribute("aria-busy", "true");
 
-    if (message && label) {
-      message.textContent = label;
-    }
+    failsafeTimer = window.setTimeout(hide, 4000);
   }
 
   function hide() {
     window.clearTimeout(hideTimer);
+    window.clearTimeout(failsafeTimer);
     loader.classList.add("is-hidden");
     loader.setAttribute("aria-hidden", "true");
     document.documentElement.removeAttribute("aria-busy");
+    hideTimer = window.setTimeout(function () {
+      loader.hidden = true;
+    }, 80);
   }
 
   function hideSoon(delay = 0) {
@@ -36,50 +40,15 @@
 
   window.PPMPageLoader = { show, hide, hideSoon };
 
-  document.addEventListener("click", function (event) {
-    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-      return;
-    }
+  function revealPage() {
+    hideSoon(0);
+  }
 
-    const link = event.target.closest("a[href]");
-    if (!link || link.target === "_blank" || link.hasAttribute("download")) {
-      return;
-    }
-
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("javascript:")) {
-      return;
-    }
-
-    let destination;
-    try {
-      destination = new URL(link.href, window.location.href);
-    } catch (error) {
-      return;
-    }
-
-    if (destination.origin !== window.location.origin) {
-      return;
-    }
-
-    const currentWithoutHash = `${window.location.pathname}${window.location.search}`;
-    const destinationWithoutHash = `${destination.pathname}${destination.search}`;
-    if (currentWithoutHash === destinationWithoutHash) {
-      return;
-    }
-
-    show("Loading page…");
-  }, true);
-
-  window.addEventListener("pageshow", function () {
-    hideSoon();
-  });
+  window.addEventListener("pageshow", revealPage);
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      hideSoon();
-    }, { once: true });
+    document.addEventListener("DOMContentLoaded", revealPage, { once: true });
   } else {
-    hideSoon();
+    revealPage();
   }
 })();
