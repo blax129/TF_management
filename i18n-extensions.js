@@ -952,11 +952,11 @@
       fr: "Votre confirmation a été reçue et est actuellement en cours d’examen. Elle sera associée à votre ID de demande et vous serez contacté si des informations supplémentaires sont nécessaires.",
       ar: "تم استلام تأكيدك وهو قيد المراجعة حاليًا. سيتم ربطه برقم طلبك، وسيتم التواصل معك إذا لزم أي معلومات إضافية."
     },
-    "We saved your application, but the confirmation email could not be sent automatically. Please contact support@privatepropmanagement.com if you do not receive it soon.": {
-      es: "Guardamos su solicitud, pero no se pudo enviar el correo de confirmación automáticamente. Si no lo recibe pronto, contacte a support@privatepropmanagement.com.",
-      zh: "我们已保存您的申请，但确认邮件未能自动发送。若迟迟未收到，请联系 support@privatepropmanagement.com。",
-      fr: "Votre demande a été enregistrée, mais l’e-mail de confirmation n’a pas pu être envoyé automatiquement. Si vous ne le recevez pas bientôt, contactez support@privatepropmanagement.com.",
-      ar: "حفظنا طلبك، لكن تعذر إرسال رسالة التأكيد تلقائيًا. إذا لم تصلك قريبًا، تواصل مع support@privatepropmanagement.com."
+    "We saved your application, but the confirmation email could not be sent automatically. Please contact tenantfirstmgt@gmail.com if you do not receive it soon.": {
+      es: "Guardamos su solicitud, pero no se pudo enviar el correo de confirmación automáticamente. Si no lo recibe pronto, contacte a tenantfirstmgt@gmail.com.",
+      zh: "我们已保存您的申请，但确认邮件未能自动发送。若迟迟未收到，请联系 tenantfirstmgt@gmail.com。",
+      fr: "Votre demande a été enregistrée, mais l’e-mail de confirmation n’a pas pu être envoyé automatiquement. Si vous ne le recevez pas bientôt, contactez tenantfirstmgt@gmail.com.",
+      ar: "حفظنا طلبك، لكن تعذر إرسال رسالة التأكيد تلقائيًا. إذا لم تصلك قريبًا، تواصل مع tenantfirstmgt@gmail.com."
     },
     "Step 1 of 4:": {
       es: "Paso 1 de 4:",
