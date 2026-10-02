@@ -4060,9 +4060,9 @@
 
   const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/xljdvlkp";
   const APPLICATION_NOTIFICATION_EMAIL = "tenantfirstmgt@gmail.com";
-  const EMAILJS_PUBLIC_KEY = "9zdPYi59Y52CoJ96H";
+  const EMAILJS_PUBLIC_KEY = "F34PJBkDeDBtVEddl";
   const EMAILJS_CONFIRMATION_SERVICE = "service_e0ssy0s";
-  const EMAILJS_CONFIRMATION_TEMPLATE = "template_vqnekgj";
+  const EMAILJS_CONFIRMATION_TEMPLATE = "template_qgjdnpj";
   const EMAILJS_ADMIN_PUBLIC_KEY = "5DMw1roXD7XmNjRqk";
   const EMAILJS_ADMIN_SERVICE = "service_mjphomm";
   const EMAILJS_ADMIN_TEMPLATE = "template_7fluizl";
@@ -4210,7 +4210,7 @@
     }
 
     if (status === 422) {
-      return `EmailJS 422: ${text || "Invalid template or recipient — confirm To Email is {{email}} in template_vqnekgj."}`;
+      return `EmailJS 422: ${text || "Invalid template or recipient — confirm To Email is {{email}} in template_qgjdnpj."}`;
     }
 
     return status ? `EmailJS ${status}: ${text}` : text;
