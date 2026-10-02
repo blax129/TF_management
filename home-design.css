@@ -320,7 +320,8 @@ html.home-root body.home-page {
 }
 
 html.home-root body.apply-page,
-html.home-root body.application-received-page {
+html.home-root body.application-received-page,
+html.home-root body.simple-flow-page {
   padding-top: calc(88px + env(safe-area-inset-top, 0px)) !important;
 }
 

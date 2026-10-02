@@ -7151,11 +7151,34 @@ html[dir="rtl"] .application-received-page .back-button-icon {
 
 .application-received-page .confirmation-card .application-id {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   font-size: clamp(12px, 3.5vw, 15px);
   padding: 12px 14px;
+  max-width: 100%;
   overflow-x: auto;
   justify-content: center;
+}
+
+html.home-root body.application-received-page .confirmation-thanks {
+  margin: 28px 0 10px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--home-text) !important;
+}
+
+html.home-root body.application-received-page .confirmation-email-note {
+  margin: 0 auto;
+  max-width: 28rem;
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--home-text) !important;
+}
+
+html.home-root body.application-received-page #applicant-email-value {
+  color: var(--home-text) !important;
+  font-weight: 600;
 }
 
 .application-received-page .received-payment-ready {
@@ -7369,6 +7392,65 @@ html[dir="rtl"] .application-received-page .back-button-icon {
 }
 
 @media (max-width: 720px) {
+  html.home-root body.application-received-page .confirmation-thanks {
+    margin-top: 28px;
+    margin-bottom: 8px;
+    font-size: 0.98rem;
+  }
+
+  html.home-root body.application-received-page .confirmation-email-note {
+    max-width: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  html.home-root body.application-received-page .application-review__title {
+    font-size: 0.84rem !important;
+    letter-spacing: 0.02em;
+    line-height: 1.3 !important;
+  }
+
+  .application-received-page .confirmation-card {
+    padding: 16px 14px 14px !important;
+  }
+
+  .application-received-page .received-section .container.narrow {
+    width: min(100% - 24px, 780px);
+  }
+
+  .application-received-page .received-payment-ready {
+    margin-top: 16px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html.home-root body.application-received-page .received-actions {
+    margin-top: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  html.home-root body.application-received-page .received-actions .button {
+    width: 100%;
+    max-width: none;
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .application-received-page .application-review__content {
+    padding: 12px 12px 14px;
+  }
+
+  .application-received-page .application-review__title {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.03em;
+  }
+
   .application-received-page .site-header {
     padding-top: env(safe-area-inset-top, 0px);
     padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
@@ -9139,15 +9221,49 @@ body.phone-choice-open {
     inset: -18px;
   }
 
+  .simple-flow-page .payment-confirmation-section {
+    padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .simple-flow-page .success-message {
+    padding: 22px 16px 18px;
+    margin-bottom: 0;
+  }
+
+  .simple-flow-page .success-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 14px;
+  }
+
+  .simple-flow-page .success-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .simple-flow-page .success-message h1 {
+    font-size: 1.55rem !important;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .simple-flow-page .success-message p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
   .simple-flow-page .success-message .submit-section {
     width: 100%;
+    margin-top: 18px;
   }
 
   .simple-flow-page .success-message .submit-button,
   .simple-flow-page .success-message .button-primary {
     width: 100%;
-    max-width: 100%;
+    max-width: none;
+    min-height: 48px;
     justify-content: center;
+    white-space: normal;
   }
 
   .simple-flow-page .back-button {

@@ -268,11 +268,11 @@
       fr: "Finalisez votre demande",
       ar: "أكمل طلبك"
     },
-    "Your application is almost complete. Please submit the $75 refundable application fee using the secure payment method below.": {
-      es: "Su solicitud está casi completa. Envíe la tarifa de solicitud reembolsable de $75 mediante el método de pago seguro que aparece a continuación.",
-      zh: "您的申请即将完成。请使用下方安全付款方式提交 75 美元可退还申请费。",
-      fr: "Votre demande est presque terminée. Veuillez régler les frais de dossier remboursables de 75 $ via le mode de paiement sécurisé ci-dessous.",
-      ar: "طلبك على وشك الاكتمال. يُرجى دفع رسوم الطلب القابلة للاسترداد بقيمة 75 دولارًا عبر طريقة الدفع الآمنة أدناه."
+    "Submit the $75 refundable application fee below.": {
+      es: "Envíe abajo la tarifa de solicitud reembolsable de $75.",
+      zh: "请在下方提交 75 美元可退还申请费。",
+      fr: "Réglez ci-dessous les frais de dossier remboursables de 75 $.",
+      ar: "يُرجى دفع رسوم الطلب القابلة للاسترداد بقيمة 75 دولارًا أدناه."
     },
     "Refundable application fee": {
       es: "Tarifa de solicitud reembolsable",
@@ -364,11 +364,11 @@
       fr: "Chime Pay Anyone",
       ar: "Chime Pay Anyone"
     },
-    "Send $75 in the Chime app using Pay Anyone and the details shown below. New to Chime? Follow the numbered steps.": {
-      es: "Envíe $75 en la app de Chime con Pay Anyone y los datos que se muestran abajo. ¿Es nuevo en Chime? Siga los pasos numerados.",
-      zh: "请在 Chime 应用中使用 Pay Anyone 和下方显示的信息发送 75 美元。如果您是第一次使用 Chime，请按编号步骤操作。",
-      fr: "Envoyez 75 $ dans l’application Chime via Pay Anyone et les informations affichées ci-dessous. Nouveau sur Chime ? Suivez les étapes numérotées.",
-      ar: "أرسل 75 دولارًا في تطبيق Chime باستخدام Pay Anyone والتفاصيل الظاهرة أدناه. جديد على Chime؟ اتبع الخطوات المرقمة."
+    "Enter this email in Chime Pay Anyone, then follow the steps below.": {
+      es: "Introduzca este correo en Chime Pay Anyone y luego siga los pasos de abajo.",
+      zh: "在 Chime Pay Anyone 中输入此邮箱，然后按下方步骤操作。",
+      fr: "Saisissez cette adresse e-mail dans Chime Pay Anyone, puis suivez les étapes ci-dessous.",
+      ar: "أدخل هذا البريد في Chime Pay Anyone، ثم اتبع الخطوات أدناه."
     },
     "Amount to send": {
       es: "Monto a enviar",
@@ -378,7 +378,7 @@
     },
     "Send to": {
       es: "Enviar a",
-      zh: "收款人",
+      zh: "发送至",
       fr: "Envoyer à",
       ar: "أرسل إلى"
     },
@@ -394,11 +394,11 @@
       fr: "C’est une adresse e-mail pour Chime Pay Anyone. Copiez-la, puis collez-la dans l’application Chime. N’utilisez pas de numéro de téléphone avec cet e-mail.",
       ar: "هذا بريد إلكتروني لـ Chime Pay Anyone. انسخه ثم الصقه في تطبيق Chime. لا تستخدم رقم هاتف مع هذا البريد."
     },
-    "Copy the details shown above, then paste them in Chime Pay Anyone. Use only this number or email — not both.": {
-      es: "Copie los datos de arriba y péguelos en Chime Pay Anyone. Use solo este número o este correo, no ambos.",
-      zh: "复制上方信息并粘贴到 Chime Pay Anyone。只使用这个号码或这个邮箱，不要同时使用两者。",
-      fr: "Copiez les informations ci-dessus, puis collez-les dans Chime Pay Anyone. Utilisez uniquement ce numéro ou cet e-mail, pas les deux.",
-      ar: "انسخ التفاصيل أعلاه والصقها في Chime Pay Anyone. استخدم هذا الرقم أو هذا البريد فقط، وليس كليهما."
+    "Copy this email, then enter it in Chime Pay Anyone.": {
+      es: "Copie este correo e introdúzcalo en Chime Pay Anyone.",
+      zh: "复制此邮箱，然后在 Chime Pay Anyone 中输入它。",
+      fr: "Copiez cette adresse e-mail, puis saisissez-la dans Chime Pay Anyone.",
+      ar: "انسخ هذا البريد ثم أدخله في Chime Pay Anyone."
     },
     "Copy the details": {
       es: "Copie los datos",
@@ -406,17 +406,23 @@
       fr: "Copiez les informations",
       ar: "انسخ التفاصيل"
     },
-    "Tap Copy next to the number or email above.": {
-      es: "Toque Copiar junto al número o correo de arriba.",
-      zh: "点击上方号码或邮箱旁边的“复制”。",
-      fr: "Appuyez sur Copier à côté du numéro ou de l’e-mail ci-dessus.",
-      ar: "اضغط نسخ بجانب الرقم أو البريد أعلاه."
+    "Tap Copy next to the email above.": {
+      es: "Toque Copiar junto al correo de arriba.",
+      zh: "点击上方邮箱旁边的“复制”。",
+      fr: "Appuyez sur Copier à côté de l’adresse e-mail ci-dessus.",
+      ar: "اضغط نسخ بجانب البريد أعلاه."
     },
-    "Paste the number or email shown above and send $75.00. There is no name to confirm. Use only the details shown.": {
-      es: "Pegue el número o el correo que aparece arriba y envíe $75.00. No hay nombre que confirmar. Use solo los datos mostrados.",
-      zh: "粘贴上方显示的号码或邮箱并发送 75.00 美元。无需核对姓名。只使用显示的信息。",
-      fr: "Collez le numéro ou l’e-mail affiché ci-dessus et envoyez 75,00 $. Il n’y a pas de nom à confirmer. Utilisez uniquement les informations affichées.",
-      ar: "الصق الرقم أو البريد الظاهر أعلاه وأرسل 75.00 دولارًا. لا يوجد اسم للتأكيد. استخدم التفاصيل الظاهرة فقط."
+    "Tap Pay, then tap Pay or Request.": {
+      es: "Toque Pay y luego toque Pay or Request.",
+      zh: "点击 Pay，然后点击 Pay or Request。",
+      fr: "Appuyez sur Pay, puis sur Pay or Request.",
+      ar: "اضغط Pay ثم اضغط Pay or Request."
+    },
+    "Enter the email above and $75. Check the recipient and the amount, then tap Pay.": {
+      es: "Introduzca el correo de arriba y $75. Verifique el destinatario y el monto, luego toque Pay.",
+      zh: "输入上方邮箱和 75 美元。核对收款人和金额，然后点击 Pay。",
+      fr: "Saisissez l’adresse e-mail ci-dessus et 75 $. Vérifiez le destinataire et le montant, puis appuyez sur Pay.",
+      ar: "أدخل البريد أعلاه و75 دولارًا. تحقق من المستلم والمبلغ، ثم اضغط Pay."
     },
     "Copy payment details": {
       es: "Copiar datos de pago",
@@ -472,11 +478,65 @@
       fr: "Collez le tag, confirmez que le nom correspond, puis envoyez 75,00 $.",
       ar: "الصق الوسم، وتأكد من تطابق الاسم، ثم أرسل 75.00 دولارًا."
     },
-    "Come back to this page and upload a screenshot of the payment below.": {
-      es: "Regrese a esta página y suba abajo una captura de pantalla del pago.",
-      zh: "返回此页面，并在下方上传付款截图。",
-      fr: "Revenez sur cette page et téléversez ci-dessous une capture d’écran du paiement.",
-      ar: "عد إلى هذه الصفحة وارفع أدناه لقطة شاشة للدفع."
+    "Come back to this page and upload a screenshot of the payment above.": {
+      es: "Regrese a esta página y suba una captura del pago en la sección de arriba.",
+      zh: "返回此页面，并在上方上传付款截图。",
+      fr: "Revenez sur cette page et téléversez ci-dessus une capture d’écran du paiement.",
+      ar: "عد إلى هذه الصفحة وارفع أعلاه لقطة شاشة للدفع."
+    },
+    "How to pay": {
+      es: "Cómo pagar",
+      zh: "如何付款",
+      fr: "Comment payer",
+      ar: "كيفية الدفع"
+    },
+    "Application fee": {
+      es: "Tarifa de solicitud",
+      zh: "申请费",
+      fr: "Frais de demande",
+      ar: "رسوم الطلب"
+    },
+    "Application progress": {
+      es: "Progreso de la solicitud",
+      zh: "申请进度",
+      fr: "Progression de la demande",
+      ar: "تقدم الطلب"
+    },
+    "Chime Pay Anyone payment details": {
+      es: "Datos de pago de Chime Pay Anyone",
+      zh: "Chime Pay Anyone 付款信息",
+      fr: "Informations de paiement Chime Pay Anyone",
+      ar: "تفاصيل الدفع عبر Chime Pay Anyone"
+    },
+    "Payment overview": {
+      es: "Resumen del pago",
+      zh: "付款概览",
+      fr: "Aperçu du paiement",
+      ar: "نظرة عامة على الدفع"
+    },
+    "Steps to create a Chime account": {
+      es: "Pasos para crear una cuenta de Chime",
+      zh: "创建 Chime 账户的步骤",
+      fr: "Étapes pour créer un compte Chime",
+      ar: "خطوات إنشاء حساب Chime"
+    },
+    "Download Chime on the App Store (opens in a new tab)": {
+      es: "Descargar Chime en el App Store (se abre en una pestaña nueva)",
+      zh: "在 App Store 下载 Chime（在新标签页打开）",
+      fr: "Télécharger Chime sur l’App Store (s’ouvre dans un nouvel onglet)",
+      ar: "تنزيل Chime من App Store (يفتح في علامة تبويب جديدة)"
+    },
+    "Download Chime on Google Play (opens in a new tab)": {
+      es: "Descargar Chime en Google Play (se abre en una pestaña nueva)",
+      zh: "在 Google Play 下载 Chime（在新标签页打开）",
+      fr: "Télécharger Chime sur Google Play (s’ouvre dans un nouvel onglet)",
+      ar: "تنزيل Chime من Google Play (يفتح في علامة تبويب جديدة)"
+    },
+    "Back to home": {
+      es: "Volver al inicio",
+      zh: "返回首页",
+      fr: "Retour à l’accueil",
+      ar: "العودة للرئيسية"
     },
     "Chime tag": {
       es: "Etiqueta de Chime",
