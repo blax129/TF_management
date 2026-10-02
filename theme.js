@@ -24,7 +24,11 @@
       button.setAttribute("data-active-theme", theme);
       button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
       button.setAttribute("aria-label", nextLabel);
+      button.dataset.ariaLabelKey = nextLabel;
     });
+    if (window.PPM_I18N && typeof window.PPM_I18N.applyLanguage === "function") {
+      window.PPM_I18N.applyLanguage(document.documentElement.lang || "en");
+    }
   }
 
   document.addEventListener("click", function (event) {

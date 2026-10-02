@@ -142,7 +142,7 @@
   <main>
     <section class="page-hero section">
       <div class="container narrow">
-        <h1>Rental Application</h1>
+        <h1 class="sr-only">Rental Application</h1>
         <p class="listing-bridge-note hero-copy" data-listing-bridge>
           <span data-listing-bridge-variant="generic">You were directed here after inquiring about a rental listing. Complete the application below.</span>
           <span data-listing-bridge-variant="property" hidden><span data-listing-bridge-prefix>You were directed here after inquiring about a rental listing. Complete the application below for the property on </span><strong data-listing-bridge-property></strong>.</span>
@@ -156,7 +156,7 @@
           class="application-form"
           id="application-form"
           data-confirmation="application-received.html"
-          data-formspree-endpoint="https://formspree.io/f/mnjeolkq"
+          data-formspree-endpoint="https://formspree.io/f/xljdvlkp"
           data-emailjs-service="service_6f9hfc4"
           data-emailjs-template="template_vqnekgj"
           data-emailjs-public-key="9zdPYi59Y52CoJ96H"
@@ -330,40 +330,58 @@
 
           <fieldset class="final-step-fieldset">
             <legend class="sr-only">Final step agreement</legend>
-            <div class="agreement-panel">
-              <div class="agreement-panel__header">
-                <div class="agreement-panel__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
-                    <path d="M12 3l8 4v5c0 5-3.5 8.7-8 9-4.5-.3-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div class="agreement-panel__intro">
-                  <p class="agreement-panel__eyebrow">Before you submit</p>
-                  <h3 class="agreement-panel__title" id="final-step-heading">Certification &amp; Acknowledgment</h3>
-                </div>
-              </div>
+            <div class="agreement-stack">
+              <section class="agreement-panel" aria-labelledby="final-step-heading">
+                <header class="agreement-panel__intro">
+                  <span class="agreement-panel__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+                      <path d="M8 4.5h6.2L17.5 8v11.5H8V4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                      <path d="M14.1 4.5V8H17.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                      <path d="M10.2 13.4 11.9 15l3.3-3.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div class="agreement-panel__intro-copy">
+                    <p class="agreement-panel__eyebrow">Before you submit</p>
+                    <h3 class="agreement-panel__title" id="final-step-heading">Certification &amp; Acknowledgment</h3>
+                  </div>
+                </header>
 
-              <div class="agreement-panel__body">
-                <section class="agreement-panel__section" aria-labelledby="agreement-certification-heading">
-                  <h4 class="agreement-panel__section-title" id="agreement-certification-heading">Application certification</h4>
-                  <p>I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.</p>
-                </section>
-                <section class="agreement-panel__section" aria-labelledby="agreement-fee-heading">
-                  <h4 class="agreement-panel__section-title" id="agreement-fee-heading">Fee &amp; next steps</h4>
-                  <p>I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.</p>
-                </section>
-              </div>
+                <div class="agreement-panel__readable" data-agreement-expand>
+                  <div class="agreement-panel__section agreement-panel__section--lead">
+                    <h4 class="agreement-panel__section-title" id="agreement-certification-heading">Application certification</h4>
+                    <p class="agreement-panel__excerpt">I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.</p>
+                  </div>
+                  <div class="agreement-panel__extra" id="certificationExtra">
+                    <div class="agreement-panel__section" aria-labelledby="agreement-fee-heading">
+                      <h4 class="agreement-panel__section-title" id="agreement-fee-heading">Fee &amp; next steps</h4>
+                      <p>I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.</p>
+                    </div>
+                  </div>
+                  <button class="agreement-panel__more-btn" type="button" data-agreement-expand-btn aria-expanded="false" aria-controls="certificationExtra">Read more</button>
+                </div>
 
-              <div class="agreement-panel__confirm">
                 <label class="agreement-panel__label" for="agreement">
                   <input id="agreement" name="agreement" type="checkbox" required aria-labelledby="final-step-heading agreement-confirm-text">
                   <span class="agreement-panel__label-text" id="agreement-confirm-text">I have read and agree to the statements above.</span>
+                  <span class="agreement-panel__box" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none">
+                      <path d="M2.1 6.2 4.8 8.9 9.9 3.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
                 </label>
+              </section>
 
-                <div class="agreement-panel__privacy-card" aria-labelledby="agreement-privacy-heading">
-                  <div class="agreement-panel__privacy-header">
-                    <p class="agreement-panel__privacy-title" id="agreement-privacy-heading">Privacy &amp; Data Processing Consent</p>
+              <section class="agreement-panel" aria-labelledby="agreement-privacy-heading">
+                <div class="agreement-panel__privacy-header">
+                  <span class="agreement-panel__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" width="22" height="22">
+                      <path d="M8 11V8.4a4 4 0 0 1 8 0V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                      <rect x="6.5" y="11" width="11" height="8.5" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M12 14.2v2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div class="agreement-panel__intro-copy">
+                    <h3 class="agreement-panel__title agreement-panel__privacy-title" id="agreement-privacy-heading">Privacy &amp; Data Processing Consent</h3>
                     <a class="agreement-panel__privacy-link" id="privacy-notice-link" href="privacy-notice.html">
                       <span>View Privacy Notice</span>
                       <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true">
@@ -371,28 +389,33 @@
                       </svg>
                     </a>
                   </div>
-                  <label class="agreement-panel__label agreement-panel__label--consent" for="privacy-consent">
-                    <input id="privacy-consent" name="privacy-consent" type="checkbox" required aria-labelledby="agreement-privacy-heading privacy-consent-text">
-                    <span class="agreement-panel__label-text agreement-panel__label-text--consent" id="privacy-consent-text">I consent to the collection, storage, verification, and processing of the information provided in this application for rental screening, application review, communication, and related property management purposes.</span>
-                  </label>
-                  <p class="agreement-panel__security-note" role="note">
-                    <span class="agreement-panel__security-icon" aria-hidden="true">
-                      <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-                        <path d="M8 1.75l4.5 2.25v3.25c0 3.1-1.95 5.45-4.5 6-2.55-.55-4.5-2.9-4.5-6V4L8 1.75z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
-                        <path d="M6 8l1.25 1.25L10 6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                    <span class="agreement-panel__security-copy">Your information is transmitted securely and used only for application processing and communication purposes.</span>
-                  </p>
                 </div>
+                <label class="agreement-panel__label" for="privacy-consent">
+                  <input id="privacy-consent" name="privacy-consent" type="checkbox" required aria-labelledby="agreement-privacy-heading privacy-consent-text">
+                  <span class="agreement-panel__label-text" id="privacy-consent-text">I consent to the collection, storage, verification, and processing of the information provided in this application for rental screening, application review, communication, and related property management purposes.</span>
+                  <span class="agreement-panel__box" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none">
+                      <path d="M2.1 6.2 4.8 8.9 9.9 3.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </label>
+                <p class="agreement-panel__security-note" role="note">
+                  <span class="agreement-panel__security-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                      <path d="M8 1.75l4.5 2.25v3.25c0 3.1-1.95 5.45-4.5 6-2.55-.55-4.5-2.9-4.5-6V4L8 1.75z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                      <path d="M6 8l1.25 1.25L10 6.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="agreement-panel__security-copy">Your information is transmitted securely and used only for application processing and communication purposes.</span>
+                </p>
+              </section>
 
-                <div class="agreement-panel__payment-method" aria-labelledby="agreement-payment-method-heading">
-                  <p class="agreement-panel__payment-method-title" id="agreement-payment-method-heading">Payment method for the fee</p>
-                  <div class="agreement-panel__payment-method-logo">
-                    <img src="image/chime-logo.svg" alt="Chime" width="132" height="36" loading="lazy" decoding="async">
-                  </div>
+              <section class="agreement-panel" aria-labelledby="agreement-payment-method-heading">
+                <p class="agreement-panel__payment-method-title" id="agreement-payment-method-heading">Payment method for the fee</p>
+                <div class="agreement-panel__payment-method-logo">
+                  <img src="image/chime-americas-choice.jpg" alt="Chime, America's #1 Choice for Banking" width="819" height="1024" loading="lazy" decoding="async">
                 </div>
-              </div>
+              </section>
             </div>
           </fieldset>
 

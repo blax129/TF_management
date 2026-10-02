@@ -46,6 +46,7 @@
       fr: "Téléphone",
       ar: "الهاتف"
     },
+    "Light": {
       es: "Claro",
       zh: "浅色",
       fr: "Clair",
@@ -62,6 +63,24 @@
       zh: "隐私声明",
       fr: "Avis de confidentialité",
       ar: "إشعار الخصوصية"
+    },
+    "Broward County Governmental Center": {
+      es: "Centro Gubernamental del Condado de Broward",
+      zh: "布劳沃德县政府中心",
+      fr: "Centre gouvernemental du comté de Broward",
+      ar: "مركز حكومة مقاطعة بروارد"
+    },
+    "115 South Andrews Avenue, Room 111": {
+      es: "115 South Andrews Avenue, Sala 111",
+      zh: "115 South Andrews Avenue，111 室",
+      fr: "115 South Andrews Avenue, bureau 111",
+      ar: "115 South Andrews Avenue، الغرفة 111"
+    },
+    "Fort Lauderdale, Florida 33301": {
+      es: "Fort Lauderdale, Florida 33301",
+      zh: "劳德代尔堡，佛罗里达 33301",
+      fr: "Fort Lauderdale, Floride 33301",
+      ar: "فورت لودرديل، فلوريدا 33301"
     },
     "Public name": {
       es: "Nombre público",
@@ -171,17 +190,23 @@
       fr: "Retour à la demande reçue",
       ar: "العودة إلى تأكيد استلام الطلب"
     },
-    "Quick check": {
-      es: "Revisión rápida",
-      zh: "快速核对",
-      fr: "Vérification rapide",
-      ar: "مراجعة سريعة"
+    "Pending": {
+      es: "Pendiente",
+      zh: "待处理",
+      fr: "En attente",
+      ar: "قيد الانتظار"
     },
-    "Review your details": {
-      es: "Revise sus datos",
-      zh: "核对您的信息",
-      fr: "Vérifiez vos informations",
-      ar: "راجع بياناتك"
+    "12 months": {
+      es: "12 meses",
+      zh: "12 个月",
+      fr: "12 mois",
+      ar: "12 شهرًا"
+    },
+    "Review your details and edit if needed": {
+      es: "Revise sus datos y edite si es necesario",
+      zh: "核对您的信息，如需修改请编辑",
+      fr: "Vérifiez vos informations et modifiez-les si besoin",
+      ar: "راجع بياناتك وعدّلها عند الحاجة"
     },
     "Confirm everything looks right before continuing. You can edit now if something needs to change.": {
       es: "Confirme que todo esté correcto antes de continuar. Puede editar ahora si algo necesita cambiar.",
@@ -194,12 +219,6 @@
       zh: "编辑",
       fr: "Modifier",
       ar: "تعديل"
-    },
-    "Go back and edit application": {
-      es: "Volver y editar la solicitud",
-      zh: "返回并编辑申请",
-      fr: "Revenir et modifier la demande",
-      ar: "العودة وتعديل الطلب"
     },
     "Full legal name": {
       es: "Nombre legal completo",
@@ -903,11 +922,11 @@
       fr: "Demande envoyée avec succès",
       ar: "تم إرسال الطلب بنجاح"
     },
-    "Thank you for submitting your rental application.": {
-      es: "Gracias por enviar su solicitud de alquiler.",
-      zh: "感谢您提交租赁申请。",
-      fr: "Merci d’avoir envoyé votre demande de location.",
-      ar: "شكرًا لك على إرسال طلب الإيجار."
+    "Thank you for your rental application.": {
+      es: "Gracias por su solicitud de alquiler.",
+      zh: "感谢您的租赁申请。",
+      fr: "Merci pour votre demande de location.",
+      ar: "شكرًا لك على طلب الإيجار."
     },
     "Continue to Payment Instructions": {
       es: "Continuar a las instrucciones de pago",
@@ -968,6 +987,30 @@
       zh: "确认",
       fr: "Confirmation",
       ar: "التأكيد"
+    },
+    "Application progress overview": {
+      es: "Resumen del progreso de la solicitud",
+      zh: "申请进度概览",
+      fr: "Aperçu de l’avancement de la demande",
+      ar: "نظرة عامة على تقدم الطلب"
+    },
+    "Application": {
+      es: "Solicitud",
+      zh: "申请",
+      fr: "Demande",
+      ar: "الطلب"
+    },
+    "Review": {
+      es: "Revisión",
+      zh: "审核",
+      fr: "Examen",
+      ar: "المراجعة"
+    },
+    "Payment": {
+      es: "Pago",
+      zh: "付款",
+      fr: "Paiement",
+      ar: "الدفع"
     },
     "Complete Payment | TenantFirst Management": {
       es: "Completar pago | TenantFirst Management",
@@ -1406,6 +1449,108 @@
       zh: "我喜欢他们在我付任何钱之前就把一切都讲清楚了。",
       fr: "J’ai aimé qu’ils m’expliquent tout avant que je paie quoi que ce soit.",
       ar: "أعجبني أنهم شرحوا لي كل شيء قبل أن أدفع أي شيء."
+    },
+    "Loading": {
+      es: "Cargando",
+      zh: "加载中",
+      fr: "Chargement",
+      ar: "جارٍ التحميل"
+    },
+    "Close navigation": {
+      es: "Cerrar navegación",
+      zh: "关闭导航",
+      fr: "Fermer la navigation",
+      ar: "إغلاق التنقل"
+    },
+    "Leadership and team": {
+      es: "Liderazgo y equipo",
+      zh: "领导团队",
+      fr: "Direction et équipe",
+      ar: "القيادة والفريق"
+    },
+    "What it covers": {
+      es: "Qué cubre",
+      zh: "涵盖内容",
+      fr: "Ce que cela couvre",
+      ar: "ما الذي تغطيه"
+    },
+    "When it is refundable": {
+      es: "Cuándo es reembolsable",
+      zh: "何时可退还",
+      fr: "Quand c’est remboursable",
+      ar: "متى تكون قابلة للاسترداد"
+    },
+    "If you are approved": {
+      es: "Si lo aprueban",
+      zh: "如果获批",
+      fr: "Si vous êtes accepté",
+      ar: "إذا تمت الموافقة"
+    },
+    "The application fee supports screening, verification, and direct review of your rental application by our property management team.": {
+      es: "La tarifa de solicitud cubre la evaluación, la verificación y la revisión directa de su solicitud de alquiler por nuestro equipo de administración de propiedades.",
+      zh: "申请费用于筛选、核验，以及由我们的物业管理团队直接审核您的租赁申请。",
+      fr: "Les frais de dossier couvrent la sélection, la vérification et l’examen direct de votre demande de location par notre équipe de gestion immobilière.",
+      ar: "تغطي رسوم الطلب الفحص والتحقق والمراجعة المباشرة لطلب الإيجار من فريق إدارة العقارات لدينا."
+    },
+    "The fee is returned if your application is not approved or if you choose not to move forward after your property tour.": {
+      es: "La tarifa se devuelve si su solicitud no es aprobada o si decide no continuar después de la visita a la propiedad.",
+      zh: "如果申请未获批准，或您在看房后选择不继续，费用将予以退还。",
+      fr: "Les frais sont remboursés si votre demande n’est pas approuvée ou si vous choisissez de ne pas poursuivre après la visite du bien.",
+      ar: "تُعاد الرسوم إذا لم تتم الموافقة على طلبك أو إذا اخترت عدم المتابعة بعد جولة العقار."
+    },
+    "When approved and you decide to lease the home, the application fee is applied toward your first month’s rent.": {
+      es: "Cuando lo aprueben y decida arrendar la vivienda, la tarifa de solicitud se aplica al alquiler del primer mes.",
+      zh: "获批后若您决定承租该房屋，申请费将抵作首月租金。",
+      fr: "Une fois accepté, si vous décidez de louer le logement, les frais de dossier s’appliquent au loyer du premier mois.",
+      ar: "عند الموافقة وقراركم استئجار المنزل، تُطبَّق رسوم الطلب على إيجار الشهر الأول."
+    },
+    "A refundable application fee is a payment that will be returned to you if your application is not approved or if you decide not to move forward after the tour. Refund requests are processed within an hour of receiving your request, provided the application has not been approved.": {
+      es: "Una tarifa de solicitud reembolsable es un pago que se le devolverá si su solicitud no es aprobada o si decide no continuar después de la visita. Las solicitudes de reembolso se procesan dentro de una hora después de recibir su solicitud, siempre que la solicitud no haya sido aprobada.",
+      zh: "可退还申请费是指如果您的申请未获批准，或您看房后决定不继续，该费用将退还给您。在申请尚未获批的情况下，退款请求将在收到请求后一小时内处理。",
+      fr: "Des frais de demande remboursables sont un paiement qui vous sera retourné si votre demande n’est pas approuvée ou si vous décidez de ne pas poursuivre après la visite. Les demandes de remboursement sont traitées dans l’heure suivant leur réception, si la demande n’a pas été approuvée.",
+      ar: "رسوم الطلب القابلة للاسترداد هي دفعة ستعاد إليك إذا لم تتم الموافقة على طلبك أو إذا قررت عدم المتابعة بعد الجولة. تتم معالجة طلبات الاسترداد خلال ساعة من استلام طلبك، بشرط ألا يكون الطلب قد تمت الموافقة عليه."
+    },
+    "Yes, there is a refundable application fee of $75, which is paid through Chime after your application is submitted. The fee supports application screening and review. It is refundable if your application is not approved or if you choose not to move forward after your tour.": {
+      es: "Sí, hay una tarifa de solicitud reembolsable de $75, que se paga a través de Chime después de enviar su solicitud. La tarifa cubre la evaluación y revisión de la solicitud. Es reembolsable si su solicitud no es aprobada o si decide no continuar después de la visita.",
+      zh: "是的，有一笔 75 美元的可退还申请费，需在提交申请后通过 Chime 支付。该费用用于申请筛选与审核。如果申请未获批准，或您在看房后选择不继续，可以退还。",
+      fr: "Oui, il y a des frais de demande remboursables de 75 $, payés via Chime après l’envoi de votre demande. Ils couvrent la sélection et l’examen du dossier. Ils sont remboursables si votre demande n’est pas approuvée ou si vous choisissez de ne pas poursuivre après la visite.",
+      ar: "نعم، توجد رسوم طلب قابلة للاسترداد بقيمة 75 دولارًا، وتُدفع عبر Chime بعد إرسال طلبك. تدعم الرسوم فحص الطلب ومراجعته. وهي قابلة للاسترداد إذا لم تتم الموافقة على طلبك أو إذا اخترت عدم المتابعة بعد الجولة."
+    },
+    "HOA Home Owners Association": {
+      es: "HOA Asociación de propietarios",
+      zh: "HOA 业主协会",
+      fr: "HOA Association de propriétaires",
+      ar: "HOA جمعية ملاك المنازل"
+    },
+    "The Fair Housing Center": {
+      es: "The Fair Housing Center",
+      zh: "公平住房中心",
+      fr: "The Fair Housing Center",
+      ar: "مركز الإسكان العادل"
+    },
+    "Community Associations Institute": {
+      es: "Community Associations Institute",
+      zh: "社区协会学会",
+      fr: "Community Associations Institute",
+      ar: "معهد جمعيات المجتمعات"
+    },
+    "Team members outdoors at a community property event": {
+      es: "Miembros del equipo al aire libre en un evento comunitario de la propiedad",
+      zh: "团队成员在社区物业活动的户外合影",
+      fr: "Membres de l’équipe en extérieur lors d’un événement communautaire",
+      ar: "أعضاء الفريق في الهواء الطلق خلال فعالية مجتمعية بالعقار"
+    },
+    "Team group photo at an office gathering": {
+      es: "Foto grupal del equipo en una reunión de oficina",
+      zh: "团队在办公聚会中的合影",
+      fr: "Photo de groupe de l’équipe lors d’une réunion au bureau",
+      ar: "صورة جماعية للفريق في تجمع مكتبي"
+    },
+    "Staff and guests at a training presentation": {
+      es: "Personal e invitados en una presentación de capacitación",
+      zh: "员工与来宾在培训演示现场",
+      fr: "Personnel et invités lors d’une présentation de formation",
+      ar: "الموظفون والضيوف في عرض تدريبي"
     }
   };
 
@@ -1416,6 +1561,10 @@
     langs.forEach((lang) => {
       if (paymentStrings[key][lang]) {
         extensions[lang][key] = paymentStrings[key][lang];
+        const straightKey = key.replace(/\u2019/g, "'");
+        if (straightKey !== key) {
+          extensions[lang][straightKey] = paymentStrings[key][lang];
+        }
       }
     });
   });

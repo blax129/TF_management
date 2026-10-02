@@ -26,8 +26,10 @@ html.home-root {
   --home-info: #B4B6FF;
   --home-info-bg: #171833;
   --home-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --home-header-bar: 82px;
   background-color: var(--home-bg);
   color-scheme: dark;
+  scroll-padding-top: calc(var(--home-header-bar) + env(safe-area-inset-top, 0px) + 12px);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -282,6 +284,7 @@ html.home-root body .contact-identity-copy,
 html.home-root body .contact-legal-name,
 html.home-root body .contact-service-states,
 html.home-root body .footer-legal,
+html.home-root body .footer-address,
 html.home-root body .team-card__bio,
 html.home-root body .team-card__role {
   color: var(--home-text-secondary) !important;
@@ -306,7 +309,29 @@ html.home-root body :focus-visible {
   box-shadow: none !important;
 }
 
+@media (max-width: 719px) {
+  html.home-root {
+    --home-header-bar: 64px;
+  }
+}
+
+html.home-root body.home-page {
+  padding-top: calc(var(--home-header-bar) + env(safe-area-inset-top, 0px)) !important;
+}
+
+html.home-root body.apply-page,
+html.home-root body.application-received-page {
+  padding-top: calc(88px + env(safe-area-inset-top, 0px)) !important;
+}
+
 html.home-root body .site-header {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0;
+  left: 0;
+  z-index: 80;
+  width: 100%;
+  padding-top: env(safe-area-inset-top, 0px);
   background: color-mix(in srgb, var(--home-bg) 92%, transparent) !important;
   background-color: var(--home-bg) !important;
   border-bottom: 1px solid var(--home-border) !important;
@@ -342,9 +367,15 @@ html.home-root body .nav-toggle span:not(.sr-only) {
 html.home-root body .site-nav,
 html.home-root body .site-nav.is-open,
 html.home-root[data-theme="dark"] body .site-nav.is-open {
+  top: calc(var(--home-header-bar) + env(safe-area-inset-top, 0px) + 8px);
+  z-index: 85;
   background: var(--home-surface) !important;
   border: 1px solid var(--home-border) !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35) !important;
+}
+
+html.home-root body .nav-overlay {
+  z-index: 75;
 }
 
 html.home-root body .site-nav a {
@@ -659,6 +690,36 @@ html.home-root body .contact-info-label {
   color: var(--home-text-secondary) !important;
 }
 
+html.home-root body .contact-info-value,
+html.home-root body .contact-info-link .contact-channel-text {
+  color: var(--home-text) !important;
+}
+
+@media (max-width: 719px) {
+  html.home-root body .contact-info-label {
+    color: var(--home-text) !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  html.home-root body .contact-info-value,
+  html.home-root body .contact-info-link .contact-info-value,
+  html.home-root body .contact-info-link .contact-channel-text {
+    color: var(--home-text) !important;
+    font-size: 1.08rem !important;
+    font-weight: 650 !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.45 !important;
+  }
+
+  html.home-root body .contact-phone-ltr .contact-info-value {
+    font-size: 1.22rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em !important;
+  }
+}
+
 html.home-root body .contact-info-link:hover,
 html.home-root body .contact-info-link:focus-visible {
   color: var(--home-link) !important;
@@ -733,11 +794,41 @@ html.home-root body .confirmation-card,
 html.home-root body .success-message,
 html.home-root body .privacy-document,
 html.home-root body .credentials-card,
-html.home-root body .pp-card {
+html.home-root body .pp-card,
+html.home-root body .application-review {
   background: var(--home-surface) !important;
   border: 1px solid var(--home-border) !important;
   box-shadow: none !important;
   color: var(--home-text) !important;
+}
+
+html.home-root body .application-review__header {
+  background: var(--home-surface-raised) !important;
+  border-bottom: 1px solid var(--home-border) !important;
+}
+
+html.home-root body .application-review__title {
+  color: var(--home-text) !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+}
+
+html.home-root body .application-review__group-title {
+  background: var(--home-surface-raised) !important;
+  border: 1px solid var(--home-border) !important;
+  color: var(--home-text) !important;
+  box-shadow: none !important;
+}
+
+html.home-root body .application-review__row-edit {
+  color: var(--home-link) !important;
+}
+
+html.home-root body .application-review__more-actions::before {
+  background: linear-gradient(180deg, transparent, var(--home-surface) 90%) !important;
 }
 
 html.home-root body .status-badge {
@@ -783,6 +874,106 @@ html.home-root body.payment-premium .property-context-banner__icon {
   background: var(--home-accent) !important;
   color: var(--home-primary-text) !important;
   border-color: var(--home-accent) !important;
+}
+
+html.home-root body .final-step-fieldset {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel {
+  background: #0C0D12 !important;
+  border-color: #3D3E4A !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__header {
+  background: #15161D !important;
+  border-bottom-color: #32333C !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__icon,
+html.home-root[data-theme="dark"] body .agreement-panel__security-icon {
+  color: #D0D1FF !important;
+  background: #1B1C28 !important;
+  border-color: #45466A !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__eyebrow,
+html.home-root[data-theme="dark"] body .agreement-panel__payment-method-title {
+  color: #C8C9D4 !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__title,
+html.home-root[data-theme="dark"] body .agreement-panel__section-title,
+html.home-root[data-theme="dark"] body .agreement-panel__privacy-title,
+html.home-root[data-theme="dark"] body .agreement-panel__label-text {
+  color: #F7F7F8 !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__section p,
+html.home-root[data-theme="dark"] body .agreement-panel__label-text--consent,
+html.home-root[data-theme="dark"] body .agreement-panel__security-note,
+html.home-root[data-theme="dark"] body .agreement-panel__security-copy {
+  color: #E6E7F0 !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel p {
+  color: #E6E7F0 !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__label,
+html.home-root[data-theme="dark"] body .agreement-panel__privacy-card {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__label--consent {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__box {
+  background: #12131A !important;
+  border-color: #F4F4F5 !important;
+  color: #12131A !important;
+  box-shadow: 0 0 0 3px rgba(244, 244, 245, 0.16) !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__label input[type="checkbox"]:checked ~ .agreement-panel__box {
+  background: #F4F4F5 !important;
+  border-color: #F4F4F5 !important;
+  box-shadow: 0 0 0 3px rgba(244, 244, 245, 0.22) !important;
+}
+
+html.home-root[data-theme="light"] body .agreement-panel__box {
+  background: #ffffff !important;
+  border-color: #17181C !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(23, 24, 28, 0.08) !important;
+}
+
+html.home-root[data-theme="light"] body .agreement-panel__label input[type="checkbox"]:checked ~ .agreement-panel__box {
+  background: #17181C !important;
+  border-color: #17181C !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__more-btn,
+html.home-root[data-theme="dark"] body .agreement-panel__privacy-link {
+  color: #E4E5FF !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__readable:not(.is-open) .agreement-panel__section--lead::after {
+  background: linear-gradient(180deg, transparent, #0C0D12) !important;
+}
+
+html.home-root[data-theme="dark"] body .agreement-panel__intro,
+html.home-root[data-theme="dark"] body .agreement-panel__section + .agreement-panel__section,
+html.home-root[data-theme="dark"] body .agreement-panel__section + .agreement-panel__label,
+html.home-root[data-theme="dark"] body .agreement-panel__privacy-header,
+html.home-root[data-theme="dark"] body .agreement-panel__security-note,
+html.home-root[data-theme="dark"] body .agreement-panel__payment-method {
+  border-color: #32333C !important;
 }
 
 html.home-root body .credentials-hero__mark.home-mark-stack {

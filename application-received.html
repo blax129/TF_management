@@ -126,11 +126,6 @@
   <main>
     <section class="section received-section">
       <div class="container narrow">
-        <!-- Status Badge -->
-        <div class="status-badge">
-          <span>Application Submitted Successfully</span>
-        </div>
-
         <!-- Application Received Card -->
         <div class="confirmation-card">
           <div class="property-context-banner property-context-banner--compact" data-property-context-banner hidden>
@@ -147,24 +142,29 @@
             </div>
           </div>
 
-          <p>Thank you for submitting your rental application.</p>
-          <p>A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.</p>
-          
           <div class="application-id">
-            <strong>Application ID:</strong>
-            <span id="application-id-value" data-no-i18n>Pending</span>
+            <strong>Application ID:</strong> <span id="application-id-value" data-no-i18n>Pending</span>
           </div>
+
+          <p>Thank you for your rental application.</p>
+          <p id="confirmation-email-note-generic">A confirmation email has been sent to you.</p>
+          <p id="confirmation-email-note-addressed" hidden><span>A confirmation email has been sent to you at</span> <span id="applicant-email-value" data-no-i18n></span>.</p>
+          <p class="confirmation-email-spam-note">If you do not see it, check your spam folder.</p>
 
           <section class="application-review" id="applicationReviewPanel" aria-labelledby="application-review-title" hidden>
             <header class="application-review__header">
-              <div class="application-review__heading">
-                <p class="application-review__eyebrow">Quick check</p>
-                <h2 class="application-review__title" id="application-review-title">Review your details</h2>
-              </div>
-              <a class="application-review__edit" id="applicationReviewEditLink" href="apply.html">Edit</a>
+              <h2 class="application-review__title" id="application-review-title">Review your details and edit if needed</h2>
             </header>
-            <p class="application-review__lead">Confirm everything looks right before continuing. You can edit now if something needs to change.</p>
-            <div class="application-review__body" id="applicationReviewBody"></div>
+            <div class="application-review__content">
+              <p class="application-review__lead">Confirm everything looks right before continuing. You can edit now if something needs to change.</p>
+              <div class="application-review__body" id="applicationReviewBody"></div>
+              <div class="application-review__more-actions" id="applicationReviewSeeMoreActions" hidden>
+                <button type="button" class="section-see-more" id="applicationReviewSeeMore" aria-expanded="false" aria-controls="applicationReviewBody">
+                  See more
+                  <span class="section-see-more__chevron" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
           </section>
 
           <div class="received-payment-ready">
@@ -174,27 +174,11 @@
                 class="button button-primary button-full"
                 href="payment.html"
               >Continue to Payment Instructions</a>
-              <a class="received-edit-link" id="applicationReviewEditLinkSecondary" href="apply.html">Go back and edit application</a>
             </div>
           </div>
         </div>
 
 
-      </div>
-    </section>
-
-    <!-- Equal Housing Opportunity Section -->
-    <section class="section ehc-section">
-      <div class="container narrow">
-        <div class="ehc-card">
-          <div class="ehc-logo-placeholder">
-            <img src="image/logo2.jpeg" alt="Equal Housing Opportunity Logo">
-          </div>
-          <div class="ehc-content">
-            <h3>Equal Housing Opportunity</h3>
-            <p>We support fair and equal housing practices for all applicants in accordance with applicable housing guidelines and nondiscrimination standards.</p>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -238,6 +222,32 @@
         ? window.PPM_PROPERTY.readApplicationReviewSnapshot()
         : null;
       const applicationId = idFromUrl || storedId || (reviewSnapshot && reviewSnapshot.applicationId) || '';
+      const applicantEmail = String(
+        (reviewSnapshot && reviewSnapshot.data && reviewSnapshot.data.email) ||
+        window.sessionStorage.getItem('latestApplicationEmail') ||
+        window.localStorage.getItem('latestApplicationEmail') ||
+        ''
+      ).trim();
+      const genericEmailNote = document.getElementById('confirmation-email-note-generic');
+      const addressedEmailNote = document.getElementById('confirmation-email-note-addressed');
+      const emailTarget = document.getElementById('applicant-email-value');
+      if (applicantEmail && addressedEmailNote && emailTarget) {
+        emailTarget.textContent = applicantEmail;
+        addressedEmailNote.hidden = false;
+        if (genericEmailNote) {
+          genericEmailNote.hidden = true;
+        }
+        try {
+          window.sessionStorage.setItem('latestApplicationEmail', applicantEmail);
+        } catch (error) {
+          console.warn('Could not persist applicant email:', error);
+        }
+      } else if (genericEmailNote) {
+        genericEmailNote.hidden = false;
+        if (addressedEmailNote) {
+          addressedEmailNote.hidden = true;
+        }
+      }
       const selectedLanguage = normalizeLanguage(languageFromUrl ||
         window.sessionStorage.getItem('latestApplicationLanguage') ||
         window.localStorage.getItem('latestApplicationLanguage') ||
@@ -247,7 +257,10 @@
 
       if (applicationId) {
         idTarget.textContent = applicationId;
+        idTarget.setAttribute('data-no-i18n', '');
         delete idTarget.dataset.translationKey;
+      } else {
+        idTarget.removeAttribute('data-no-i18n');
         try {
           window.sessionStorage.setItem('latestApplicationId', applicationId);
           window.localStorage.setItem('latestApplicationId', applicationId);
@@ -281,12 +294,21 @@
         backButton.dataset.fallbackHome = backButton.href;
       }
 
-      const editLinks = [
-        document.getElementById('applicationReviewEditLink'),
-        document.getElementById('applicationReviewEditLinkSecondary')
-      ].filter(Boolean);
+      const editLinks = Array.from(document.querySelectorAll('.application-review__row-edit'));
       editLinks.forEach((link) => {
-        link.href = backButton ? backButton.href : (selectedLanguage === 'en' ? 'apply.html' : `apply.html?lang=${encodeURIComponent(selectedLanguage)}`);
+        const fieldName = link.getAttribute('data-edit-field');
+        const baseHref = backButton ? backButton.href : (selectedLanguage === 'en' ? 'apply.html' : `apply.html?lang=${encodeURIComponent(selectedLanguage)}`);
+        if (!fieldName) {
+          link.href = baseHref;
+          return;
+        }
+        try {
+          const url = new URL(baseHref, window.location.href);
+          url.searchParams.set('edit', fieldName);
+          link.href = `${url.pathname.split('/').pop()}${url.search}`;
+        } catch (error) {
+          link.href = `${baseHref}${baseHref.includes('?') ? '&' : '?'}edit=${encodeURIComponent(fieldName)}`;
+        }
       });
 
       const paymentLink = document.getElementById('payment-next-steps-link');

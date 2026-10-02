@@ -333,6 +333,60 @@
       fr: "Demande reçue. Ouverture de la confirmation...",
       ar: "تم استلام الطلب. جارٍ فتح صفحة التأكيد..."
     },
+    "Read more": {
+      es: "Leer más",
+      zh: "阅读更多",
+      fr: "Lire plus",
+      ar: "اقرأ المزيد"
+    },
+    "Show less": {
+      es: "Mostrar menos",
+      zh: "收起",
+      fr: "Afficher moins",
+      ar: "عرض أقل"
+    },
+    "Application progress overview": {
+      es: "Resumen del progreso de la solicitud",
+      zh: "申请进度概览",
+      fr: "Aperçu de l’avancement de la demande",
+      ar: "نظرة عامة على تقدم الطلب"
+    },
+    "Application": {
+      es: "Solicitud",
+      zh: "申请",
+      fr: "Demande",
+      ar: "الطلب"
+    },
+    "Review": {
+      es: "Revisión",
+      zh: "审核",
+      fr: "Examen",
+      ar: "المراجعة"
+    },
+    "Payment": {
+      es: "Pago",
+      zh: "付款",
+      fr: "Paiement",
+      ar: "الدفع"
+    },
+    "Others": {
+      es: "Otros",
+      zh: "其他",
+      fr: "Autres",
+      ar: "أخرى"
+    },
+    "Final step agreement": {
+      es: "Acuerdo del paso final",
+      zh: "最后一步协议",
+      fr: "Accord de l’étape finale",
+      ar: "اتفاق الخطوة الأخيرة"
+    },
+    "Chime, America's #1 Choice for Banking": {
+      es: "Chime, la opción n.º 1 de Estados Unidos para banca",
+      zh: "Chime，美国首选银行服务",
+      fr: "Chime, le n° 1 des choix bancaires aux États-Unis",
+      ar: "Chime، الخيار الأول في أمريكا للخدمات المصرفية"
+    },
     "Before you submit": {
       es: "Antes de enviar",
       zh: "提交前",
@@ -405,11 +459,23 @@
       fr: "Je comprends également que les instructions de paiement pour les frais de demande remboursables seront fournies après l’envoi. Une fois le paiement confirmé, ma demande passera à l’examen, à l’approbation et aux prochaines étapes du traitement.",
       ar: "أفهم أيضًا أنه سيتم تقديم تعليمات الدفع لرسوم الطلب القابلة للاسترداد بعد الإرسال. وبمجرد تأكيد الدفع، سينتقل طلبي إلى المراجعة والموافقة وخطوات المعالجة التالية."
     },
-    "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": {
-      es: "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.",
-      zh: "确认邮件将很快发送至您在申请中提供的电子邮箱，以核实您的申请已成功收到。",
-      fr: "Un e-mail de confirmation sera envoyé prochainement à l’adresse indiquée dans votre demande afin de vérifier que votre dossier a bien été reçu.",
-      ar: "سيتم إرسال رسالة تأكيد قريبًا إلى عنوان البريد الإلكتروني المذكور في طلبك للتحقق من أن طلبك قد تم استلامه بنجاح."
+    "A confirmation email has been sent to you.": {
+      es: "Se le ha enviado un correo de confirmación.",
+      zh: "确认邮件已发送给您。",
+      fr: "Un e-mail de confirmation vous a été envoyé.",
+      ar: "تم إرسال رسالة تأكيد إليك."
+    },
+    "A confirmation email has been sent to you at": {
+      es: "Se le ha enviado un correo de confirmación a",
+      zh: "确认邮件已发送至",
+      fr: "Un e-mail de confirmation vous a été envoyé à",
+      ar: "تم إرسال رسالة تأكيد إليك على"
+    },
+    "If you do not see it, check your spam folder.": {
+      es: "Si no lo ve, revise su carpeta de spam.",
+      zh: "如未看到，请查看垃圾邮件文件夹。",
+      fr: "Si vous ne le voyez pas, vérifiez vos courriers indésirables.",
+      ar: "إذا لم تجدها، تحقق من مجلد البريد العشوائي."
     }
   };
 

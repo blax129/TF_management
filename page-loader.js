@@ -10,16 +10,23 @@
   let hideTimer = 0;
   let failsafeTimer = 0;
 
-  function show() {
+  function show(options) {
+    const persist = Boolean(options && typeof options === "object" && options.persist);
     window.clearTimeout(hideTimer);
     window.clearTimeout(failsafeTimer);
     loader.hidden = false;
     loader.classList.remove("is-hidden");
     loader.setAttribute("aria-hidden", "false");
-    loader.setAttribute("aria-label", "Loading");
+    var loadingLabel = "Loading";
+    if (window.PPM_I18N && typeof window.PPM_I18N.translateText === "function") {
+      loadingLabel = window.PPM_I18N.translateText("Loading", document.documentElement.lang || "en");
+    }
+    loader.setAttribute("aria-label", loadingLabel);
     document.documentElement.setAttribute("aria-busy", "true");
 
-    failsafeTimer = window.setTimeout(hide, 4000);
+    if (!persist) {
+      failsafeTimer = window.setTimeout(hide, 4000);
+    }
   }
 
   function hide() {

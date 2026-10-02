@@ -177,6 +177,15 @@
       "View Privacy Notice": "Ver aviso de privacidad",
       "Your information is transmitted securely and used only for application processing and communication purposes.": "Su información se transmite de forma segura y se utiliza únicamente para el procesamiento de la solicitud y fines de comunicación.",
       "Payment method for the fee": "Método de pago de la tarifa",
+      "Read more": "Leer más",
+      "Show less": "Mostrar menos",
+      "Application progress overview": "Resumen del progreso de la solicitud",
+      "Application": "Solicitud",
+      "Review": "Revisión",
+      "Payment": "Pago",
+      "Others": "Otros",
+      "Final step agreement": "Acuerdo del paso final",
+      "Chime, America's #1 Choice for Banking": "Chime, la opción n.º 1 de Estados Unidos para banca",
       "I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.": "Certifico que toda la información proporcionada en esta solicitud es completa y exacta según mi leal saber y entender. Entiendo que proporcionar información falsa o engañosa puede resultar en la denegación de mi solicitud, y autorizo al propietario o administrador de la propiedad a verificar la información proporcionada.",
       "I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.": "También entiendo que las instrucciones de pago para la tarifa de solicitud reembolsable se proporcionarán después del envío. Una vez confirmado el pago, mi solicitud pasará a la revisión, aprobación y siguientes pasos del proceso.",
       "Application received": "Solicitud recibida",
@@ -205,7 +214,8 @@
       "Pending": "Pendiente",
       "Application status": "Estado de la solicitud",
       "Email Confirmation": "Confirmación por correo electrónico",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.",
+      "A confirmation email has been sent to you.": "Se le ha enviado un correo de confirmación.",
+      "A confirmation email has been sent to you at": "Se le ha enviado un correo de confirmación a",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.",
       "Secure & Verified Process": "Proceso seguro y verificado",
@@ -668,6 +678,23 @@
       "Relationship": "Relação",
       "Agreement": "Declaração",
       "I certify that the information provided is true and complete to the best of my knowledge.": "Certifico que as informações fornecidas são verdadeiras e completas conforme meu conhecimento.",
+      "Read more": "Ler mais",
+      "Show less": "Mostrar menos",
+      "Application progress overview": "Visão geral do progresso da solicitação",
+      "Application": "Solicitação",
+      "Review": "Análise",
+      "Payment": "Pagamento",
+      "Others": "Outros",
+      "Final step agreement": "Acordo da etapa final",
+      "Chime, America's #1 Choice for Banking": "Chime, a escolha nº 1 da América para serviços bancários",
+      "Before you submit": "Antes de enviar",
+      "Certification & Acknowledgment": "Certificação e reconhecimento",
+      "Application certification": "Certificação da solicitação",
+      "Fee & next steps": "Taxa e próximos passos",
+      "I have read and agree to the statements above.": "Li e concordo com as declarações acima.",
+      "Privacy & Data Processing Consent": "Consentimento de privacidade e processamento de dados",
+      "View Privacy Notice": "Ver aviso de privacidade",
+      "Payment method for the fee": "Método de pagamento da taxa",
       "Application received": "Solicitação recebida",
       "Thank you. Your application has been submitted.": "Obrigado. Sua solicitação foi enviada.",
       "Your application is marked as received. Please watch your email or phone for updates from TenantFirst Management about review status, tour scheduling, or next-step instructions.": "Sua solicitação foi marcada como recebida. Verifique seu e-mail ou telefone para atualizações de TenantFirst Management sobre análise, visitas ou próximos passos.",
@@ -1264,8 +1291,9 @@
       "Submission Received": "Solicitud recibida",
       "Application Received Successfully": "Solicitud recibida correctamente",
       "Thank you for completing your rental application. Your information has been received successfully and is currently pending review.": "Gracias por completar su solicitud de alquiler. Su información se recibió correctamente y está pendiente de revisión.",
-      "Thank you for submitting your rental application.": "Gracias por enviar su solicitud de alquiler.",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.",
+      "Thank you for your rental application.": "Gracias por su solicitud de alquiler.",
+      "A confirmation email has been sent to you.": "Se le ha enviado un correo de confirmación.",
+      "A confirmation email has been sent to you at": "Se le ha enviado un correo de confirmación a",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.",
       "Your application is currently pending review by the property management team.": "Su solicitud está actualmente pendiente de revisión por parte del equipo de administración de la propiedad.",
@@ -1668,10 +1696,20 @@
       "View Privacy Notice": "查看隐私声明",
       "Your information is transmitted securely and used only for application processing and communication purposes.": "您的信息会安全传输，且仅用于申请处理与沟通目的。",
       "Payment method for the fee": "费用支付方式",
+      "Read more": "阅读更多",
+      "Show less": "收起",
+      "Application progress overview": "申请进度概览",
+      "Application": "申请",
+      "Review": "审核",
+      "Payment": "付款",
+      "Others": "其他",
+      "Final step agreement": "最后一步协议",
+      "Chime, America's #1 Choice for Banking": "Chime，美国首选银行服务",
       "I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.": "本人证明本申请所提供的信息据本人所知完整准确。本人理解提供虚假或误导信息可能导致申请被拒，并授权房东/物业管理人员核实所提供的信息。",
       "I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.": "本人亦理解，可退还申请费的付款说明将在提交后提供。付款确认后，申请将进入审核、批准及后续处理步骤。",
-      "Thank you for submitting your rental application.": "感谢您提交租赁申请。",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "确认邮件将很快发送至您在申请中提供的电子邮箱，以核实您的申请已成功收到。",
+      "Thank you for your rental application.": "感谢您的租赁申请。",
+      "A confirmation email has been sent to you.": "确认邮件已发送给您。",
+      "A confirmation email has been sent to you at": "确认邮件已发送至",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "请注意，在审批流程开始之前，需要支付可退还的 75 美元申请费。",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "付款确认后，您的申请审核和批准流程将正式开始。",
       "Your application is currently pending review by the property management team.": "您的申请目前正在等待物业管理团队审核。",
@@ -1714,10 +1752,20 @@
       "View Privacy Notice": "Voir l’avis de confidentialité",
       "Your information is transmitted securely and used only for application processing and communication purposes.": "Vos informations sont transmises de manière sécurisée et utilisées uniquement pour le traitement de la demande et à des fins de communication.",
       "Payment method for the fee": "Mode de paiement des frais",
+      "Read more": "Lire plus",
+      "Show less": "Afficher moins",
+      "Application progress overview": "Aperçu de l’avancement de la demande",
+      "Application": "Demande",
+      "Review": "Examen",
+      "Payment": "Paiement",
+      "Others": "Autres",
+      "Final step agreement": "Accord de l’étape finale",
+      "Chime, America's #1 Choice for Banking": "Chime, le n° 1 des choix bancaires aux États-Unis",
       "I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.": "Je certifie que toutes les informations fournies dans cette demande sont complètes et exactes au meilleur de ma connaissance. Je comprends que fournir des informations fausses ou trompeuses peut entraîner le refus de ma demande, et j’autorise le propriétaire ou le gestionnaire à vérifier les informations fournies.",
       "I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.": "Je comprends également que les instructions de paiement pour les frais de demande remboursables seront fournies après l’envoi. Une fois le paiement confirmé, ma demande passera à l’examen, à l’approbation et aux prochaines étapes du traitement.",
-      "Thank you for submitting your rental application.": "Merci d’avoir envoyé votre demande de location.",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "Un e-mail de confirmation sera envoyé prochainement à l’adresse indiquée dans votre demande afin de vérifier que votre dossier a bien été reçu.",
+      "Thank you for your rental application.": "Merci pour votre demande de location.",
+      "A confirmation email has been sent to you.": "Un e-mail de confirmation vous a été envoyé.",
+      "A confirmation email has been sent to you at": "Un e-mail de confirmation vous a été envoyé à",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "Veuillez noter qu’une demande de frais de dossier remboursables de 75 $ est requise avant que le processus d’approbation puisse commencer.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "Une fois le paiement confirmé, l’examen et le processus d’approbation de votre demande commenceront officiellement.",
       "Your application is currently pending review by the property management team.": "Votre demande est actuellement en attente d’examen par l’équipe de gestion immobilière.",
@@ -1760,10 +1808,20 @@
       "View Privacy Notice": "عرض إشعار الخصوصية",
       "Your information is transmitted securely and used only for application processing and communication purposes.": "يتم نقل معلوماتك بشكل آمن ولا تُستخدم إلا لأغراض معالجة الطلب والتواصل.",
       "Payment method for the fee": "طريقة دفع الرسوم",
+      "Read more": "اقرأ المزيد",
+      "Show less": "عرض أقل",
+      "Application progress overview": "نظرة عامة على تقدم الطلب",
+      "Application": "الطلب",
+      "Review": "المراجعة",
+      "Payment": "الدفع",
+      "Others": "أخرى",
+      "Final step agreement": "اتفاق الخطوة الأخيرة",
+      "Chime, America's #1 Choice for Banking": "Chime، الخيار الأول في أمريكا للخدمات المصرفية",
       "I certify that all information provided in this application is complete and accurate to the best of my knowledge. I understand that providing false or misleading information may result in denial of my application, and I authorize the landlord/property manager to verify the information provided.": "أقر بأن جميع المعلومات المقدمة في هذا الطلب كاملة ودقيقة حسب علمي. أفهم أن تقديم معلومات كاذبة أو مضللة قد يؤدي إلى رفض طلبي، وأفوض المالك/مدير العقار بالتحقق من المعلومات المقدمة.",
       "I also understand that payment instructions for the refundable application fee will be provided after submission. Once payment is confirmed, my application will proceed to the review, approval, and next processing steps.": "أفهم أيضًا أنه سيتم تقديم تعليمات الدفع لرسوم الطلب القابلة للاسترداد بعد الإرسال. وبمجرد تأكيد الدفع، سينتقل طلبي إلى المراجعة والموافقة وخطوات المعالجة التالية.",
-      "Thank you for submitting your rental application.": "شكرًا لك على إرسال طلب الإيجار.",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "سيتم إرسال رسالة تأكيد قريبًا إلى عنوان البريد الإلكتروني المذكور في طلبك للتحقق من أن طلبك قد تم استلامه بنجاح.",
+      "Thank you for your rental application.": "شكرًا لك على طلب الإيجار.",
+      "A confirmation email has been sent to you.": "تم إرسال رسالة تأكيد إليك.",
+      "A confirmation email has been sent to you at": "تم إرسال رسالة تأكيد إليك على",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "يرجى ملاحظة أن رسوم طلب قابلة للاسترداد بقيمة 75 دولارًا أمريكيًا مطلوبة قبل أن تبدأ عملية الموافقة.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "بمجرد تأكيد الدفع، ستبدأ عملية مراجعة طلبك والموافقة عليه رسميًا.",
       "Your application is currently pending review by the property management team.": "طلبك حاليًا بانتظار مراجعة فريق إدارة العقار.",
@@ -1814,7 +1872,8 @@
       "Yes, there is a refundable application fee of $75, which is paid through Chime after your application is submitted.": "Sí, hay una tarifa de solicitud reembolsable de $75, que se paga a través de Chime después de enviar su solicitud.",
       "Start Application": "Iniciar solicitud",
       "Application Received": "Solicitud recibida",
-      "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.": "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.",
+      "A confirmation email has been sent to you.": "Se le ha enviado un correo de confirmación.",
+      "A confirmation email has been sent to you at": "Se le ha enviado un correo de confirmación a",
       "Please note that a refundable $75 application fee is required before the approval process can begin.": "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.",
       "Once the payment has been confirmed, your application review and approval process will officially commence.": "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.",
       "Your submission is being reviewed for completeness and next-step fit. TenantFirst Management will contact you directly if more information, tour scheduling, or a refundable fee step is needed.": "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. TenantFirst Management se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.",
@@ -1856,7 +1915,7 @@
       "Verification Received": "验证已收到",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "您的确认已收到，目前正在审核中。它将与您申请编号匹配，如需补充信息会与您联系。",
       "Application Submitted Successfully": "申请已成功提交",
-      "Thank you for submitting your rental application.": "感谢您提交租赁申请。",
+      "Thank you for your rental application.": "感谢您的租赁申请。",
       "Continue to Payment Instructions": "继续查看付款说明"
     },
     fr: {
@@ -1866,7 +1925,7 @@
       "Verification Received": "Vérification reçue",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "Votre confirmation a été reçue et est actuellement en cours d’examen. Elle sera associée à votre ID de demande et vous serez contacté si des informations supplémentaires sont nécessaires.",
       "Application Submitted Successfully": "Demande envoyée avec succès",
-      "Thank you for submitting your rental application.": "Merci d’avoir envoyé votre demande de location.",
+      "Thank you for your rental application.": "Merci pour votre demande de location.",
       "Continue to Payment Instructions": "Continuer vers les instructions de paiement"
     },
     ar: {
@@ -1876,7 +1935,7 @@
       "Verification Received": "تم استلام التحقق",
       "Your confirmation has been received and is currently under review. It will be matched with your Application ID, and you will be contacted if any additional information is needed": "تم استلام تأكيدك وهو قيد المراجعة حاليًا. سيتم ربطه برقم طلبك، وسيتم التواصل معك إذا لزم أي معلومات إضافية.",
       "Application Submitted Successfully": "تم إرسال الطلب بنجاح",
-      "Thank you for submitting your rental application.": "شكرًا لك على إرسال طلب الإيجار.",
+      "Thank you for your rental application.": "شكرًا لك على طلب الإيجار.",
       "Continue to Payment Instructions": "المتابعة إلى تعليمات الدفع"
     }
   };
@@ -1897,7 +1956,8 @@
     "Sí, hay una tarifa de solicitud reembolsable de $75, que se paga a través de Chime después de enviar su solicitud.": "Yes, there is a refundable application fee of $75, which is paid through Chime after your application is submitted.",
     "Iniciar solicitud": "Start Application",
     "Solicitud recibida": "Application Received",
-    "Pronto se enviará un correo de confirmación a la dirección proporcionada en su solicitud para verificar que su solicitud se recibió correctamente.": "A confirmation email will be sent shortly to the email address provided in your application to verify that your application has been successfully received.",
+    "Se le ha enviado un correo de confirmación.": "A confirmation email has been sent to you.",
+    "Se le ha enviado un correo de confirmación a": "A confirmation email has been sent to you at",
     "Tenga en cuenta que se requiere una tarifa de solicitud reembolsable de $75 antes de que pueda comenzar el proceso de aprobación.": "Please note that a refundable $75 application fee is required before the approval process can begin.",
     "Una vez confirmado el pago, comenzará oficialmente el proceso de revisión y aprobación de su solicitud.": "Once the payment has been confirmed, your application review and approval process will officially commence.",
     "Su solicitud se está revisando para confirmar que esté completa y definir los próximos pasos. TenantFirst Management se comunicará directamente si se necesita más información, programar una visita o un paso de tarifa reembolsable.": "Your submission is being reviewed for completeness and next-step fit. TenantFirst Management will contact you directly if more information, tour scheduling, or a refundable fee step is needed.",
@@ -1928,7 +1988,7 @@
     "Su envío es revisado por el equipo de administración de la propiedad antes de asignar cualquier instrucción de pago específica de la solicitud.": "Your submission is reviewed by the property management team before any application-specific payment instructions are assigned.",
     "Sí, puede aplicarse una tarifa de solicitud reembolsable después de la revisión. Las instrucciones de procesamiento de pago se asignan de forma privada y se proporcionan solo cuando su solicitud está lista para procesamiento.": "Yes, a refundable application fee may apply after review. Payment processing instructions are assigned privately and provided only when your application is ready for processing.",
     "Solicitud recibida correctamente": "Application Received Successfully",
-    "Gracias por enviar su solicitud de alquiler.": "Thank you for submitting your rental application.",
+    "Gracias por su solicitud de alquiler.": "Thank you for your rental application.",
     "Su solicitud está actualmente pendiente de revisión por parte del equipo de administración de la propiedad.": "Your application is currently pending review by the property management team.",
     "Por motivos de seguridad y verificación, las instrucciones de pago se asignan individualmente después de la revisión y se proporcionarán cuando su solicitud esté lista para procesamiento.": "For security and verification purposes, payment instructions are assigned individually after review and will be provided once your application is ready for processing.",
     "ID de solicitud:": "Application ID:",
@@ -2098,7 +2158,7 @@
       return;
     }
 
-    const english = meta.getAttribute("content");
+    const english = meta.dataset.descriptionKey || meta.getAttribute("content");
     if (!english) {
       return;
     }
@@ -2148,6 +2208,18 @@
   function normalizeLanguage(language) {
     const value = String(language || "").toLowerCase().split("-")[0];
     return languageOptions.some((option) => option.value === value) ? value : "en";
+  }
+
+  function dateLocaleForLanguage(language) {
+    const locales = {
+      en: "en-US",
+      es: "es-ES",
+      zh: "zh-CN",
+      fr: "fr-FR",
+      ar: "ar-SA",
+      pt: "pt-BR"
+    };
+    return locales[normalizeLanguage(language)] || "en-US";
   }
 
   function storedLanguage() {
@@ -2382,7 +2454,7 @@
 
       const target = document.getElementById(id);
       if (target) {
-        target.scrollIntoView();
+        target.scrollIntoView({ block: "start", inline: "nearest" });
       }
     };
 
@@ -2533,29 +2605,16 @@
 
       function snapToEdge(left, top) {
         const width = link.offsetWidth;
-        const height = link.offsetHeight;
         const pad = edgePad();
         const maxLeft = Math.max(pad, window.innerWidth - width - pad);
-        const maxTop = Math.max(pad, window.innerHeight - height - pad);
         const clamped = clampPosition(left, top);
         const centerX = clamped.left + width / 2;
-        const centerY = clamped.top + height / 2;
-        const distLeft = centerX;
-        const distRight = window.innerWidth - centerX;
-        const distTop = centerY;
-        const distBottom = window.innerHeight - centerY;
-        const nearest = Math.min(distLeft, distRight, distTop, distBottom);
+        const snapLeft = centerX <= window.innerWidth / 2;
 
-        if (nearest === distLeft) {
-          return { left: pad, top: clamped.top };
-        }
-        if (nearest === distRight) {
-          return { left: maxLeft, top: clamped.top };
-        }
-        if (nearest === distTop) {
-          return { left: clamped.left, top: pad };
-        }
-        return { left: clamped.left, top: maxTop };
+        return {
+          left: snapLeft ? pad : maxLeft,
+          top: clamped.top
+        };
       }
 
       function place(left, top) {
@@ -2717,6 +2776,11 @@
   }
 
   function canonicalize(text) {
+    const straightApostrophe = text.replace(/\u2019/g, "'");
+    if (straightApostrophe !== text && aliases[straightApostrophe]) {
+      return aliases[straightApostrophe];
+    }
+
     const spanishGalleryDot = text.match(/^Ir a la imagen (\d{1,2})$/);
 
     if (spanishGalleryDot) {
@@ -2758,13 +2822,17 @@
   }
 
   function hasTranslatableKey(key, trimmed) {
-    return (
-      key !== trimmed ||
-      translations.es[key] ||
-      translations.zh[key] ||
-      translations.fr[key] ||
-      translations.ar[key]
-    );
+    if (key !== trimmed) {
+      return true;
+    }
+
+    const variants = [key, key.replace(/\u2019/g, "'"), key.replace(/'/g, "\u2019")];
+    return variants.some((variant) => (
+      translations.es[variant] ||
+      translations.zh[variant] ||
+      translations.fr[variant] ||
+      translations.ar[variant]
+    ));
   }
 
   function translateText(text, language) {
@@ -2782,7 +2850,30 @@
       return labels[language] || key;
     }
 
-    return language === "en" ? key : (translations[language] && translations[language][key]) || key;
+    if (language === "en") {
+      return key;
+    }
+
+    const table = translations[language];
+    if (!table) {
+      return key;
+    }
+
+    if (table[key]) {
+      return table[key];
+    }
+
+    const straightKey = key.replace(/\u2019/g, "'");
+    if (table[straightKey]) {
+      return table[straightKey];
+    }
+
+    const curlyKey = key.replace(/'/g, "\u2019");
+    if (table[curlyKey]) {
+      return table[curlyKey];
+    }
+
+    return key;
   }
 
   function currentLanguage() {
@@ -2794,7 +2885,7 @@
     return (
       !parent ||
       parent.closest(
-        "script, style, .language-select, .language-bar, [data-no-i18n], #application-id-value, [data-property-context-value], [data-listing-bridge-property]"
+        "script, style, time, .language-select, .language-bar, [data-no-i18n], #application-id-value, #applicant-email-value, [data-property-context-value], [data-listing-bridge-property]"
       )
     );
   }
@@ -2872,20 +2963,25 @@
     return "";
   }
 
-  function setupLocalizedValidation() {
-    document.querySelectorAll("input, select, textarea").forEach((field) => {
-      field.addEventListener("invalid", () => {
-        field.setCustomValidity(validationMessageFor(field));
-      });
+  function attachLocalizedValidation(field) {
+    if (field.dataset.localizedValidation === "true") {
+      return;
+    }
 
-      field.addEventListener("input", () => {
-        field.setCustomValidity("");
-      });
-
-      field.addEventListener("change", () => {
-        field.setCustomValidity("");
-      });
+    field.dataset.localizedValidation = "true";
+    field.addEventListener("invalid", () => {
+      field.setCustomValidity(validationMessageFor(field));
     });
+    field.addEventListener("input", () => {
+      field.setCustomValidity("");
+    });
+    field.addEventListener("change", () => {
+      field.setCustomValidity("");
+    });
+  }
+
+  function setupLocalizedValidation() {
+    document.querySelectorAll("input, select, textarea").forEach(attachLocalizedValidation);
   }
 
   function syncLanguageSelects(language) {
@@ -2940,14 +3036,7 @@
   }
 
   function translateLocalizedDates(language) {
-    const localeMap = {
-      en: "en-US",
-      es: "es",
-      zh: "zh-CN",
-      fr: "fr-FR",
-      ar: "ar"
-    };
-    const locale = localeMap[language] || "en-US";
+    const locale = dateLocaleForLanguage(language);
 
     document.querySelectorAll("time[datetime]").forEach((element) => {
       if (!element.dataset.dateEn) {
@@ -2964,7 +3053,7 @@
         return;
       }
 
-      const date = new Date(iso + "T12:00:00");
+      const date = new Date(iso.includes("T") ? iso : `${iso}T12:00:00`);
       if (Number.isNaN(date.getTime())) {
         return;
       }
@@ -2974,6 +3063,22 @@
         day: "numeric",
         year: "numeric"
       });
+    });
+  }
+
+  function syncDateInputLocales(language) {
+    const locale = dateLocaleForLanguage(language);
+
+    document.querySelectorAll('input[type="date"]').forEach((input) => {
+      const value = input.value;
+      input.setAttribute("lang", locale);
+      input.setAttribute("data-date-locale", locale);
+      input.type = "text";
+      input.type = "date";
+      if (value) {
+        input.value = value;
+      }
+      attachLocalizedValidation(input);
     });
   }
 
@@ -2989,6 +3094,7 @@
     translateTextNodes(supportedLanguage);
     translateAttributes(supportedLanguage);
     translateLocalizedDates(supportedLanguage);
+    syncDateInputLocales(supportedLanguage);
     translatePageTitle(supportedLanguage);
     translateMetaDescription(supportedLanguage);
     syncLanguageSelects(supportedLanguage);
@@ -3008,11 +3114,22 @@
     overlay.setAttribute("aria-hidden", "true");
     nav.insertAdjacentElement("afterend", overlay);
 
+    function setHamburgerLabel(englishKey) {
+      const label = translateText(englishKey, currentLanguage());
+      hamburger.setAttribute("aria-label", label);
+      hamburger.dataset.ariaLabelKey = englishKey;
+      const srOnly = hamburger.querySelector(".sr-only");
+      if (srOnly) {
+        srOnly.textContent = label;
+        srOnly.dataset.translationKey = englishKey;
+      }
+    }
+
     function closeNav() {
       nav.classList.remove("is-open");
       hamburger.classList.remove("is-open");
       hamburger.setAttribute("aria-expanded", "false");
-      hamburger.setAttribute("aria-label", "Open navigation");
+      setHamburgerLabel("Open navigation");
       document.body.classList.remove("nav-lock");
       overlay.setAttribute("aria-hidden", "true");
     }
@@ -3021,7 +3138,7 @@
       nav.classList.add("is-open");
       hamburger.classList.add("is-open");
       hamburger.setAttribute("aria-expanded", "true");
-      hamburger.setAttribute("aria-label", "Close navigation");
+      setHamburgerLabel("Close navigation");
       document.body.classList.add("nav-lock");
       overlay.setAttribute("aria-hidden", "false");
     }
@@ -3362,6 +3479,21 @@
     applyLanguage(initialLanguage);
   }
 
+  document.addEventListener("click", function (event) {
+    const btn = event.target.closest("[data-agreement-expand-btn]");
+    if (!btn) {
+      return;
+    }
+    const root = btn.closest("[data-agreement-expand]");
+    if (!root) {
+      return;
+    }
+    const open = !root.classList.contains("is-open");
+    root.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.textContent = translateText(open ? "Show less" : "Read more", currentLanguage());
+  });
+
   window.PPM_I18N = {
     applyLanguage,
     switchLanguage,
@@ -3589,6 +3721,10 @@
         applicationId: applicationId || "",
         data: formData || {}
       }));
+      const email = String(formData && formData.email || "").trim();
+      if (email) {
+        window.sessionStorage.setItem("latestApplicationEmail", email);
+      }
     } catch (error) {
       console.warn("Could not save application review snapshot:", error);
     }
@@ -3633,13 +3769,58 @@
     clearApplicationReviewSnapshot();
   }
 
-  function formatApplicationReviewValue(rawValue, field) {
+  function formatUsaPhone(value) {
+    const digits = String(value || "").replace(/\D/g, "");
+    const national = digits.length === 11 && digits.startsWith("1") ? digits.slice(1) : digits;
+    if (national.length !== 10) {
+      return String(value || "").trim();
+    }
+    return `(${national.slice(0, 3)}) ${national.slice(3, 6)}-${national.slice(6)}`;
+  }
+
+  function formatUsaPhoneInput(value) {
+    let digits = String(value || "").replace(/\D/g, "");
+    if (digits.length === 11 && digits.startsWith("1")) {
+      digits = digits.slice(1);
+    }
+    digits = digits.slice(0, 10);
+    if (digits.length < 4) {
+      return digits ? `(${digits}` : "";
+    }
+    if (digits.length < 7) {
+      return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    }
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
+  const APPLICATION_REVIEW_CHOICE_FIELDS = new Set([
+    "lease-term",
+    "residency-status",
+    "other-income-source",
+    "evicted",
+    "convicted",
+    "number-applicants",
+    "number-occupants",
+    "references",
+    "pets"
+  ]);
+
+  function translateApplicationReviewChoice(value, language) {
+    const english = value === "others"
+      ? "Others"
+      : (APPLICATION_REVIEW_VALUE_LABELS[value] || value);
+    return translateText(english, language || currentLanguage());
+  }
+
+  function formatApplicationReviewValue(rawValue, field, language) {
     if (rawValue == null) {
       return "";
     }
 
+    const activeLanguage = language || currentLanguage();
+
     if (typeof rawValue === "boolean") {
-      return rawValue ? "Yes" : "No";
+      return translateText(rawValue ? "Yes" : "No", activeLanguage);
     }
 
     const value = String(rawValue).trim();
@@ -3647,14 +3828,18 @@
       return "";
     }
 
-    if (APPLICATION_REVIEW_VALUE_LABELS[value]) {
-      return APPLICATION_REVIEW_VALUE_LABELS[value];
+    if (APPLICATION_REVIEW_VALUE_LABELS[value] || APPLICATION_REVIEW_CHOICE_FIELDS.has(field?.name)) {
+      return translateApplicationReviewChoice(value, activeLanguage);
+    }
+
+    if (field?.name === "phone") {
+      return formatUsaPhone(value);
     }
 
     if (field?.type === "date" && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
       const date = new Date(`${value}T12:00:00`);
       if (!Number.isNaN(date.getTime())) {
-        return date.toLocaleDateString(undefined, {
+        return date.toLocaleDateString(dateLocaleForLanguage(language || currentLanguage()), {
           year: "numeric",
           month: "short",
           day: "numeric"
@@ -3665,20 +3850,37 @@
     return value;
   }
 
+  function buildApplicationReviewEditHref(fieldName, language) {
+    const href = buildApplicationFlowHref("apply.html", {
+      language,
+      property: storedProperty()
+    });
+    const url = new URL(href, window.location.href);
+    url.searchParams.set("edit", fieldName);
+    return `apply.html${url.search}`;
+  }
+
   function buildApplicationReviewMarkup(snapshot, language) {
     const data = snapshot?.data || {};
+    const editLabel = translateText("Edit", language);
     const sections = APPLICATION_REVIEW_SECTIONS.map((section) => {
       const rows = section.fields
         .map((field) => {
-          const display = formatApplicationReviewValue(data[field.name], field);
+          const display = formatApplicationReviewValue(data[field.name], field, language);
           if (!display) {
             return "";
           }
 
+          const fieldLabel = translateText(field.label, language);
+          const editHref = escapeHtml(buildApplicationReviewEditHref(field.name, language));
+
           return `
             <div class="application-review__row">
-              <dt>${translateText(field.label, language)}</dt>
-              <dd>${escapeHtml(display)}</dd>
+              <dt>${fieldLabel}</dt>
+              <dd>
+                <span class="application-review__value">${escapeHtml(display)}</span>
+                <a class="application-review__row-edit" data-edit-field="${escapeHtml(field.name)}" href="${editHref}" aria-label="${escapeHtml(`${editLabel} ${fieldLabel}`)}">${editLabel}</a>
+              </dd>
             </div>
           `;
         })
@@ -3732,14 +3934,42 @@
 
     body.innerHTML = markup;
     panel.hidden = false;
+    initApplicationReviewSeeMore(body);
+  }
 
-    const editLink = document.getElementById("applicationReviewEditLink");
-    if (editLink && window.PPM_PROPERTY?.buildApplicationFlowHref) {
-      editLink.href = window.PPM_PROPERTY.buildApplicationFlowHref("apply.html", {
-        language,
-        property: window.PPM_PROPERTY.storedProperty ? window.PPM_PROPERTY.storedProperty() : ""
-      });
+  function initApplicationReviewSeeMore(body) {
+    const actions = document.getElementById("applicationReviewSeeMoreActions");
+    const button = document.getElementById("applicationReviewSeeMore");
+    const groups = Array.from(body.querySelectorAll(".application-review__group"));
+
+    if (!body || !actions || !button || !groups.length) {
+      if (actions) {
+        actions.hidden = true;
+      }
+      return;
     }
+
+    groups.forEach((group) => {
+      group.hidden = true;
+    });
+
+    const panel = document.getElementById("applicationReviewPanel");
+    if (panel) {
+      panel.classList.add("is-collapsed");
+    }
+
+    button.setAttribute("aria-expanded", "false");
+    actions.hidden = false;
+    button.onclick = function () {
+      groups.forEach((group) => {
+        group.hidden = false;
+      });
+      if (panel) {
+        panel.classList.remove("is-collapsed");
+      }
+      button.setAttribute("aria-expanded", "true");
+      actions.hidden = true;
+    };
   }
 
   function resetApplicationFormForNextApplicant(form) {
@@ -3828,7 +4058,7 @@
     renderListingBridgeCopy();
   }
 
-  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/mnjeolkq";
+  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/xljdvlkp";
   const APPLICATION_NOTIFICATION_EMAIL = "support@privatepropmanagement.com";
   const EMAILJS_PUBLIC_KEY = "9zdPYi59Y52CoJ96H";
   const EMAILJS_CONFIRMATION_SERVICE = "service_6f9hfc4";
@@ -4338,16 +4568,43 @@
   }
 
   function buildApplicationPayload(form, applicationId) {
-    const formData = new FormData(form);
+    const source = new FormData(form);
     const selectedLanguage = currentLanguage();
-    formData.set("application-id", applicationId);
-    formData.set("application_id", applicationId);
-    formData.set("selected-language", selectedLanguage);
+    source.set("application-id", applicationId);
+    source.set("application_id", applicationId);
+    source.set("selected-language", selectedLanguage);
 
-    const applicantEmail = String(formData.get("email") || "").trim();
+    const applicantEmail = String(source.get("email") || "").trim();
+    const formData = new FormData();
+    const params = {};
+
+    source.forEach((value, key) => {
+      if (key === "to_email") {
+        return;
+      }
+
+      const text = typeof value === "string" ? value.trim() : String(value || "").trim();
+      if (!text) {
+        return;
+      }
+
+      formData.set(key, text);
+      params[key] = text;
+    });
+
     if (applicantEmail) {
+      formData.set("email", applicantEmail);
       formData.set("_replyto", applicantEmail);
     }
+
+    formData.set(
+      "message",
+      formatApplicationAdminMessage({
+        ...params,
+        application_id: applicationId,
+        "selected-language": selectedLanguage
+      })
+    );
 
     return { formData, applicantEmail };
   }
@@ -4373,6 +4630,10 @@
     const message = error.message || String(error);
     if (/timed out/i.test(message)) {
       return translateText("The submission timed out. Please check your connection and try again.", currentLanguage());
+    }
+
+    if (message && message !== "Application services are not available.") {
+      return message;
     }
 
     return translateText("Something went wrong. Please try again.", currentLanguage());
@@ -4443,27 +4704,37 @@
       phone: applicantPhone
     }, propertyName);
 
-    if (statusMessage) {
-      statusMessage.textContent = translateText("Sending application for review...", currentLanguage());
-      statusMessage.classList.remove("is-error", "is-success");
-      statusMessage.classList.add("is-info");
-    }
-
     const formspreeResult = await withServiceTimeout(
       submitApplicationToFormspree(endpoint, formData),
       20000,
       "Formspree submission timed out."
     );
-    console.log("[Application] Formspree submission succeeded", formspreeResult);
+    console.log("[Application] Formspree submission succeeded", {
+      endpoint,
+      applicationId,
+      status: formspreeResult.status,
+      body: formspreeResult.body
+    });
+
+    try {
+      window.sessionStorage.setItem(
+        "ppm-formspree-last",
+        JSON.stringify({
+          at: new Date().toISOString(),
+          endpoint,
+          applicationId,
+          status: formspreeResult.status,
+          ok: true
+        })
+      );
+    } catch (error) {
+      console.warn("Could not store Formspree result:", error);
+    }
 
     let adminEmailStatus = "skipped";
     const adminEmailErrors = [];
     let applicantEmailStatus = "failed";
     const applicantEmailErrors = [];
-
-    if (statusMessage) {
-      statusMessage.textContent = translateText("Sending confirmation email...", currentLanguage());
-    }
 
     try {
       await withServiceTimeout(
@@ -4498,23 +4769,11 @@
       errors: [...adminEmailErrors, ...applicantEmailErrors]
     });
 
-    if (statusMessage) {
-      statusMessage.textContent = translateText("Application received. Opening confirmation...", currentLanguage());
-      statusMessage.classList.remove("is-error", "is-info");
-      statusMessage.classList.add("is-success");
-    }
-
-    if (submitButton) {
-      submitButton.textContent = translateText("Application received...", currentLanguage());
-    }
-
     const reviewData = serializeApplicationForm(form);
     saveApplicationReviewSnapshot(applicationId, reviewData);
     saveApplicationDraftData(reviewData);
 
-    window.setTimeout(() => {
-      redirectToApplicationConfirmation(form, applicationId, selectedLanguage, propertyName);
-    }, applicantEmailStatus === "sent" ? 1200 : 400);
+    redirectToApplicationConfirmation(form, applicationId, selectedLanguage, propertyName);
   }
 
   async function submitApplicationToFormspree(endpoint, formData) {
@@ -4533,7 +4792,7 @@
       responseBody = null;
     }
 
-    if (!response.ok) {
+    if (!response.ok || responseBody?.ok === false) {
       const formspreeMessage = Array.isArray(responseBody?.errors)
         ? responseBody.errors.map((entry) => entry.message).filter(Boolean).join(" ")
         : responseBody?.error;
@@ -4735,8 +4994,51 @@
       console.warn("Could not restore application draft:", error);
     }
 
+    initUsaPhoneField(form);
     form.addEventListener("input", scheduleSave);
     form.addEventListener("change", scheduleSave);
+    initApplicationFieldEditFocus(form);
+  }
+
+  function initUsaPhoneField(form) {
+    const phone = form.querySelector('[name="phone"]');
+    if (!phone) {
+      return;
+    }
+
+    const applyFormat = () => {
+      const formatted = formatUsaPhoneInput(phone.value);
+      if (phone.value !== formatted) {
+        phone.value = formatted;
+      }
+    };
+
+    applyFormat();
+    phone.addEventListener("input", applyFormat);
+  }
+
+  function initApplicationFieldEditFocus(form) {
+    if (!form) {
+      return;
+    }
+
+    const fieldName = new URLSearchParams(window.location.search).get("edit");
+    if (!fieldName) {
+      return;
+    }
+
+    const field = form.querySelector(`[name="${CSS.escape(fieldName)}"]`);
+    if (!field) {
+      return;
+    }
+
+    const target = field.closest(".field, .form-group, label, fieldset") || field;
+    window.setTimeout(() => {
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (typeof field.focus === "function") {
+        field.focus({ preventScroll: true });
+      }
+    }, 80);
   }
 
   function getTestimonialInitials(name) {
@@ -4919,24 +5221,17 @@
       }
 
       if (!usesApplicationServices) {
-        window.PPMPageLoader?.show("Opening confirmation…");
+        window.PPMPageLoader?.show({ persist: true });
         window.location.href = form.dataset.confirmation || "application-received.html";
         return;
       }
 
       isSubmitting = true;
-      window.PPMPageLoader?.show("Submitting application…");
+      window.PPMPageLoader?.show({ persist: true });
 
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.setAttribute("aria-busy", "true");
-        submitButton.textContent = translateText("Sending...", currentLanguage());
-      }
-
-      if (statusMessage) {
-        statusMessage.textContent = translateText("Sending application for review...", currentLanguage());
-        statusMessage.classList.remove("is-error", "is-success");
-        statusMessage.classList.add("is-info");
       }
 
       try {
