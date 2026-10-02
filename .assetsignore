@@ -1,0 +1,6 @@
+.DS_Store
+.git
+documents
+netlify.toml
+wrangler.json
+package-lock.json
