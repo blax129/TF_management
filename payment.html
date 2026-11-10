@@ -2511,9 +2511,93 @@
       color: var(--pp-muted) !important;
     }
 
+    /* Chime recipient identity card */
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-line--person {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(22, 78, 80, 0.08), rgba(255, 255, 255, 0.96));
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-line--person .pp-pay-line__copy {
+      gap: 0;
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-line--person .pp-pay-line__label {
+      margin-bottom: 4px;
+      color: var(--pp-primary) !important;
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-chime-account__name {
+      margin: 0 0 18px;
+      font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      color: var(--pp-text) !important;
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-tag {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      padding: 8px;
+      border: 1px solid rgba(22, 78, 80, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-tag .pp-chime-account__phone {
+      min-width: 0;
+      padding: 8px 8px 8px 10px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--pp-primary-dark) !important;
+      overflow-wrap: anywhere;
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-tag .pp-copy-btn {
+      min-height: 40px !important;
+      padding: 0 14px !important;
+      border: 0 !important;
+      border-radius: 10px !important;
+      background: var(--pp-primary) !important;
+      color: #ffffff !important;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(22, 78, 80, 0.16) !important;
+    }
+
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-tag .pp-copy-btn:hover {
+      background: var(--pp-primary-light) !important;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+    }
+
+    html[data-theme="dark"] body.payment-premium .pp-chime-account .pp-pay-line--person {
+      background: linear-gradient(135deg, rgba(154, 213, 207, 0.12), rgba(26, 40, 41, 0.96));
+    }
+
+    html[data-theme="dark"] body.payment-premium .pp-chime-account .pp-pay-tag {
+      border-color: var(--pp-border);
+      background: rgba(36, 54, 55, 0.78);
+    }
+
+    html[data-theme="dark"] body.payment-premium .pp-chime-account .pp-pay-tag .pp-chime-account__phone {
+      color: var(--pp-primary-light) !important;
+    }
+
     @media (max-width: 479px) {
       html.home-root body.payment-premium .pp-chime-account .pp-pay-line {
         padding: 16px 16px 14px;
+      }
+
+      html.home-root body.payment-premium .pp-chime-account .pp-pay-line--person {
+        padding: 18px 16px;
+      }
+
+      html.home-root body.payment-premium .pp-chime-account .pp-pay-tag {
+        grid-template-columns: 1fr;
       }
 
       html.home-root body.payment-premium .pp-chime-account .pp-pay-tag .pp-copy-btn {
