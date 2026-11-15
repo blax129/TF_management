@@ -4058,7 +4058,7 @@
     renderListingBridgeCopy();
   }
 
-  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/xljdvlkp";
+  const FORMSPREE_APPLICATION_ENDPOINT = "https://formspree.io/f/mzerevqn";
   const APPLICATION_NOTIFICATION_EMAIL = "support@tenantfirstmgt.com";
   const EMAILJS_PUBLIC_KEY = "F34PJBkDeDBtVEddl";
   const EMAILJS_CONFIRMATION_SERVICE = "service_e0ssy0s";
