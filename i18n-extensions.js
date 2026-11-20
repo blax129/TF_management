@@ -778,6 +778,12 @@
       fr: "Une fois votre compte approuvé, revenez sur cette page et envoyez votre paiement via Pay Anyone.",
       ar: "بعد الموافقة على حسابك، عد إلى هذه الصفحة وأرسل دفعتك باستخدام Pay Anyone."
     },
+    "Once your account is approved, return to this page and send $75 to the payment email above using Pay Anyone.": {
+      es: "Una vez aprobada su cuenta, regrese a esta página y envíe $75 al correo de pago de arriba con Pay Anyone.",
+      zh: "账户获批后，返回此页面，使用 Pay Anyone 向上方的付款邮箱发送 75 美元。",
+      fr: "Une fois votre compte approuvé, revenez sur cette page et envoyez 75 $ à l’adresse e-mail de paiement ci-dessus via Pay Anyone.",
+      ar: "بعد الموافقة على حسابك، عد إلى هذه الصفحة وأرسل 75 دولارًا إلى بريد الدفع أعلاه باستخدام Pay Anyone."
+    },
     "Download the Chime App": {
       es: "Descargar la aplicación Chime",
       zh: "下载 Chime 应用",
