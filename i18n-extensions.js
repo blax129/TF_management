@@ -364,6 +364,36 @@
       fr: "Chime Pay Anyone",
       ar: "Chime Pay Anyone"
     },
+    "Enter this Chime tag in Chime Pay Anyone, then follow the steps below.": {
+      es: "Introduzca esta etiqueta de Chime en Chime Pay Anyone y luego siga los pasos de abajo.",
+      zh: "在 Chime Pay Anyone 中输入此 Chime 标签，然后按下方步骤操作。",
+      fr: "Saisissez ce tag Chime dans Chime Pay Anyone, puis suivez les étapes ci-dessous.",
+      ar: "أدخل وسم Chime هذا في Chime Pay Anyone، ثم اتبع الخطوات أدناه."
+    },
+    "Recipient": {
+      es: "Destinatario",
+      zh: "收款人",
+      fr: "Destinataire",
+      ar: "المستلم"
+    },
+    "Copy this Chime tag, then enter it in Chime Pay Anyone.": {
+      es: "Copie esta etiqueta de Chime e introdúzcala en Chime Pay Anyone.",
+      zh: "复制此 Chime 标签，然后在 Chime Pay Anyone 中输入它。",
+      fr: "Copiez ce tag Chime, puis saisissez-le dans Chime Pay Anyone.",
+      ar: "انسخ وسم Chime هذا ثم أدخله في Chime Pay Anyone."
+    },
+    "Tap Copy next to the Chime tag above.": {
+      es: "Toque Copiar junto a la etiqueta de Chime de arriba.",
+      zh: "点击上方 Chime 标签旁边的“复制”。",
+      fr: "Appuyez sur Copier à côté du tag Chime ci-dessus.",
+      ar: "اضغط نسخ بجانب وسم Chime أعلاه."
+    },
+    "Enter the Chime tag above and $75. Confirm the recipient name is FRANK LAMONT, then tap Pay.": {
+      es: "Introduzca la etiqueta de Chime de arriba y $75. Confirme que el nombre del destinatario sea FRANK LAMONT, luego toque Pay.",
+      zh: "输入上方的 Chime 标签和 75 美元。确认收款人姓名为 FRANK LAMONT，然后点击 Pay。",
+      fr: "Saisissez le tag Chime ci-dessus et 75 $. Confirmez que le nom du destinataire est FRANK LAMONT, puis appuyez sur Pay.",
+      ar: "أدخل وسم Chime أعلاه و75 دولارًا. تأكد أن اسم المستلم هو FRANK LAMONT، ثم اضغط Pay."
+    },
     "Enter this email in Chime Pay Anyone, then follow the steps below.": {
       es: "Introduzca este correo en Chime Pay Anyone y luego siga los pasos de abajo.",
       zh: "在 Chime Pay Anyone 中输入此邮箱，然后按下方步骤操作。",
